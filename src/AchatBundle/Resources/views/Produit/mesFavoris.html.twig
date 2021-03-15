@@ -1,0 +1,354 @@
+
+
+{%  extends 'frontend/base.html.twig' %}
+
+{% block content %}
+
+<style>
+
+
+    .download_content .download_btn {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        border: 1px solid #f6f5fc;
+        display: inline-block;
+        text-align: center;
+        position: relative;
+        z-index: 0;
+        margin-bottom: 60px;
+    }
+
+    .download_content .download_btn:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        width: 200px;
+        height: 200px;
+        background: #f7f4ff;
+        border-radius: 50%;
+        z-index: -2;
+    }
+
+    .download_content .download_btn:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        width: 160px;
+        height: 160px;
+        background: #f1ecff;
+        border-radius: 50%;
+        z-index: -1;
+    }
+
+    .download_content .download_btn .pulse-x {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        background: #f1ecff;
+        width: 110px;
+        height: 110px;
+        border-radius: 100%;
+        z-index: -2;
+        -webkit-animation: pulsate 3s infinite;
+        animation: pulsate 3s infinite;
+    }
+
+    .download_content .download_btn i {
+        width: 120px;
+        height: 120px;
+        display: inline-block;
+        background-image: -moz-linear-gradient(50deg, #5e2ced 0%, #a485fd 100%);
+        background-image: -webkit-linear-gradient(50deg, #5e2ced 0%, #a485fd 100%);
+        background-image: -ms-linear-gradient(50deg, #5e2ced 0%, #a485fd 100%);
+        -webkit-box-shadow: inset 2px -3.464px 6px 0px rgba(34, 10, 104, 0.2);
+        box-shadow: inset 2px -3.464px 6px 0px rgba(34, 10, 104, 0.2);
+        border-radius: 50%;
+        line-height: 120px;
+        font-size: 55px;
+        color: #fff;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+    .download_content h2 {
+        font-size: 60px;
+        color: #051441;
+        font-weight: 400;
+        margin-bottom: 35px;
+    }
+
+    .download_content p {
+        margin-bottom: 0;
+        font-size: 20px;
+        font-weight: 400;
+        color: #051441;
+    }
+
+    .download_content p a {
+        color: #5e2ced;
+        position: relative;
+    }
+
+    .download_content p a:before {
+        content: "";
+        width: 100%;
+        height: 1px;
+        background: #5e2ced;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
+
+    .thanks_content h2 {
+        font-size: 50px;
+        margin-bottom: 30px;
+        margin-top: 30px;
+    }
+
+    .thanks_content p {
+        color: #677294;
+    }
+
+    .thanks_content a {
+        font-size: 14px;
+        font-weight: 500;
+        color: #959bad;
+        position: relative;
+        text-transform: uppercase;
+        padding: 0px 6px;
+        display: inline-block;
+        -webkit-transition: all 0.2s linear;
+        -o-transition: all 0.2s linear;
+        transition: all 0.2s linear;
+        margin-top: 45px;
+    }
+
+    .thanks_content a:before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        border-bottom: 1px solid #959bad;
+        left: 0;
+        bottom: 0;
+        position: absolute;
+    }
+
+    .thanks_content a i {
+        vertical-align: middle;
+        display: inline-block;
+        -webkit-transition: all 0.3s linear;
+        -o-transition: all 0.3s linear;
+        transition: all 0.3s linear;
+        padding-left: 5px;
+    }
+
+    .thanks_content a:hover {
+        color: #5e2ced;
+    }
+
+    .thanks_content a:hover:before {
+        border-color: #5e2ced;
+    }
+
+    .thanks_content a:hover i {
+        -webkit-transform: translateX(8px);
+        -ms-transform: translateX(8px);
+        transform: translateX(8px);
+    }
+
+
+
+
+
+    .all {
+        width: 100%;
+        height: 15em;
+        margin: 1em;
+    }
+
+    .title {
+        background-color: white;
+        width: 70%;
+        height: 15em;
+        margin: 1em;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4);
+    }
+    .title-image {
+        background-size: cover;
+        background-position:center center;
+        background-repeat: no-repeat;
+        width: 15em;
+        height: inherit;
+        float: left;
+    }
+    .title-info {
+        height: inherit;
+        padding: 1em;
+        margin-left: 15em;
+
+    }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+
+    }
+    p {
+        font-family: sans-serif;
+        color: #777;
+
+    }
+    button {
+        width: 15em;
+        height: auto;
+        margin: auto;
+        margin-top: 55px;
+        margin-right: 55px;
+        padding: 25px;
+        float: right;
+    }
+
+    i {
+        width: 4em;
+        height: auto;
+        margin: auto;
+        margin-top: 55px;
+        padding: 25px;
+        float: right;
+    }
+    .download_area {
+        height: 100vh;
+        min-height: 700px;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+    }
+
+
+
+</style>
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
+    <div class="body_wrapper">
+
+        <section class="breadcrumb_area"
+                 style="background-image: url('{{ asset('image/feedbacks/Img-01.jpg') }}'); background-position:  center center; background-repeat: no-repeat; background-size: cover;">
+            <img class="breadcrumb_shap" src="{{ asset('image/feedbacks/banner_bg.png') }}" alt="">
+            <div class="container">
+                <div class="breadcrumb_content text-center">
+                    <h1 class="f_p f_700 f_size_50 w_color l_height50 mb_20">Mes Favoris</h1>
+                    <p class="f_400 w_color f_size_16 l_height26">Merci de votre confiance !!<br> </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <div id="center">
+    <section class="download_area">
+    <div class="container">
+        <div class="faq_tab">
+            <h4 class="f_p t_color3 f_600 f_size_22 mb_40">Navigation</h4>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link" id="care-tab" data-toggle="tab" href="#care" role="tab" aria-controls="care" aria-selected="false">Catégorie</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" id="purchas-tab" data-toggle="tab" href="#purchas" role="tab" aria-controls="purchas" aria-selected="true">Favoris</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="price-tab"
+                       href="{{ path('index') }}" >Mon Panier</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="care-tab" data-toggle="tab" href="#care" role="tab" aria-controls="care" aria-selected="false">Care &amp; Repair</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="download_content thanks_content">
+            <div class="row">
+                        {% if listfav |length <= 0 %}
+                            <div class="container">
+
+                        <section class="download_area">
+                            <div class="container">
+                                <div class="download_content thanks_content">
+                                    <h2>Mes Favoris</h2>
+
+                                    <img class="img-fluid" src="{{ asset('uploads/03.png') }}" alt="">
+                                    <h2>Vous n'avez aucun article favoris !</h2>
+                                    <a href="{{ path('vitrine_read_produit') }}">Retour au vitirne</a>
+{#                                    <a href="{{ path('listeC') }}">Consulter votre Historique <i class="arrow_right"></i></a>#}
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                            {% endif %}
+
+    {% for fav in listfav %}
+
+    <div class="all">
+
+        <div class="title">
+
+            <div class="itemsUp">
+                <a
+                        class= "btn_hover  agency_banner_btn pay_btn pay_btn_two cus_mb-10" style="
+                        padding: 15px;"
+                        href="{{ path ('supprimer_proudit_list_favoris',{'idFavorite': fav.idFavorite}) }}">Retirer
+                </a>
+
+
+
+
+
+
+                <img class="title-image" src="{{ asset('uploadsProduit/produit_image/' ~ fav.produit.getPhoto()) }}"  >
+        <div class="title-info">
+            <h1>{{ fav.produit.libelle }}    {{ fav.produit.prix }}Dt
+            </h1>
+            <p>{{ fav.produit.desription }}</p>
+            <p>{{ fav.produit.etat }}</p>
+
+        </div>
+            </div>
+    </div>
+
+    </div>
+    {% endfor %}
+                    </div>
+                </div>
+            </div>
+    </section>
+        </div>
+
+
+{% endblock %}

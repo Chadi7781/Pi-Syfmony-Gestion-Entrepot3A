@@ -1,0 +1,430 @@
+
+
+{%  extends 'backend/base.html.twig' %}
+
+
+{% block content %}
+
+<style>
+
+    #ceo th.asc:after {
+        display: inline;
+        content: '↓';
+    }
+
+    #ceo th.desc:after {
+        display: inline;
+        content: '↑';
+    }
+
+    #ceo td {
+        background: #ccc;
+    }
+</style>
+<link href="{{ asset('assets/plugins/fileuploads/css/dropify.min.css') }}" rel="stylesheet" type="text/css" />
+
+
+<div class="content-page">
+
+    <!-- Start content -->
+    <div class="content">
+
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-12">
+
+                    <div class="card-box table-responsive">
+
+                        <h4 class="m-t-0 header-title">Liste des catégories</h4>
+
+                        <p class="text-muted font-14 m-b-30">
+
+                        </p><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="datatable_length">
+                                    <ul class="list-unstyled topbar-right-menu float-right mb-0">
+
+
+                                        <li class="hide-phone">
+                                            <form class="app-search">
+                                                <input type="text" placeholder="Recherche Reclamation..." class="form-control" style="width: 400%;" id="search_input_all"
+                                                       onkeyup="FilterkeyWord_all_table()">
+                                                <br>
+                                                <button type="submit"><i class="fa fa-search"></i></button>
+                                            </form>
+                                        </li>
+
+                                    </ul>
+                                </div></div></div>
+                        <div class="header_wrap">
+                            <div class="rows">
+                                <div class="col-sm-12">
+                                    <div class="form-group"> 	<!--		Show Numbers Of Rows 		-->
+                                        <select style="height: 50%;" class  ="form-control" name="state" id="maxRows">
+
+
+                                            <option value="3">3</option>
+                                            <option value="6">6</option>
+
+                                            <option value="50">Tous</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+
+
+
+                                {#                                    <div id="test_container">#}
+
+                                <table id= "table-id"
+                                       class="table table-bordered dataTable no-footer"
+                                       role="grid" aria-describedby="datatable_info">
+
+
+
+                                    <thead>
+                                    <tr role="row">
+                                        <th  >Id</th>
+                                        <th  >Nom</th>
+                                        <th >Modifier</th>
+                                        <th >Supprimer</th>
+                                        <th >detail</th>
+
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {{ render(controller('ServiceApresVenteBundle:RecFeedCat:createCategorie')) }}
+                                    <br><br><br>
+                                    {% for entity in categories %}
+
+
+                                        <tr role="row" class="even">
+
+                                            <td class="sorting_2">{{ entity.idCat }}</td>
+                                            <td class="sorting_3">{{ entity.nom }}
+                                            </td>
+                                            <td>
+
+                                                {{ render(controller('ServiceApresVenteBundle:RecFeedCat:updateCategorie',{'id':entity.idCat})) }}
+
+
+                                            </td>
+                                            <td>
+
+                                                <i class="fa fa-trash" style="font-size: 20px; color: #6f42c1; "data-toggle="modal" data-target="#deleteModal{{entity.idCat }}">
+                                                </i>
+
+                                                <div id="deleteModal{{entity.idCat }}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title" id="myModalLabel">Bienvenue</h4>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                            </div>
+
+                                                            <div class="modal-body">
+                                                                <h4>Suppression Catégorie</h4>
+                                                                <hr>
+                                                                <p>Voullez vous supprrimer??</p>
+
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Annuler</button>
+                                                                <a href="{{ path ('admin_categorie_delete',{'id': entity.idCat}) }}" data-toggle="myModal" class="btn btn-danger waves-effect waves-light"  id="lien" >Supprimer</a>
+
+                                                            </div>
+                                                        </div><!-- /.modal-content -->
+                                                    </div><!-- /.modal-dialog -->
+                                                </div><!-- /.modal -->
+                                            </td>
+
+
+
+
+
+
+
+
+
+
+
+                                            <td>
+
+                                                <i class="fa fa-th-list"  style="font-size: 20px; color: #00aced;" data-toggle="modal" data-target="#myModal{{ entity.idCat }}"></i>
+
+                                                <div class="modal fade" id="myModal{{ entity.idCat }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <br><br><br><br>
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+
+                                                                <h1>Image catégorie</h1>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="row">
+
+                                                                    <div class="col-lg-12">
+
+
+
+
+                                                                        <img    src="{{ asset('uploads/catRecFeed_image/' ~ entity.image) }}" alt="Card image cap">
+                                                                    </div>
+                                                                    <div class="col-lg-6">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </td>
+                                        </tr>
+                                    {% endfor %}</tbody>
+
+
+                                </table>
+                                <div/>
+
+                            </div>
+                        </div> <!--		Start Pagination -->
+                        <div class='pagination-container'>
+                            <nav>
+                                <ul class="pagination">
+                                    <!--	Here the JS Function Will Add the Rows -->
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="rows_count"></div>
+
+                    </div>
+                </div>
+                <!-- 		End of Container -->
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div id="custom-modal" class="modal-demo">
+        <button type="button" class="close" onclick="Custombox.close();">
+            <span>&times;</span><span class="sr-only">Close</span>
+        </button>
+        <h4 class="custom-modal-title">Modal title</h4>
+        <div class="custom-modal-text">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </div>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+
+    <script>
+
+
+
+        getPagination('#table-id');
+        $('#maxRows').trigger('change');
+        function getPagination (table){
+
+            $('#maxRows').on('change',function(){
+                //reset pagination div reset tr counter get max rows from selection options number of rows added from situaqatuin of the last month 
+                $('.pagination').html('');						// reset pagination div
+                var trnum = 0 ;									// reset tr counter
+                var maxRows = parseInt($(this).val());			// get Max Rows from select option
+
+                var totalRows = $(table+' tbody tr').length;		// numbers of rows
+                $(table+' tr:gt(0)').each(function(){			// each TR in  table and not the header
+                    trnum++;									// Start Counter
+                    if (trnum > maxRows ){						// if tr number gt maxRows
+
+                        $(this).hide();							// fade it out
+                    }if (trnum <= maxRows ){$(this).show();}// else fade in Important in case if it ..
+                });											//  was fade out to fade it in
+                if (totalRows > maxRows){						// if tr total rows gt max rows option
+                    var pagenum = Math.ceil(totalRows/maxRows);	// ceil total(rows/maxrows) to get ..
+                    //	numbers of pages
+                    for (var i = 1; i <= pagenum ;){			// for each page append pagination li
+                        $('.pagination').append('<li data-page="'+i+'">\
+								      <span>'+ i++ +'<span class="sr-only">(current)</span></span>\
+								    </li>').show();
+                    }											// end for i
+
+
+                } 												// end if row count > max rows
+                $('.pagination li:first-child').addClass('active'); // add active class to the first li
+
+
+                //SHOWING ROWS NUMBER OUT OF TOTAL DEFAULT
+                showig_rows_count(maxRows, 1, totalRows);
+                //SHOWING ROWS NUMBER OUT OF TOTAL DEFAULT
+
+                $('.pagination li').on('click',function(e){		// on click each page
+                    e.preventDefault();
+                    var pageNum = $(this).attr('data-page');	// get it's number
+                    var trIndex = 0 ;							// reset tr counter
+                    $('.pagination li').removeClass('active');	// remove active class from all li
+                    $(this).addClass('active');					// add active class to the clicked
+
+
+                    //SHOWING ROWS NUMBER OUT OF TOTAL
+                    showig_rows_count(maxRows, pageNum, totalRows);
+                    //SHOWING ROWS NUMBER OUT OF TOTAL
+
+
+
+                    $(table+' tr:gt(0)').each(function(){		// each tr in table not the header
+                        trIndex++;								// tr index counter
+                        // if tr index gt maxRows*pageNum or lt maxRows*pageNum-maxRows fade if out
+                        if (trIndex > (maxRows*pageNum) || trIndex <= ((maxRows*pageNum)-maxRows)){
+                            $(this).hide();
+                        }else {$(this).show();} 				//else fade in
+                    }); 										// end of for each tr in table
+                });										// end of on click pagination list
+            });
+            // end of on select change
+
+            // END OF PAGINATION
+
+        }
+
+
+
+
+
+
+        //ROWS SHOWING FUNCTION
+        function showig_rows_count(maxRows, pageNum, totalRows) {
+            //Default rows showing
+            var end_index = maxRows*pageNum;
+            var start_index = ((maxRows*pageNum)- maxRows) + parseFloat(1);
+            var string = 'Showing '+ start_index + ' to ' + end_index +' of ' + totalRows + ' entries';
+            $('.rows_count').html(string);
+        }
+
+        // // CREATING INDEX
+        // function default_index() {
+        //     $('table tr:eq(0)').prepend('<th> <Objet></Objet> </th>')
+        //
+        //     var id = 0;
+        //
+        //     $('table tr:gt(0)').each(function(){
+        //         id++
+        //         $(this).prepend('<td>'+id+'</td>');
+        //     });
+        // }
+
+        // All Table search script
+        function FilterkeyWord_all_table() {
+
+// Count td if you want to search on all table instead of specific column
+
+            var count = $('.table').children('tbody').children('tr:first-child').children('td').length;
+
+            // Declare variables
+            var input, filter, table, tr, td, i;
+            input = document.getElementById("search_input_all");
+            var input_value =     document.getElementById("search_input_all").value;
+            filter = input.value.toLowerCase();
+            if(input_value !=''){
+                table = document.getElementById("table-id");
+                tr = table.getElementsByTagName("tr");
+
+                // Loop through all table rows, and hide those who don't match the search query
+                for (i = 1; i < tr.length; i++) {
+
+                    var flag = 0;
+
+                    for(j = 0; j < count; j++){
+                        td = tr[i].getElementsByTagName("td")[j];
+                        if (td) {
+
+                            var td_text = td.innerHTML;
+                            if (td.innerHTML.toLowerCase().indexOf(filter) > -1) {
+                                //var td_text = td.innerHTML;
+                                //td.innerHTML = 'shaban';
+                                flag = 1;
+                            } else {
+                                //DO NOTHING
+                            }
+                        }
+                    }
+                    if(flag==1){
+                        tr[i].style.display = "";
+                    }else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }else {
+                //RESET TABLE
+                $('#maxRows').trigger('change');
+            }
+        }
+    </script>
+
+    <script>
+
+
+        //
+
+
+
+        function autoReload() {
+
+
+            setTimeout(function() {
+
+
+                $.ajax({
+
+
+                    url: 'http://localhost/ProjetWebSymfony/test/web/app_dev.php/serviceApresVentes/Admin/readReclamation',
+
+
+                    success: function(data) {
+
+
+                        $("#test_container").load(" #test_container");
+
+
+                    }
+
+
+                });
+
+
+
+
+                autoReload();  // refresh the page every 5 seconds
+
+
+            }, 15000);
+
+
+        }
+
+
+
+
+        autoReload();
+
+
+
+    </script>
+    {% endblock %}

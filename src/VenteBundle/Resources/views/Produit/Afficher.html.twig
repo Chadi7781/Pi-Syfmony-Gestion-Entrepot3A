@@ -1,0 +1,125 @@
+{%  extends 'frontend/base.html.twig' %}
+
+{% block content %}
+    <div id="center">
+    <div class="container">
+    <h2>Search A Produit !!</h2>
+
+    <div class="sidebar-search">
+
+        <div class="input-group custom-search-form">
+
+            <input type="text" id="search" class="form-control" placeholder="Search here">
+        </div>
+        <!-- /input-group -->
+    </div>
+    <ul class="nav" id="side-menu">
+        <li>
+            <a href="#"> Entities<span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level" id="entitiesNav">
+            </ul>
+        </li>
+    </ul><br><br><br><br>
+
+
+    <!-- jQuery is necessary -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            var searchRequest = null;
+            $("#search").keyup(function() {
+
+                var minlength = 3;
+                var that = this;
+                var value = $(this).val();
+                var entitySelector = $("#entitiesNav").html('');
+                if (value.length >= minlength ) {
+                    if (searchRequest != null)
+                        searchRequest.abort();
+                    searchRequest = $.ajax({
+                        type: "GET",
+                        url: "{{ path('ajax_search12') }}",
+                        data: {
+                            'q' : value
+                        },
+                        dataType: "text",
+                        success: function(msg){
+                            //we need to check if the value is the same
+                            if (value==$(that).val()) {
+                                var result = JSON.parse(msg);
+                                $.each(result, function(key, arr) {
+                                    $.each(arr, function(id, value) {
+                                        if (key == 'entities') {
+                                            if (id != 'error') {
+                                                console.log(value[1])
+                                                entitySelector.append('<li><b>'+value[1]+'</b><a href="/www/test/test/web/app_dev.php/Vente/detail/'+id+'")'+'<img src="uploadsProduit/produit_image/'+value[0]+'"style="width: 50px; height: 50px;"/>' +
+                                                    ''+'</a></li>');
+                                            } else {
+                                                entitySelector.append('<li class="errorLi">'+value+'</li>');
+                                            }
+                                        }
+                                    });
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+
+            $(".btn1").click(function(){
+                $("h1").slideUp();
+            });
+
+            $(".btn2").click(function(){
+                $("h1").slideDown();
+            });
+
+            $(".btn3").click(function(){
+                $("h1").slideToggle();
+            });
+
+        });
+    </script>
+        <div class="row">
+            <div class="content col-sm-12">
+                <div class="customtab">
+                    <h3 class="productblock-title">Produit</h3>
+                     </div>
+
+                <div id="tab-furniture" class="tab-content">
+                    <div class="box">
+                        <div id="special-slidertab" class="row owl-carousel product-slider">
+                            {% for Produit in listproduit %}
+                            <div class="item">
+                                <div class="product-thumb">
+                                    <div> <a href="{{ path('detail',{'id':Produit.id}) }}"> <img src="{{ asset('uploadsProduit/produit_image/' ~ Produit.photo) }}"  title="iPod Classic" /> </a>
+
+                                          
+                                    </div>
+                                    <div class="caption product-detail">
+                                        <h4 class="product-name"><a href="{{ path('detail',{'id':Produit.id}) }}" title="Casual Shirt With Ruffle Hem">{{Produit.libelle}}</a></h4>
+                                        <p class="price product-price">dt{{Produit.prix}}</p>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            {% endfor%}
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+{% endblock %}

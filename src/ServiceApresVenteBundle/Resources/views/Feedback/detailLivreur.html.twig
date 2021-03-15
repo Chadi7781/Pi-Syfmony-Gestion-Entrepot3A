@@ -1,0 +1,281 @@
+
+
+{% extends 'frontend/base.html.twig' %}
+{% block content %}
+
+    <link href="{{ asset('style.css') }}" rel="stylesheet">
+
+
+
+    <div class="body_wrapper">
+        <section class="breadcrumb_area">
+            <img class="breadcrumb_shap" src="img/breadcrumb/banner_bg.png" alt="">
+            <div class="container">
+                <div class="breadcrumb_content text-center">
+                    <h1 class="f_p f_700 f_size_50 w_color l_height50 mb_20">Detaill {{ username }}</h1>
+                    <p class="f_400 w_color f_size_16 l_height26">Why I say old chap that is spiffing off his nut arse pear shaped plastered<br> Jeffrey bodge barney some dodgy.!!</p>
+                </div>
+            </div>
+        </section>
+        <section class="product_details_area bg_color sec_pad">
+            <div class="container">
+                <a href="{{ path('add_feedback',{'id':idlivreur}) }}">
+                    <i class="fa fa-arrow-left" style="font-size: 50px;">
+
+
+                    </i>
+                </a>
+
+
+                <div class="row">
+
+                    <div class="col-lg-6">
+                        <div class="product_slider">
+                            <div class="pr_image owl-carousel">
+                                <div class="item">
+                                    <img src="{{ asset('uploads/'~livreur) }}" alt="">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="pr_details">
+                            <a href="#" class="pr_title f_size_22 f_500 f_p">
+                                {{ username }}
+                            </a>
+                            <div class="ratting review">
+                                <div class="star-rating">
+                                </div>
+                                <a href="#reviews" class="woocommerce-review-link" rel="nofollow">
+                                    <span class="count">{{ total }}</span> Total avis des <utilisateurs></utilisateurs>
+                                </a>
+                            </div>
+{#                            <div class="price">#}
+{#                                <del><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>18.00</span></del>#}
+{#                                <ins><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>16.00</span></ins>#}
+{#                            </div>#}
+                            <span class="stock" >{{ disponible }}</span>
+                            <p class="f_400 f_size_15">The full monty brilliant young delinquent burke naff baking cakes the wireless argy-bargy smashing, squiffy chimney pot I he nicked it twit brolly spend a penny he legged it, cup of tea is ruddy grub.!</p>
+{#                            <div class="product-qty">#}
+{#                                <button class="ar_top" type="button"><i class="ti-angle-up"></i></button>#}
+{#                                <input type="number" name="qty" id="qty" value="1" title="Quantity:" class="manual-adjust">#}
+{#                                <button class="ar_down" type="button"><i class="ti-angle-down"></i></button>#}
+{#                            </div>#}
+{#                            <div class="cart_button">#}
+{#                                <a href="#" class="cart_btn">Add to Cart</a>#}
+{#                                <a href="#" class="wish_list" data-toggle="tooltip" data-placement="top" title="ADD WISH LIST"><i class="ti-heart"></i></a>#}
+{#                            </div>#}
+{#                            <div class="pr_footer mt_40 mb-30">#}
+                                <ul class="product_meta list-unstyled">
+                                    <li><span>Adresse:</span>{{adresse}}</li>
+                                    <li><span>Governat:</span>{{ governat }}</li>
+
+                                    <li><span>Telephone:</span>{{ telephone }}</li>
+                                </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <section class="app_testimonial_area">
+            <div class="text_shadow" data-line="Feedback"></div>
+
+            <div class="container nav_container">
+
+                <div class="shap one"></div>
+                <div class="shap two"></div>
+
+                    <div class="app_testimonial_slider owl-carousel">
+
+                        {% for all in all %}
+
+                        <div class="app_testimonial_item text-center">
+                        <div class="author-img"><img src="{{ asset('uploads/feedback_image/'~all.image) }}" alt=""></div>
+                        <div class="author_info">
+                            <h6 class="f_p f_500 f_size_18 t_color3 mb-0">{{ all.user.username }}</h6>
+                            <p>{{ all.datefeedback|date
+                                }}</p>
+                        </div>
+                        <p class="f_400">{{ all.description }}
+                    </div>
+
+                        {% endfor %}
+
+                    </div>
+
+            </div>
+        </section>
+
+
+
+
+        <section class="pr_details_area">
+            <div class="container">
+                <div class="product_info_details">
+                    <ul class="nav nav-tabs pr_tab mb_50" id="myTab" role="tablist">
+
+                        <li class="nav-item">
+                            <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Avis {{ total }}</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content service_tab_content" id="myTabContent">
+                        <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
+                            {% for f in feedback %}
+                            <ul class="comment-box list-unstyled mb_60">
+                                <li class="post-comment">
+                                    <div class="comment-content">
+                                        <a href="#" class="avatar" style="width: 5%;height: 5%;"><img src="{{ asset('uploads/feedback_image/'~f.image) }}" alt="review-img"></a>
+                                        <div class="post-body">
+                                            <div class="comment-header">
+                                                <a href="#">Feedback publier par client : {{ f.user.username}}</a>date : {{ f.datefeedback |date }}
+                                            </div>
+
+                                            <div class="ratting">
+                                                {% if (f.note)!=0 %}
+                                                    Nombre des etoiles donné :
+                                                    {% for i in 1..f.note %}
+
+                                                        <i class="fa fa-star" style="color: yellow;"></i>
+                                                    {% endfor %}
+                                                {% endif %}
+                                                {% if (5 - f.note != 0 ) %}
+                                                    {% for j in 1..(5 - f.note) %}
+                                                        <i class="fa fa-star empty"></i>
+
+                                                    {% endfor %}
+                                                {% endif %}
+                                            </div>
+                                            <p class="f_p f_size_15 f_400">Dis congue ultricies iste repellat tincidunt viverra dui iure quas tristique augue aute nam?</p>
+                                            <div class="hr mt_30 mb-0"></div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="shop_grid_area sec_pad">
+            <div class="container">
+                <div class="sec_title text-center mb_70">
+                    <h2 class="f_p f_size_30 l_height50 f_600 t_color3">Related products</h2>
+                    <p class="f_400 f_size_16 mb-0">Bender cobblers chap grub sloshed up the duff I fantastic <br> owt to do with me at public school.!</p>
+                </div>
+                <div class="row mb_30">
+                    <div class="col-lg-3 col-sm-4">
+                        <div class="single_product_item mt-0 mb-30">
+                            <div class="product_img">
+                                <img class="img-fluid" src="img/shop/shop-grid/grid_1.jpg" alt="">
+                                <div class="hover_content">
+                                    <a href="#"><i class="ti-heart"></i></a>
+                                    <a href="#" title="Add to cart"><i class="ti-bag"></i></a>
+                                    <a href="#"><i class="ti-eye"></i></a>
+                                </div>
+                            </div>
+                            <div class="single_pr_details">
+                                <a href="#">
+                                    <h3 class="f_p f_500 f_size_16">Linear Stem Cushion</h3>
+                                </a>
+                                <div class="price">
+{#                                    <del><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span>18.00</span></del>#}
+{#                                    <ins><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>16.00</span></ins>#}
+                                </div>
+                                <div class="ratting">
+                                    <a href="#"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-4">
+                        <div class="single_product_item mt-0 mb-30">
+                            <div class="product_img">
+                                <img class="img-fluid" src="img/shop/shop-grid/grid_2.jpg" alt="">
+                                <div class="hover_content">
+                                    <a href="#"><i class="ti-heart"></i></a>
+                                    <a href="#" title="Add to cart"><i class="ti-bag"></i></a>
+                                    <a href="#"><i class="ti-eye"></i></a>
+                                </div>
+                            </div>
+                            <div class="single_pr_details">
+                                <a href="#">
+                                    <h3 class="f_p f_500 f_size_16">Woodrow Waste Bin</h3>
+                                </a>
+
+                                <div class="ratting">
+                                    <a href="#"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-4">
+                        <div class="single_product_item mt-0 mb-30">
+                            <div class="product_img">
+                                <img class="img-fluid" src="img/shop/shop-grid/grid_3.jpg" alt="">
+                                <div class="hover_content">
+                                    <a href="#"><i class="ti-heart"></i></a>
+                                    <a href="#" title="Add to cart"><i class="ti-bag"></i></a>
+                                    <a href="#"><i class="ti-eye"></i></a>
+                                </div>
+                            </div>
+                            <div class="single_pr_details">
+                                <a href="#">
+                                    <h3 class="f_p f_500 f_size_16">Spot Flower Plant Pot</h3>
+                                </a>
+
+                                <div class="ratting">
+                                    <a href="#"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-4">
+                        <div class="single_product_item mt-0 mb-30">
+                            <div class="product_img">
+                                <img class="img-fluid" src="img/shop/shop-grid/grid_4.jpg" alt="">
+                                <div class="hover_content">
+                                    <a href="#"><i class="ti-heart"></i></a>
+                                    <a href="#" title="Add to cart"><i class="ti-bag"></i></a>
+                                    <a href="#"><i class="ti-eye"></i></a>
+                                </div>
+                            </div>
+                            <div class="single_pr_details">
+                                <a href="#">
+                                    <h3 class="f_p f_500 f_size_16">Contrast Backpack</h3>
+                                </a>
+{#                                <div class="price">#}
+{#                                    <del><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>18.00</span></del>#}
+{#                                    <ins><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>16.00</span></ins>#}
+{#                                </div>#}
+                                <div class="ratting">
+                                    <a href="#"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/js/wow.min.js') }}"></script>
+
+    <script src="{{ asset('owl-carousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('owl-carousel/owl.carousel.min.js') }}"></script>
+
+    <link href="{{ asset('style.css') }}" rel="stylesheet">
+    <link href="{{ asset('owl-carousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+
+    <script src="{{ asset('sc.js') }}"></script>
+
+{% endblock %}

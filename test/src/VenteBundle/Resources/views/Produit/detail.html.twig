@@ -1,0 +1,84 @@
+{%  extends 'frontend/base.html.twig' %}
+
+{% block content %}
+    <div class="breadcrumb parallax">
+        <h1>Product</h1>
+        <ul>
+
+        </ul>
+    </div>
+    {% for Produit in Produit %}
+    <div class="container">
+        <div class="row">
+            <div class="content col-sm-12">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="thumbnails">
+                            <div><a class="thumbnail fancybox" href="" title="Casual Shirt With Ruffle Hem"><img src="{{ asset('uploadsProduit/produit_image/' ~ Produit.photo) }}"title="Casual Shirt With Ruffle Hem" alt="iPod Classic" /></a></div>
+                            <div id="product-thumbnail" class="owl-carousel">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-7 prodetail">
+                        <h1 class="productpage-title">{{Produit.libelle}}</h1>
+                        <ul class="list-unstyled productinfo-details-top">
+                            <li>
+                                <h2 class="productpage-price">dt{{Produit.prix}}</h2>
+                            </li>
+
+                        </ul>
+                        <hr>
+                        <ul class="list-unstyled product_info">
+                            <li>
+                                <label>Etat:</label>
+                                <span> <a href="#">{{Produit.etat}}</a></span></li>
+                            <li>
+                                <label>Poids:</label>
+                                <span> {{Produit.poids}}</span></li>
+                            <li>
+                                <label>Quantité:</label>
+                                <span> {{Produit.quantite}}</span></li>
+                        </ul>
+                        <hr>
+                        <p class="product-desc"> {{Produit.desription}}</p>
+                        <div id="product">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="Sort-by col-md-6">
+
+                                    </div>
+                                    <div class="Color col-md-6">
+
+                                    </div>
+                                </div>
+                                <div class="qty">
+
+                                    <ul class="button-group list-btn">
+
+
+
+
+                                           <a href="{{ path('supprimer',{'id':Produit.id}) }}">supprimer </a>
+                                        <a href="{{ path('mod',{'id':Produit.id}) }}">Modifier</a>
+                                                                          </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="productinfo-tab">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab-description" data-toggle="tab">Description</a></li>
+
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab-description">
+                            <div class="cpt_product_description ">
+                                <div>
+                                    <p>{{Produit.desription}}</p>
+
+    {% endfor%}
+                                </div>
+                            </div>
+{% endblock %}

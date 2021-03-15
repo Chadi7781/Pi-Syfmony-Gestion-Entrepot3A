@@ -1,0 +1,555 @@
+
+
+
+
+
+
+
+
+{%  extends 'frontend/base.html.twig' %}
+
+
+
+
+
+
+
+
+
+
+
+
+{% block content %}
+
+    <style>
+        .head {
+            font-size: 25px;
+            font-weight: 200;
+        }
+
+        .blue-btn:hover,
+        .blue-btn:active,
+        .blue-btn:focus,
+        .blue-btn {
+            background: transparent;
+            border: solid 1px #27a9e0;
+            border-radius: 3px;
+            color: #27a9e0;
+            font-size: 16px;
+            margin-bottom: 20px;
+            outline: none !important;
+            padding: 10px 20px;
+        }
+
+        .fileUpload {
+            position: relative;
+            overflow: hidden;
+            height: 43px;
+            margin-top: 0;
+        }
+
+        .fileUpload input.uploadlogo {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            width: 100%;
+            height: 42px;
+        }
+        body {
+            background-color: #f4f4f4;
+            padding: 0 5px;
+        }
+
+        /*Chrome fix*/
+
+        input::-webkit-file-upload-button {
+            cursor: pointer !important;
+        }
+    </style>
+    <style>
+
+        /* -- import Bootstrap v3 --------------------------- */
+        /* -- import Bootstrap docs ------------------------- */
+        /* -- import Roboto Font ---------------------------- */
+        @import "https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic&subset=latin,cyrillic";
+        /* -- Body style ------------------------------------ */
+
+
+        /* -- Input styles ---------------------------------- */
+        .form-group {
+            position: relative;
+            margin-top: 35px;
+            margin-bottom: 20px;
+        }
+        .input-group {
+            position: relative;
+        }
+        .form-control {
+            display: block;
+            height: 36px;
+            width: 100%;
+            border: none;
+            border-radius: 0 !important;
+
+            font-size: 16px;
+            font-weight: 300;
+            padding: 0;
+            background-color: transparent;
+            box-shadow: none;
+            border-bottom: 1px solid #757575;
+        }
+        .input-group .form-control {
+            position: relative;
+            z-index: inherit;
+            float: inherit;
+            width: 100%;
+            margin-bottom: 0;
+        }
+        .form-control:focus {
+            border-color: #757575;
+            outline: none;
+            box-shadow: none;
+        }
+
+        /* -- label styles ---------------------------------- */
+        label {
+            position: absolute;
+            top: -18px;
+            color: #999;
+            font-size: 12px;
+            font-weight: 300;
+
+            transition: 0.2s ease all;
+            -moz-transition: 0.2s ease all;
+            -webkit-transition: 0.2s ease all;
+        }
+
+        .form-horizontal .control-label {
+            position: relative;
+            top: 0;
+            margin-bottom: 0;
+        }
+
+        @media (min-width: 768px) {
+            .form-horizontal .control-label {
+                font-size: 16px;
+            }
+        }
+
+
+
+
+
+
+
+        .float-label {
+            left: 0;
+            top: 7px;
+            font-size: 16px;
+            pointer-events: none;
+            color: blue;
+
+        }
+
+        /* active state */
+        .form-control:focus ~ .float-label, .form-control:valid ~ .float-label {
+            top: -18px;
+            font-size: 12px;
+            color: blue;
+
+
+
+        }
+
+
+        /*.form-control:focus {*/
+
+        /*label {*/
+        /*    color: #03a9f4;*/
+        /*}*/
+
+        /*.form-bar:before, ~ .form-bar:after {*/
+        /*    background: #03a9f4;*/
+        /*}*/
+
+        /*}*/
+
+
+
+
+        .form-control:valid ~ .control-label {
+
+        }
+
+        /* help-block */
+        .form-group .help-block {
+            position: absolute;
+        }
+
+        .help-block {
+            color: #bdbdbd; // caption
+        font-size: 12px;
+            font-weight: 300;
+        }
+
+        /* input addon ---*/
+        .input-group-addon {
+            border: none;
+            background: transparent;
+        }
+
+        /* ------  inline ----*/
+        .input-group-addon, .form-inline .input-group {
+            display: table-cell;
+        }
+
+        .input-group-addon, .input-group-btn {
+            width: inherit;
+        }
+
+        .input-group {
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .form-inline .form-group {
+                margin-top: 16px;
+            }
+
+            .input-group-btn, .input-group .form-control, .input-group-addon, .form-inline .input-group {
+                display: inline-block;
+            }
+
+            .input-group {
+                width: auto;
+            }
+        }
+
+        /* -- bar styles -------------------------------------- */
+        .form-bar {
+            position: relative;
+            display: block;
+            width: 100%;
+        }
+        .form-bar:before, .form-bar:after 	{
+            content: '';
+            height: 1px;
+            width: 0;
+            bottom: 0;
+            position: absolute;
+            transition: 0.3s ease all;
+            -moz-transition: 0.3s ease all;
+            -webkit-transition: 0.3s ease all;
+        }
+        .form-bar:before {
+            left: 50%;
+        }
+        .form-bar:after {
+            right: 50%;
+        }
+
+        /* active state */
+        .form-control:focus ~ .form-bar:before, .form-control:focus ~ .form-bar:after {
+            width: 50%;
+        }
+
+        /* -- highlighter styles ------------------------------ */
+        .form-highlight {
+            position: absolute;
+            height: 60%;
+            width: 60px;
+            top: 25%;
+            left: 0;
+            pointer-events: none;
+            opacity: 0.4;
+        }
+
+        /* active state */
+        .form-control:focus ~ .form-highlight {
+            -webkit-animation: inputHighlighter 0.3s ease;
+            -moz-animation: inputHighlighter 0.3s ease;
+            animation: inputHighlighter 0.3s ease;
+        }
+
+        /* -- highlighter animation --------------------------- */
+        @-webkit-keyframes inputHighlighter {
+            from { background:#5264AE; }
+            to { width:0; background:transparent; }
+        }
+        @-moz-keyframes inputHighlighter {
+            from { background:#5264AE; }
+            to { width:0; background:transparent; }
+        }
+        @keyframes inputHighlighter {
+            from { background:#5264AE; }
+            to { width:0; background:transparent; }
+        }
+
+
+        /*-- Checkbox --------------------------- */
+        /*
+         * Core styles required for the checkboxes.
+         * @author Jason Mayes 2014, www.jasonmayes.com
+        */
+        .form-group.checkbox {
+            margin-top: 20px;
+        }
+
+        .checkbox input[type='checkbox'] {
+            height: 0;
+            width: 0;
+            opacity: 0;
+        }
+
+        .checkbox label {
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 1;
+            display: inline-block;
+            overflow: hidden;
+            position: relative;
+            top: 10px;
+            padding-left: 0;
+        }
+
+
+
+
+        @media (min-width: 768px) {
+            .form-inline .radio label, .form-inline .checkbox label {
+                padding-left: 5px;
+            }
+        }
+
+
+
+
+
+        .form-control-static {
+            font-size: 16px;
+        }
+
+        .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+            background-color: transparent;
+            border-bottom-style: dashed;
+        }
+
+
+
+
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .buttons {
+            margin: 10%;
+            text-align: center;
+        }
+
+        .btn-hover {
+            width: 200px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            cursor: pointer;
+            margin: 20px;
+            height: 55px;
+            text-align:center;
+            border: none;
+            background-size: 300% 100%;
+
+            border-radius: 50px;
+            moz-transition: all .4s ease-in-out;
+            -o-transition: all .4s ease-in-out;
+            -webkit-transition: all .4s ease-in-out;
+            transition: all .4s ease-in-out;
+        }
+
+        .btn-hover:hover {
+            background-position: 100% 0;
+            moz-transition: all .4s ease-in-out;
+            -o-transition: all .4s ease-in-out;
+            -webkit-transition: all .4s ease-in-out;
+            transition: all .4s ease-in-out;
+        }
+
+        .btn-hover:focus {
+            outline: none;
+        }
+
+        /*.btn-hover.color-1 {*/
+        /*    background-image: linear-gradient(to right, #25aae1, #40e495, #30dd8a, #2bb673);*/
+        /*    box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);*/
+        /*}*/
+        /*.btn-hover.color-2 {*/
+        /*    background-image: linear-gradient(to right, #f5ce62, #e43603, #fa7199, #e85a19);*/
+        /*    box-shadow: 0 4px 15px 0 rgba(229, 66, 10, 0.75);*/
+        /*}*/
+
+        .btn-hover.color-7 {
+            background-image: linear-gradient(to right, #6253e1, #852D91, #A3A1FF, #F24645);
+            box-shadow: 0 4px 15px 0 rgba(126, 52, 161, 0.75);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        #focusedInput {
+            border-color: #ccc;
+            border-color: rgba(82,168,236,.8);
+            outline: 0;
+            box-shadow: none;
+        }
+    </style>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Playfair+Display|Source+Sans+Pro:300,400,600');
+
+
+
+
+    .zero-clipboard{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: "Source Sans Pro";
+        width: 700px;
+        background: white;
+        display: flex;
+        justify-content: center;
+        /*background: linear-gradient(35deg, #1EAE98, #D8B5FF);*/
+
+        box-shadow: 0 10px 20px 0 ;
+
+    }
+</style>
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('BundleExterne/css/rating.css') }}" />
+
+
+
+    <div class="breadcrumb parallax" style=" background: linear-gradient(35deg, #1EAE98, #D8B5FF);">
+        <h1 style="color: #0b0b0b;
+        text-align:center;font-family:'Baskerville Old Face';font-weight:900;font-size:4em;color:#fff;text-shadow:0em 0.05em 0 rgba(0,0,0,0.25)}
+" class="control-label" >Modifier Feedback
+
+        </h1>
+        <ul>
+            {#            <li><a href="index.html">Home</a></li>#}
+            {#            <li><a href="contact.html">Contact Us</a></li>#}
+        </ul>
+    </div>
+<div class="container">
+
+        <center>
+        <div class="zero-clipboard">
+
+
+            {{ form_start(form) }}
+            <br><br>
+            <div class="form-group" style="width: 670px;">
+                {{ form_widget(form.description,{'attr':{'class':' form-control','name':'description','id':'exampleInputEmail2'
+                }})}}
+
+                <span class="form-highlight"></span>
+                <span class="form-bar"></span>
+
+                <label class="float-label" for="exampleInputEmail2">Description</label>
+            </div>
+            <div class="form-group">
+                {{ form_widget(form.note) }}
+
+                <span class="form-highlight"></span>
+                <span class="form-bar"></span>
+                <label class="float-label" for="exampleInputEmail2">Note</label>
+            </div>
+
+            <center>
+                <div class="fileUpload blue-btn btn width100">
+                    <span>Inserer image</span>
+                    {{ form_widget(form.image,{'attr':{'type':'file','class':'uploadlogo'}}) }}</div></center>
+            <div class="form-group">
+                <center><div> {{ form_widget(form.Ajouter,{'attr':{'type':'submit','class':'btn-hover color-7'}}) }}</div></center>
+
+            </div>
+        </center>
+
+</div>
+
+
+
+
+            {{ form_end(form) }}
+    </div>
+
+
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Subscribe our Newsletter</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Votre feedback n'a pas encore traiter vous pouver le modifer :)</p>
+                    <form>
+
+                        <button type="submit" class="btn btn-primary">J'ai compris !!</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="{{ asset('BundleExterne/js/rating.js') }}"></script>
+<script>
+    // You can modify the upload files to pdf's, docs etc
+    //Currently it will upload only images
+    $(document).ready(function($) {
+
+        // Upload btn
+        $(".uploadlogo").change(function() {
+            readURL(this);
+        });
+
+        function readURL(input) {
+            var url = input.value;
+            var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+            if (input.files && input.files[0] && (ext == "png" || ext == "jpeg" || ext == "jpg" || ext == "gif" || ext == "svg")) {
+                var path = $('.uploadlogo').val();
+                var filename = path.replace(/^.*\\/, "");
+                $('.fileUpload span').html('Uploaded logo : ' + filename);
+                // console.log(filename);
+            } else {
+                $(".uploadlogo").val("");
+                $('.fileUpload span').html('Only Images Are Allowed!');
+            }
+        }
+    });
+
+    $(document).ready(function(){
+        $("#myModal").modal('show');
+    });
+</script>
+
+{% endblock %}

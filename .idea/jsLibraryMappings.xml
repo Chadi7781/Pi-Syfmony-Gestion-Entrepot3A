@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptLibraryMappings">
+    <file url="file://$PROJECT_DIR$" libraries="{amp-form-0.1, amp-mustache-0.2, angular, autoComplete, bootstrap-theme, exporting, font-awesome, highcharts, jquery-1.9.1, jquery-ui, v0}" />
+    <file url="PROJECT" libraries="{buttons.dataTables, buttons.print, ckeditor, dataTables.buttons, dataTables.select, jquery-1.11.1, jquery-1.11.3, jquery-3.3.1, jquery-3.3.1.slim, jquery-3.4.1.slim, jquery.dataTables, material, material.blue-orange, popper, star-rating, theme}" />
+  </component>
+</project>

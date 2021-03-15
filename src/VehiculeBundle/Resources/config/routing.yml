@@ -1,0 +1,42 @@
+vehicule_homepage:
+    path:     /vehicule
+    defaults: { _controller: VehiculeBundle:Default:index }
+vehicules_homepage:
+    path:     /indexx
+    defaults: { _controller: VehiculeBundle:Vehicule:index}
+vehicules_Client_affiche:
+    path:     /read
+    defaults: { _controller: VehiculeBundle:Vehicule:read}
+vehicules_ajout:
+    path:     /ajoutVehicule
+    defaults: { _controller: VehiculeBundle:Vehicule:ajoutVehicule}
+vehicules_Admin_affiche:
+    path:     /affiche
+    defaults: { _controller: VehiculeBundle:Vehicule:affiche}
+vehicules_Admin_affiche1vehicule:
+    path:     /afficheVehichule/{matricule}
+    defaults: { _controller: VehiculeBundle:Vehicule:afficheVehiculee}
+vehicules_Admin_update:
+    path:     /update/{matricule}
+    defaults: { _controller: VehiculeBundle:Vehicule:update }
+vehicules_Admin_delete:
+    path:     /delete/{matricule}
+    defaults: { _controller: VehiculeBundle:Vehicule:delete }
+vehicules_Admin_maintenir:
+    path:     /maintenir/{matricule}
+    defaults: { _controller: VehiculeBundle:Maintenance:maintenir}
+vehicules_Admin_vehiculesmaintenues:
+    path:     /vehiculesmaintenues
+    defaults: { _controller: VehiculeBundle:Maintenance:VehiculeMaintenues}
+vehicules_Admin_contarts:
+    path:     /contrats
+    defaults: { _controller: VehiculeBundle:Contrat:afficheContrat}
+vehicules_Client_location:
+    path:     /afficheC/{matricule}
+    defaults: { _controller: VehiculeBundle:Vehicule:afficheC}
+Vehicules_Client_mesVehicule:
+    path:   /MesVehicules
+    defaults: {_controller: VehiculeBundle:Vehicule:mesVehicules}
+Vehicules_Client_maVehicule:
+    path:   /MaVehicule/{matricule}
+    defaults: {_controller: VehiculeBundle:Vehicule:maVehicule}

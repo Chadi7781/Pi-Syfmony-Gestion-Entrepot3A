@@ -1,0 +1,70 @@
+achat_homepage:
+    path:     /vitrine
+    defaults: { _controller: AchatBundle:Default:index }
+
+vitrine_read_produit:
+    path:     /catalogue
+    defaults: { _controller: AchatBundle:Vitrine:readProduit }
+
+cart_add:
+    path:    /panier/add/{id}
+    defaults: {_controller: AchatBundle:Cart:createCart}
+
+cart_remove:
+    path:    /panier/remove/{id}
+    defaults: {_controller: AchatBundle:Cart:removeCart}
+
+index:
+    path:     /panier
+    defaults: { _controller: AchatBundle:Cart:index }
+
+detail_produit:
+    path:     /produit/detail/{id}
+    defaults: { _controller: AchatBundle:Vitrine:showdetailed }
+
+
+
+update_quantite:
+    path:     /up
+    defaults: { _controller: AchatBundle:Cart:updateQuantite }
+
+historique:
+    path:     /readCommande
+    defaults: { _controller: AchatBundle:Cart:readLigneCommande }
+ajout_commande:
+    path:     /ajout
+    defaults: { _controller: AchatBundle:Cart:call }
+ligne_cmd_read:
+    path:     /listLigneCommande
+    defaults: { _controller: AchatBundle:ProduitCommande:readLigneCommande }
+
+remove:
+    path:     /panier/remove/{id}
+    defaults: { _controller: VenteBundle:Cart:remove }
+
+envoi_sms:
+    path:     /envoisms
+    defaults: { _controller: AchatBundle:Cart:call }
+
+favoris_produit:
+    path:     /non_favoris
+    defaults: { _controller: AchatBundle:Vitrine:favoris }
+
+non_favoris:
+    path:     /nonfavoris
+    defaults: { _controller: AchatBundle:Vitrine:Nonfavoris }
+mes_favoris:
+    path:     /mesfavoris
+    defaults: { _controller: AchatBundle:Vitrine:mesfavoris }
+
+supprimer_proudit_list_favoris:
+    path:     /supprimerProduitFavoris/{idFavorite}
+    defaults: { _controller: AchatBundle:Vitrine:retirerFromListeFavoris }
+ajouter_note_produit:
+    path:     /ajouterProduit/{note}/{idProduit}
+    defaults: { _controller: AchatBundle:Vitrine:ajouterNoteProduit }
+
+city_autocomplete:
+    path:     /search
+    defaults: { _controller: AchatBundle:Vitrine:search }
+

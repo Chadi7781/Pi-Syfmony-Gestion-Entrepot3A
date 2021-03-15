@@ -1,0 +1,69 @@
+{%  extends 'frontend/base.html.twig' %}
+
+{% block content %}
+    <style>
+        .background-slider {
+            background-image: url({{ asset('assets/5ec5e-slider-1.jpg') }});
+            background-size: cover;
+            color: #eee;
+        }
+
+    </style>
+    <div class="">
+        <div id="page-title" class="background-slider">
+            <div class="text-center">
+                <div class="container z-index-2 position-relative">
+                    <div class="padding-tb-100px">
+                        <div class="text-center margin-bottom-30px">
+                            <img src="{{ asset('assets/blog-1.jpg') }}" alt="" width=1700px height=500px>
+                            <h4 >Super Fast and Easy</h4>
+                        </div>
+
+
+                        <script>
+                            var app = document.getElementById('writer');
+                            var typewriter = new Typewriter(app, {
+                                loop: true
+                            });
+                            typewriter.typeString('Bootstrap 4 Toolkit')
+                                .pauseFor(2500)
+                                .deleteAll()
+                                .typeString('Revolution Slider')
+                                .pauseFor(2500)
+                                .deleteAll()
+                                .typeString('Responsive Design')
+                                .start();
+
+                        </script>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <br>
+    {% if v == NULL %}
+        <h3> Pas de clubs</h3>
+    {% else %}
+        <table border="1" align="center">
+            <tr>
+                <td>id</td>
+                <td>nom</td>
+                <td>description</td>
+                <td>domaine</td>
+                <td>Supprimer</td>
+                <td>Modifier</td>
+            </tr>
+            {% for i in v %}
+                <tr>
+                    <td> {{ i.matricule }}</td>
+                    <td> {{ i.marque }}</td>
+                    <td> {{ i.type }}</td>
+
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+{% endblock %}

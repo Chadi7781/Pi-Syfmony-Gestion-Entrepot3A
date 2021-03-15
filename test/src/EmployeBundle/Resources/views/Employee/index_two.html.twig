@@ -1,0 +1,77 @@
+{%  extends 'backend/base.html.twig' %}
+{#{% block title %}#}
+{#<a href="index.html" class="waves-effect"><i class="mdi mdi-view-dashboard"></i> <span> Liste des employés </span> </a>#}
+
+{#{% endblock %}#}
+
+    {% block content %}
+
+    <div class="content-page">
+    <!-- Start content -->
+    <div class="content">
+        <div class="container-fluid">
+
+
+            <div class="row">
+                <div class="col-12">
+                        <a class="btn btn-info" href="{{ path('employee_new') }}">Créér un employé</a>
+
+
+
+                        <table id="datatable-buttons" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <thead>
+                            <tr>
+                                <th>CIN</th>
+                                <th>Nom</th>
+                                <th>Prénom</th>
+                                <th>Date de naissance</th>
+                                <th>Adresse</th>
+                                <th>Contact</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+
+
+                            <tbody>
+                            {% for emp in employees %}
+                            <tr>
+                                <td>{{ emp.CIN }}</td>
+                                <td>{{ emp.USERNAME }}</td>
+                                <td>{{ emp.PRENOM }}</td>
+                                <td>{{ emp.DATENAISSANCE|date('Y-m-d') }}</td>
+                                <td>{{ emp.ADRESSE }}</td>
+                                <td>{{ emp.Telephone }}</td>
+                                <td>
+                                    {#<button class="btn btn-success">Modifier</button>#}
+                                    <a class="btn btn-success" href="{{ path('employee_edit', {'id': emp.idEmp}) }}">Editer</a>
+                                    <a class="btn btn-danger" href="{{ path('employee_delete', {'id': emp.idEmp}) }}">Supprimer</a>
+                                </td>
+
+                            </tr>
+                            {% endfor %}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+
+
+
+
+
+
+
+
+
+        </div> <!-- container -->
+
+    </div> <!-- content -->
+
+    <footer class="footer text-right">
+        2016 - 2018 © Adminto. Coderthemes.com
+    </footer>
+
+</div>
+{% endblock %}

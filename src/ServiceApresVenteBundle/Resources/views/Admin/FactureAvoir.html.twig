@@ -1,0 +1,59 @@
+
+
+
+
+{%  extends 'backend/base.html.twig' %}
+{% block subtitle %}
+    <h4 class="page-title"> Mise a jours Facture precedent </h4>
+{% endblock %}
+
+{% block content %}
+    <div class="content-page">
+        <!-- Start content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card-box">
+                            <h4 class="m-t-0 header-title">Facture Avoir</h4>
+                            <p class="text-muted m-b-30 font-13">
+                                You may also swap <code class="highlighter-rouge">.row</code> for <code class="highlighter-rouge">.form-row</code>, a variation of our standard grid row that overrides the default column gutters for tighter and more compact layouts.
+                            </p>
+
+                            <form>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail4" class="col-form-label">Commande numero</label>
+                                        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+
+
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputPassword4" class="col-form-label">Produits et prestation</label>
+                                        <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputAddress" class="col-form-label">Quantité</label>
+                                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputAddress2" class="col-form-label">Total HT</label>
+                                    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Sign in</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- container -->
+
+        </div> <!-- content -->
+
+        <footer class="footer text-right">
+            2016 - 2018 © Adminto. Coderthemes.com
+        </footer>
+
+    </div>
+{% endblock %}

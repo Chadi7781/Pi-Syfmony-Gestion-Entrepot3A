@@ -1,0 +1,164 @@
+{%  extends 'frontend/base.html.twig' %}
+
+{% block content %}
+
+<script>
+    function showHide() {
+        if (document.getElementById('point').checked) {
+            document.getElementById('hidden').style.display = 'block';
+
+
+
+        } else {
+            document.getElementById('hidden').style.display = 'none';
+        }
+    }
+</script>
+    <style>
+       input[type=checkbox]{
+       -moz-border-radius: 4px;
+        height: 15px;
+        width: 15px;
+           background: #ffffdd;
+           border: 1px solid #CCCCCC;
+           margin: 0px;
+           position: relative;
+       }
+
+
+    </style>
+    <div class="zn-iosSl-item" ><img width="1600" height="200" src="{{ asset('../web/image/livraison.png') }}" class="zn-iosSl-img cover-fit-img zn-iosSl-img--center" alt="" sizes="(max-width: 1600px) 100vw, 1600px" />
+        <h2 style="margin-bottom: 100px"></h2>
+
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3 hidden-xs column-left" id="column-left">
+                <div class="Categories left-sidebar-widget">
+                    <div class="columnblock-title" style="color: #191970 ; font-size: 30px;">Livraison</div>
+                    <div class="category_block">
+                        <ul class="box-category">
+                            <li style="color: #0000 ; font-family:Arial Black, Gadget, sans-serif ;"><a href={{ path('livraison_afficher')}}>Mes livraisons</a></li>
+                            <li style="color: #0000 ; font-family:Arial Black, Gadget, sans-serif ;"><a href={{ path('livraison_add')}}>Nouvelle livraison</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9" id="content">
+                <p style="color: #8B0000 ; font-family:Arial Black, Gadget, sans-serif ;">tout annulation de livraison doit etre avant 24h</p>
+                {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+                <fieldset id="account">
+                    <legend style="color: #191970 ;">Demande De Livraison</legend>
+                </fieldset>
+                    <div class="form-group required" style="color:#000000">
+                        {{ form_label(form.adresseDepart, ' Entrer votre Adresse Expediteur :',{'attr': {'class': 'col-sm-2 control-label','for':'input-firstname'}}) }}
+                        <div class="col-sm-10">
+                        {{ form_widget(form.adresseDepart, {'attr': {class:'form-control', id:'input-firstname' ,placeholder:'Adresse Expediteur'}}) }}
+                            <div class="form-error"style="color:Red;">
+                                {{ form_errors(form.adresseDepart,{'attr': {class:'form-control'}}) }}
+                            </div>
+                        </div>
+
+                    </div>
+                <div class="form-group required" style="color:#000000">
+                    {{ form_label(form.GovernatD, ' Selectionner le Governat :',{'attr': {'class': 'col-sm-2 control-label','for':'input-firstname'}}) }}
+                    <div class="col-sm-10">
+                        {{ form_widget(form.GovernatD, {'attr': {class:'form-control', id:'input-firstname' ,placeholder:'Adresse Expediteur'}}) }}
+                    </div>
+
+                </div>
+                    <div class="form-group required" style="color:#000000">
+                        {{ form_label(form.adresseArrive, 'Entrer votre Adresse Destinataire :',{'attr': {'class': 'col-sm-2 control-label','for':'input-firstname'}}) }}
+                        <div class="col-sm-10">
+                            {{ form_widget(form.adresseArrive, {'attr': {class:'form-control', id:'input-firstname' ,placeholder:'Adresse Destinataire'}}) }}
+                            <div class="form-error"style="color:Red;">
+                                {{ form_errors(form.adresseArrive, {'attr': {class:'form-control'}}) }}
+                           </div>
+                        </div>
+                    </div>
+                <div class="form-group required" style="color:#000000">
+                    {{ form_label(form.GovernatA, ' Selectionner le Governat :',{'attr': {'class': 'col-sm-2 control-label','for':'input-firstname'}}) }}
+                    <div class="col-sm-10">
+                        {{ form_widget(form.GovernatA, {'attr': {class:'form-control', id:'input-firstname' ,placeholder:'Adresse Expediteur'}}) }}
+                    </div>
+
+                </div>
+                    <div>
+
+                        <label style="color:#000000"> Livraison a Domicile ?</label>
+                        <div>
+                            <input type="checkbox" name="oui"/>
+                            <label style="color:#191970;font-family:Arial Black, Gadget, sans-serif ;">Oui</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="point" name="point" onchange="showHide()"/>
+                            <label style="color:#191970;font-family:Arial Black, Gadget, sans-serif ;">Point Collecte </label>
+                        </div>
+
+                    </div>
+                    <div id ="hidden" class="form-group required" style="display:none;color:#000000">
+                        {{ form_label(form.idMagasin, 'Selectionner votre magasin :',{'attr': {'class': 'col-sm-2 control-label','for':'input-firstname'}}) }}
+                        <div class="col-sm-10">
+                        {{ form_widget(form.idMagasin, {'attr': {class:'form-control',placeholder:'Les Magasin Les Plus Proche de chez vous'}}) }}
+                        </div>
+                    </div>
+
+                          <div class="form-group required" style="color:#000000">
+
+                        {{ form_label(form.photoProduit, 'Ajouter la Photo Du Produit',{'attr': {'class': 'col-sm-2 control-label','for':'input-firstname'}}) }}
+                        <div class="col-sm-10">
+                            {{ form_widget(form.photoProduit, {'attr': {class:'form-control', id:'input-firstname' }}) }}
+
+                    <div class="form-error"style="color:Red;">
+                        {{ form_errors(form.photoProduit, {'attr': {class:'form-control'}}) }}
+                    </div>
+                        </div>
+                          </div>
+                    <div class="form-group required" style="color:#000000">
+                            {{ form_label(form.fragile, 'Fragilitè du Produit livrè :',{'attr': {'class': 'col-sm-2 control-label','for':'input-firstname'}}) }}
+                        <div class="col-sm-10">
+                            {{ form_widget(form.fragile, {'attr': {class:'form-control', id:'input-firstname' ,placeholder:'0'}}) }}
+                        <div class="form-error"style="color:Red;">
+                            {{ form_errors(form.fragile, {'attr': {class:'form-control'}}) }}
+                        </div>
+                    </div>
+                    </div>
+                    <div class="form-group required" style="color:#000000">
+                        {{ form_label(form.poids, 'Poids Du Produit livrè :',{'attr': {'class': 'col-sm-2 control-label','for':'input-firstname'}}) }}
+                    <div class="col-sm-10">
+                        {{ form_widget(form.poids, {'attr': {class:'form-control', id:'input-firstname' ,placeholder:'0'}}) }}
+                    <div class="form-error"style="color:Red;">
+                        {{ form_errors(form.poids, {'attr': {class:'form-control'}}) }}
+                    </div>
+                    </div>
+                    </div>
+
+                    <div class="form-group required" style="color:#000000;margin-bottom: 10px">
+                        <div class="col-sm-10">
+                            <p style="color: #8B0000 ; font-family:Arial Black, Gadget, sans-serif ;"> Remarque :</p>
+                        </div>
+                        <div class="col-sm-10">
+                            <p style="color: navy ; font-family:Arial Black, Gadget, sans-serif ;">la date de Rèception du colis sera + 7j ou cas ou la livraison est a domicile et +4j ou cas ou la livraison est au point de collecte</p>
+                        </div>
+                    </div>
+
+
+
+                    <div class="buttons">
+                        <div class="pull-right">I have read and agree to the <a class="agree" href="#"><b>Privacy Policy</b></a>
+                            <input type="checkbox" value="1" name="agree">
+                            &nbsp;
+                            <input type="submit" class="btn btn-primary" value="Valider">
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,94 @@
+{%  extends 'frontend/base.html.twig' %}
+
+{% block content %}
+
+<div class="zn-iosSl-item" ><img width="1600" height="200" src="{{ asset('../web/image/livraison.png') }}" class="zn-iosSl-img cover-fit-img zn-iosSl-img--center" alt="" sizes="(max-width: 1600px) 100vw, 1600px" />
+    <h2 style="margin-bottom: 100px"></h2>
+
+</div>
+<div class="content-page">
+    <!-- Start content -->
+    <div class="content">
+        <div class="container-fluid">
+            {%  for message in app.flashes('info') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3 hidden-xs column-left" id="column-left">
+                <div class="Categories left-sidebar-widget">
+                    <div class="columnblock-title" style="color: #191970 ; font-size: 30px;">Livraison</div>
+                    <div class="category_block">
+                        <ul class="box-category">
+                            <li style="color: #0000 ; font-family:Arial Black, Gadget, sans-serif ;"><a href={{ path('livraison_afficher')}}>Mes livraisons</a></li>
+                            <li style="color: #0000 ; font-family:Arial Black, Gadget, sans-serif ;"><a href={{ path('livraison_add')}}>Nouvelle livraison</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card-box table-responsive">
+
+                        <div class="col-sm-12 col-md-6">
+                            <div id="selection-datatable_filter" class="dataTables_filter">
+                                <label style="color: #8B0000 ; font-family:Arial Black, Gadget, sans-serif ;">Recherche Par Etat:
+
+                                </label>
+                                <form method="POST">
+                                    <select class= "col-sm-12 col-md-6" style="color: black ; Gadget; sans-serif ;size: 20px" name="etat" >
+                                        <option value="All">All</option>
+                                        <option value="En Cours">En Cours</option>
+                                        <option value="Confirmer">Confirmer</option>
+                                    </select>
+                                    <input type="submit" name="submit"  value="Rechercher">
+                                </form>
+                            </div>
+                        </div>
+
+
+
+                        <table id="datatable" class="table table-bordered">
+                            <thead>
+                            <tr style="color:#99794e;">
+                                <th>Adresse d'Expediteur</th>
+                                <th>Adresse Destinataire</th>
+                                <th>Photo Du Produit</th>
+                                <th>Date De Rèception</th>
+                                <th>Etat</th>
+
+
+                            </tr>
+                            </thead>
+
+
+                            <tbody>
+                            {% for livraison in livraison %}
+                                <tr>
+                                    <td>{{ livraison.adresseDepart }}</td>
+                                    <td>{{ livraison.adresseArrive }}</td>
+                                    <td><figure >
+                                            <img src="{{ asset('image/' ~ livraison.photoProduit) }}" style="width: 100px" alt="image description">
+                                        </figure></td>
+                                    <td>{{ livraison.dateReception }}</td>
+                                    <td>{{ livraison.etat }}</td>
+
+                                    <td>
+                                        <div>
+                                            <a href="{{ path('livraison_plusdinfo', {'idLivraison': livraison.idLivraison }) }}"> <button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light m-b-5" >Afficher plus d'informations</button></a>
+                                            <a href="{{ path('livraison_pdf', {'idLivraison': livraison.idLivraison }) }}"> <button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light m-b-5" >imprimer facture</button></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

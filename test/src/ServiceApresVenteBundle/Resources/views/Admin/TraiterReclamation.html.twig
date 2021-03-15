@@ -1,0 +1,99 @@
+{%  extends 'backend/base.html.twig' %}
+{% block subtitle %}
+    <h4 class="page-title"> Traiter Réclamation</h4>
+{% endblock %}
+
+{% block content %}
+    <div class="content-page">
+        <!-- Start content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card-box table-responsive">
+
+
+                            <p>
+                            <div class="card-box"> Nom client:
+                                <label>{{ reclamation.etat}} </label>
+                            </div>
+
+                            <div class="card-box">
+                                <div class="dropdown pull-right">
+                                    <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
+                                        <i class="mdi mdi-dots-vertical"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <!-- item-->
+                                        <a href="javascript:void(0);" class="dropdown-item">Action</a>
+                                        <!-- item-->
+                                        <a href="javascript:void(0);" class="dropdown-item">Another action</a>
+                                        <!-- item-->
+                                        <a href="javascript:void(0);" class="dropdown-item">Something else</a>
+                                        <!-- item-->
+                                        <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
+                                    </div>
+                                </div>
+
+                                <h4 class="header-title mt-0 m-b-30">Factures Associée</h4>
+
+                                <div class="table-responsive">
+                                    <table class="table mb-0">
+                                        <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>idCommande</th>
+                                            <th>Start Date</th>
+                                            <th>Due Date</th>
+                                            <th>Status</th>
+                                            <th>Assign</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for maCommandeFacture in maCommandeFacture %}
+
+                                        <tr>
+                                            <td>{{ maCommandeFacture.getIdFacture() }}</td>
+                                            <td>{{  maCommandeFacture.idCommande.id}}</td>
+                                            <td>{{ maCommandeFacture.date|date }}</td>
+                                            <td>{{ maCommandeFacture.typePaiement }}</td>
+                                            <td><span class="badge badge-danger">{{ maCommandeFacture.typeFacture }}</span></td>
+                                            <td>
+                                                <a href="{{ path('facture_avoir') }}">Fac</a>
+
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="card-box"> Etat de réclamation:
+{#                                <a href="{{ path ('admin_traiter_reclamation',{'id': id}) }}"  class="btn btn-success waves-effect waves-light"  id="lien" >Confirmer</a>#}
+                                <a href="{{ path ('admin_traiter_reclamation',{'id': id}) }}"  class="btn btn-success waves-effect waves-light"  id="lien" >Confirmer</a>
+
+                                <label style="color:red;"> Attendant si le client sera satisifier ou pas</label>
+                            </div>
+
+                            {#                                <label> {{ livraison.etat}}</label>#}
+
+                            </p>
+                            <p  style="alignment: center;">
+                                {#                                <a href="{{ path('livraison_confirmation', {'idLivraison': livraison.idLivraison }) }}"> <button type="button" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5">Confirmer la demande du Client</button> </a>#}
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- container -->
+
+        </div> <!-- content -->
+
+        <footer class="footer text-right">
+            2016 - 2018 © Adminto. Coderthemes.com
+        </footer>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,86 @@
+{%  extends 'backend/base.html.twig' %}
+{% block subtitle %}
+    <h4 class="page-title"> Traiter Livraison</h4>
+{% endblock %}
+
+{% block content %}
+    <div class="content-page">
+        <!-- Start content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card-box table-responsive">
+                            <p>
+                                <label style="color:#99794e;"> Adresse d'Expediteur  :</label>
+                                <label>  {{ livraison.adresseDepart }}</label>
+                            </p>
+
+                            <p>
+                                <label style="color:#99794e;"> Adresse Destinataire  :</label>
+
+                                <label> {{ livraison.adresseArrive }}</label>
+
+                            </p>
+                            <p>
+                                <label style="color:#99794e;"> Point De Collecte  :</label>
+
+                                <label> {{ livraison.idMagasin.nom|default(' Vous avez Choisi la livraison a Domicile') }}</label>
+
+                            </p>
+
+                            <label style="color:#99794e;">Photo Du Produit :</label>
+                            <div>
+                                <figure >
+                                    <img src="{{ asset('image/' ~ livraison.photoProduit) }}" style="width: 200px" alt="image description">
+                                </figure>
+
+                            </div>
+
+                            <p>
+                                <label style="color:#99794e;"> le Produit livrè est Fragile  :</label>
+
+                                <label> {{ livraison.fragile }}</label>
+
+                            </p>
+                            <p>
+                                <label style="color:#99794e;"> le Poids Du produit livrè  :</label>
+
+                                <label> {{ livraison.poids }}</label>
+
+                            </p>
+                            <p>
+                                <label style="color:#99794e;"> Cout De Livraison :</label>
+
+                                <label> {{ livraison.prix }}</label>
+
+                            </p>
+                            <p>
+                                <label style="color:#99794e;"> Date De Reception Du Colier :</label>
+
+                                <label> {{ livraison.dateReception }}</label>
+
+                            </p>
+                            <p>
+                                <label style="color:red;"> Etat Du Traitement Du Demande De Livraison :</label>
+
+                                <label> {{ livraison.etat}}</label>
+
+                            </p>
+                             <p  style="alignment: center;">
+                                 <a href="{{ path('livraison_confirmation', {'idLivraison': livraison.idLivraison }) }}"> <button type="button" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5">Confirmer la demande du Client</button> </a>
+                             </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- container -->
+
+        </div> <!-- content -->
+
+        <footer class="footer text-right">
+            2016 - 2018 © Adminto. Coderthemes.com
+        </footer>
+
+    </div>
+{% endblock %}

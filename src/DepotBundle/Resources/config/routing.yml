@@ -1,0 +1,3 @@
+depot_homepage:
+    path:     /depot
+    defaults: { _controller: DepotBundle:Default:index }

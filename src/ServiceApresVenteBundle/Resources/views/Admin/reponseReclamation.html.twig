@@ -1,0 +1,104 @@
+{%  extends 'backend/base.html.twig' %}
+{% block subtitle %}
+    <h4 class="page-title"> Traiter Réclamation</h4>
+{% endblock %}
+
+{% block content %}
+
+    <div class="content-page">
+        <!-- Start content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card-box table-responsive">
+
+
+
+                            <h1 class="display-3">Information de réclamation</h1>
+                            <div class="card-header m-b-20">
+                                    <h4>Article Commande</h4>
+                                    <img style="width: 250px;height: 250px;"
+
+                                            class=
+                                         "card-img-top img-fluid" src="{{ asset('uploadsProduit/produit_image/'~produitImage) }}" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+
+                                            prix total :{{ prodCmdQuantite }}</h4>
+                                        <h4 class="card-title">
+
+                                            Commande numero :{{ prodCmd }}</h4>
+                                        <hr class="b_line">
+                                      <h5 class="card-body"></h5>
+                                        <center><h1 class="typography_breacrumb">Réclamation associée</h1> </center>
+                                        <br>
+
+                                        <h4>Description:</h4>
+                                        <p class="card-text">{{ descripion   }}</p>
+                                        <p class="card-text" style="color: red">{{ date|date   }}</p>
+                                        <p class="card-text">
+                                            <small class="text-muted"><img src="{{ asset('uploads/author.jpg') }}">                                                < </small>
+
+                                        <p class="text-custom mb-1">
+                                            Envoyée par {{ username }}
+                                        </p>
+                                        </p>
+                                    </div>
+                                </div>                            </div>
+                            <form action="#" method="post">
+
+
+                                <div class="card-box">
+                                    <div class="dropdown pull-right">
+                                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
+                                            <i class="mdi mdi-dots-vertical"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <!-- item-->
+                                            <a href="javascript:void(0);" class="dropdown-item">Action</a>
+                                            <!-- item-->
+                                            <a href="javascript:void(0);" class="dropdown-item">Another action</a>
+                                            <!-- item-->
+                                            <a href="javascript:void(0);" class="dropdown-item">Something else</a>
+                                            <!-- item-->
+                                            <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
+                                        </div>
+                                    </div>
+
+                                    <h4 class="header-title mt-0 m-b-30">Envoyer Notification a propos les traitement</h4>
+
+                                    <div class="col-10">
+                                        <textarea name="desc" class="form-control" rows="5"></textarea>
+                                    </div>
+                                </div>
+
+                                {#                                <a href="{{ path ('admin_traiter_reclamation',{'id': id}) }}"  class="btn btn-success waves-effect waves-light"  id="lien" >Confirmer</a>#}
+                                {#                                <a href="{{ path ('admin_traiter_reclamation',{'id': id}) }}"  class="btn btn-success waves-effect waves-light"  id="lien" >Confirmer</a>#}
+                                <center>
+
+
+                                    <button  type="submit"
+                                             class="btn btn-success waves-effect waves-light " style="width: 50%" id="lien" >Confirmer</button>
+
+                                </center>
+                                {#                                <label style="color:red;"> Attendant si le client sera satisifier ou pas</label>#}
+
+                                {#                                <label> {{ livraison.etat}}</label>#}
+
+
+                            </form>
+                            <p  style="alignment: center;">
+                                {#                                <a href="{{ path('livraison_confirmation', {'idLivraison': livraison.idLivraison }) }}"> <button type="button" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5">Confirmer la demande du Client</button> </a>#}
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- container -->
+
+        </div> <!-- content -->
+
+
+    </div>
+{% endblock %}

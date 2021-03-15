@@ -1,0 +1,58 @@
+{%  extends 'backend/base.html.twig' %}
+{% block content %}
+    <div class="content-page">
+    <!-- Start content -->
+    <div class="content">
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="p-20">
+
+                {{ form_start(f) }}
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Nature de l'entretien:</label>
+                    <div class="col-10">
+                        {{ form_widget(f.nature,{'attr':{'type':'text','class':'form-control'}}) }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-2 col-form-label" for="">Date de l'entretien:</label>
+                    <div class="col-10">
+                        {{ form_widget(f.date,{'attr':{'class':'datepicker form-control'}} ) }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Montant en DT:</label>
+                    <div class="col-10">
+                        {{ form_widget(f.cout,{'attr':{'class':'custom-select mt-3'}} ) }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Description:</label>
+                <div class="col-10">
+                    {{ form_widget(f.description,{'attr':{'class':'form-control'}} ) }}
+                </div>
+            </div>
+
+
+
+
+
+
+                </div>
+
+
+
+            </div>
+    <div align="center">
+        {{ form_widget(f.valider,{'attr':{'class':'btn btn-block btn--md btn-pink waves-effect waves-light'}}) }}
+        {{ form_end(f) }}
+    </div>
+        </div>
+    </div>
+    </div>
+
+
+{% endblock %}

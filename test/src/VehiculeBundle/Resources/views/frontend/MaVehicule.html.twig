@@ -1,0 +1,380 @@
+{% extends 'frontend/base.html.twig' %}
+
+{% block content %}
+    <style>
+        .background-slider {
+            background-image: url({{ asset('assets/5ec5e-slider-1.jpg') }});
+            background-size: cover;
+            color: #eee;
+        }
+
+    </style>
+    <div class="">
+        <div id="page-title" class="background-slider">
+            <div class="text-center">
+                <div class="container z-index-2 position-relative">
+                    <div class="padding-tb-100px">
+                        <div class="text-center margin-bottom-30px">
+                            <img src="{{ asset('assets/blog-1.jpg') }}" alt="" width=1700px height=500px>
+                            <h4 >Super Fast and Easy</h4>
+                        </div>
+
+
+                        <script>
+                            var app = document.getElementById('writer');
+                            var typewriter = new Typewriter(app, {
+                                loop: true
+                            });
+                            typewriter.typeString('Choisissez votre vehicule')
+                                .pauseFor(2500)
+                                .deleteAll()
+                                .start();
+
+                        </script>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+<br>
+
+    <div class="container">
+        <div class="row">
+            <div class="content col-sm-12">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="thumbnails">
+                            <div><a class="thumbnail fancybox" href="#" title="122.00">
+                                    <img src="{{ asset('imgvehiculess/'~v.photo) }}" title="{{v.marque}}" alt="{{v.marque}}">
+                                </a></div>
+                            <div id="product-thumbnail" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
+                                <div class="owl-wrapper-outer">
+                                </div>
+                                <div class="owl-controls clickable"><div class="owl-buttons"><div class="owl-prev">prev</div><div class="owl-next">next</div></div></div></div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-7 prodetail">
+                        <h1 class="productpage-title" name="matricule">{{ v.marque | upper }} </h1>
+                        <ul class="list-unstyled productinfo-details-top">
+                            <li>
+                                <font color="#dc143c">Tarif hebdomadaire</font>
+                                <h2 class="productpage-price">{{ v.prix }} DT</h2>
+                            </li>
+                            <li><span class="productinfo-tax">{{v.kilometrage}} km parcourru</span></li>
+                        </ul>
+                        <hr>
+                        <ul class="list-unstyled product_info">
+                            <li>
+                                <label>Type:</label>
+                                <span> <a href="#">{{ v.type }}</a></span></li>
+                            <li>
+                                <label>Pissance:</label>
+                                <span> {{v.puissance}}</span></li>
+                            <li>
+                                <label>Nombre de places:</label>
+                                <span>{{v.nbPlace}}</span></li>
+                        </ul>
+                        <hr>
+                        <p class="product-desc"> Chez Stock for Speed vous trouvez  au plus des avantages offerts,toutes
+                            les gammes de voiture de location en tunsie : pour bien transporter vos avec des prix imbattables
+                            et un service privilégier ,  avantageuse et étudier , On est moins cher que tout les comparateurs de Prix.</p>
+
+
+                        <div id="product">
+                            <div class="form-group">
+                                <div class="row">
+
+                                    <div class="Color col-md-6">
+                                        <label>Votre contrat se termine en:</label>
+                                       {# <input id="datef" class="datepicker form-control" type="date">#}
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="button-group list-btn">
+
+                            <ul class="button-group list-btn">
+
+
+                                <li>
+                                    {# <i class="fa fa-shopping-bag"></i>#}
+                                </li>
+
+                            </ul>
+                        </div>
+                        </form>
+                    </div>
+
+                </div>
+                <div class="productinfo-tab">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab-description" data-toggle="tab">Description</a></li>
+                        <li><a href="#tab-review" data-toggle="tab">Reviews (1)</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab-description">
+                            <div class="cpt_product_description ">
+                                <div>
+                                    Chez Stock for Speed vous trouvez  au plus des avantages offerts,toutes
+                                    <p>    les gammes de voiture de location en tunsie : pour bien transporter vos avec des prix imbattables
+                                        et un service privilégier ,  avantageuse et étudier , On est moins cher que tous les comparateurs de Prix.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- cpt_container_end --></div>
+                        <div class="tab-pane" id="tab-review">
+                            <form class="form-horizontal">
+                                <div id="review"></div>
+                                <h2>Write a review</h2>
+                                <div class="form-group required">
+                                    <div class="col-sm-12">
+                                        <label class="control-label" for="input-name">Your Name</label>
+                                        <input type="text" name="name" value="" id="input-name" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group required">
+                                    <div class="col-sm-12">
+                                        <label class="control-label" for="input-review">Your Review</label>
+                                        <textarea name="text" rows="5" id="input-review" class="form-control"></textarea>
+                                        <div class="help-block"><span class="text-danger">Note:</span> HTML is not translated!</div>
+                                    </div>
+                                </div>
+                                <div class="form-group required">
+                                    <div class="col-sm-12">
+                                        <label class="control-label">Rating</label>
+                                        &nbsp;&nbsp;&nbsp; Bad&nbsp;
+                                        <input type="radio" name="rating" value="1">
+                                        &nbsp;
+                                        <input type="radio" name="rating" value="2">
+                                        &nbsp;
+                                        <input type="radio" name="rating" value="3">
+                                        &nbsp;
+                                        <input type="radio" name="rating" value="4">
+                                        &nbsp;
+                                        <input type="radio" name="rating" value="5">
+                                        &nbsp;Good</div>
+                                </div>
+                                <div class="buttons clearfix">
+                                    <div class="pull-right">
+                                        <button type="button" id="button-review" data-loading-text="Loading..." class="btn btn-primary">Continue</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="productblock-title">Related Products</h3>
+                <div class="box">
+                    <div id="related-slidertab" class="row owl-carousel product-slider owl-theme" style="opacity: 1; display: block;">
+                        <div class="owl-wrapper-outer"><div class="owl-wrapper" style="width: 3570px; left: 0px; display: block; transition: all 0ms ease 0s; transform: translate3d(0px, 0px, 0px);"><div class="owl-item" style="width: 255px;"><div class="item">
+                                        <div class="product-thumb transition">
+                                            <div class="image product-imageblock"> <a href="product.html">
+                                                    <img src="{{ asset('image/product/product1.jpg') }}" alt="iPod Classic" title="iPod Classic" class="img-responsive">
+                                                    <img src="{{ asset('image/product/product1-1.jpg') }}" alt="iPod Classic" title="iPod Classic" class="img-responsive">
+                                                </a>
+                                                <ul class="button-group">
+                                                    <li>
+                                                        <button title="" data-placement="top" data-toggle="tooltip" class="wishlist" type="button" data-original-title="Add to Wish List"><i class="fa fa-heart-o"></i></button>
+                                                    </li>
+                                                    <li>
+                                                        <button title="" data-placement="top" data-toggle="tooltip" class="compare" type="button" data-original-title="Compare this Product"><i class="fa fa-exchange"></i></button>
+                                                    </li>
+                                                    <li>
+                                                        <button title="" data-placement="top" data-toggle="tooltip" class="quick-view" type="button" data-original-title="Quick View"><i class="fa fa-eye"></i></button>
+                                                    </li>
+                                                    <li>
+                                                        <button title="Add to Cart" class="addtocart-btn" type="button">Add to Cart</button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="caption product-detail">
+                                                <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
+                                                <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">Casual Shirt With Ruffle Hem</a></h4>
+                                                <p class="price product-price">$122.00<span class="price-tax">Ex Tax: $100.00</span></p>
+                                            </div>
+                                        </div>
+                                    </div></div><div class="owl-item" style="width: 255px;"><div class="item">
+                                        <div class="product-thumb transition">
+                                            <div class="image product-imageblock"> <a href="product.html">
+                                                    <img src="{{ asset('image/product/product2.jpg') }}" alt="iPod Classic" title="iPod Classic" class="img-responsive">
+                                                    <img src="{{ asset('image/product/product2-2.jpg') }}" alt="iPod Classic" title="iPod Classic" class="img-responsive">
+                                                </a>
+                                                <ul class="button-group">
+                                                    <li>
+                                                        <button title="" data-placement="top" data-toggle="tooltip" class="wishlist" type="button" data-original-title="Add to Wish List"><i class="fa fa-heart-o"></i></button>
+                                                    </li>
+                                                    <li>
+                                                        <button title="" data-placement="top" data-toggle="tooltip" class="compare" type="button" data-original-title="Compare this Product"><i class="fa fa-exchange"></i></button>
+                                                    </li>
+                                                    <li>
+                                                        <button title="" data-placement="top" data-toggle="tooltip" class="quick-view" type="button" data-original-title="Quick View"><i class="fa fa-eye"></i></button>
+                                                    </li>
+                                                    <li>
+                                                        <button title="Add to Cart" class="addtocart-btn" type="button">Add to Cart</button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="caption product-detail">
+                                                <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
+                                                <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">Casual Shirt With Ruffle Hem</a></h4>
+                                                <p class="price product-price">$122.00<span class="price-tax">Ex Tax: $100.00</span></p>
+                                            </div>
+                                        </div>
+                                    </div></div><div class="owl-item" style="width: 255px;"><div class="item">
+                                        <div class="product-thumb transition">
+                                            <div class="image product-imageblock"> <a href="product.html">
+                                                    <img src="{{ asset('image/product/product4.jpg') }}" alt="iPod Classic" title="iPod Classic" class="img-responsive">
+                                                    <img src="{{ asset('image/product/product4.jpg') }}" alt="iPod Classic" title="iPod Classic" class="img-responsive">
+                                                </a>
+                                                <ul class="button-group">
+                                                    <li>
+                                                        <button title="" data-placement="top" data-toggle="tooltip" class="wishlist" type="button" data-original-title="Add to Wish List"><i class="fa fa-heart-o"></i></button>
+                                                    </li>
+                                                    <li>
+                                                        <button title="" data-placement="top" data-toggle="tooltip" class="compare" type="button" data-original-title="Compare this Product"><i class="fa fa-exchange"></i></button>
+                                                    </li>
+                                                    <li>
+                                                        <button title="" data-placement="top" data-toggle="tooltip" class="quick-view" type="button" data-original-title="Quick View"><i class="fa fa-eye"></i></button>
+                                                    </li>
+                                                    <li>
+                                                        <button title="Add to Cart" class="addtocart-btn" type="button">Add to Cart</button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="caption product-detail">
+                                                <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
+                                                <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">Casual Shirt With Ruffle Hem</a></h4>
+                                                <p class="price product-price">$122.00<span class="price-tax">Ex Tax: $100.00</span></p>
+                                            </div>
+                                        </div>
+                                    </div></div><div class="owl-item" style="width: 255px;"><div class="item">
+                                        <div class="product-thumb transition">
+                                            <div class="image product-imageblock"> <a href="product.html">
+                                                    <img src="{{ asset('image/product/product5.jpg') }}" alt="iPod Classic" title="iPod Classic" class="img-responsive">
+                                                    <img src="{{ asset('image/product/product5-5.jpg') }}" alt="iPod Classic" title="iPod Classic" class="img-responsive">
+                                                </a>
+                                                <ul class="button-group">
+                                                    <li>
+                                                        <button title="" data-placement="top" data-toggle="tooltip" class="wishlist" type="button" data-original-title="Add to Wish List"><i class="fa fa-heart-o"></i></button>
+                                                    </li>
+                                                    <li>
+                                                        <button title="" data-placement="top" data-toggle="tooltip" class="compare" type="button" data-original-title="Compare this Product"><i class="fa fa-exchange"></i></button>
+                                                    </li>
+                                                    <li>
+                                                        <button title="" data-placement="top" data-toggle="tooltip" class="quick-view" type="button" data-original-title="Quick View"><i class="fa fa-eye"></i></button>
+                                                    </li>
+                                                    <li>
+                                                        <button title="Add to Cart" class="addtocart-btn" type="button">Add to Cart</button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="caption product-detail">
+                                                <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
+                                                <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">Casual Shirt With Ruffle Hem</a></h4>
+                                                <p class="price product-price">$122.00<span class="price-tax">Ex Tax: $100.00</span></p>
+                                            </div>
+                                        </div>
+                                    </div></div><div class="owl-item" style="width: 255px;"><div class="item">
+                                        <div class="product-thumb transition">
+                                            <div class="image product-imageblock"> <a href="product.html">
+                                                    <img src="i{{ asset('mage/product/product6.jpg') }}" alt="iPod Classic" title="iPod Classic" class="img-responsive">
+                                                    <img src="{{ asset('image/product/product6-6.jpg') }}" alt="iPod Classic" title="iPod Classic" class="img-responsive">
+                                                </a>
+                                                <ul class="button-group">
+                                                    <li>
+                                                        <button title="" data-placement="top" data-toggle="tooltip" class="wishlist" type="button" data-original-title="Add to Wish List"><i class="fa fa-heart-o"></i></button>
+                                                    </li>
+                                                    <li>
+                                                        <button title="" data-placement="top" data-toggle="tooltip" class="compare" type="button" data-original-title="Compare this Product"><i class="fa fa-exchange"></i></button>
+                                                    </li>
+                                                    <li>
+                                                        <button title="" data-placement="top" data-toggle="tooltip" class="quick-view" type="button" data-original-title="Quick View"><i class="fa fa-eye"></i></button>
+                                                    </li>
+                                                    <li>
+                                                        <button title="Add to Cart" class="addtocart-btn" type="button">Add to Cart</button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="caption product-detail">
+                                                <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
+                                                <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">Casual Shirt With Ruffle Hem</a></h4>
+                                                <p class="price product-price">$122.00<span class="price-tax">Ex Tax: $100.00</span></p>
+                                            </div>
+                                        </div>
+                                    </div></div><div class="owl-item" style="width: 255px;"><div class="item">
+                                        <div class="product-thumb transition">
+                                            <div class="image product-imageblock"> <a href="product.html">
+                                                    <img src="{{ asset('image/product/product7.jpg') }}" alt="iPod Classic" title="iPod Classic" class="img-responsive">
+                                                    <img src="{{ asset('image/product/product7-7.jpg') }}" alt="iPod Classic" title="iPod Classic" class="img-responsive">
+                                                </a>
+                                                <ul class="button-group">
+                                                    <li>
+                                                        <button title="" data-placement="top" data-toggle="tooltip" class="wishlist" type="button" data-original-title="Add to Wish List"><i class="fa fa-heart-o"></i></button>
+                                                    </li>
+                                                    <li>
+                                                        <button title="" data-placement="top" data-toggle="tooltip" class="compare" type="button" data-original-title="Compare this Product"><i class="fa fa-exchange"></i></button>
+                                                    </li>
+                                                    <li>
+                                                        <button title="" data-placement="top" data-toggle="tooltip" class="quick-view" type="button" data-original-title="Quick View"><i class="fa fa-eye"></i></button>
+                                                    </li>
+                                                    <li>
+                                                        <button title="Add to Cart" class="addtocart-btn" type="button">Add to Cart</button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="caption product-detail">
+                                                <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
+                                                <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">Casual Shirt With Ruffle Hem</a></h4>
+                                                <p class="price product-price">$122.00<span class="price-tax">Ex Tax: $100.00</span></p>
+                                            </div>
+                                        </div>
+                                    </div></div><div class="owl-item" style="width: 255px;"><div class="item">
+                                        <div class="product-thumb transition">
+                                            <div class="image product-imageblock"> <a href="product.html">
+                                                    <img src="{{ asset('mage/product/product8.jpg') }}" alt="iPod Classic" title="iPod Classic" class="img-responsive">
+                                                    <img src="{{ asset('image/product/product8-8.jpg') }}" alt="iPod Classic" title="iPod Classic" class="img-responsive">
+                                                </a>
+                                                <ul class="button-group">
+                                                    <li>
+                                                        <button title="" data-placement="top" data-toggle="tooltip" class="wishlist" type="button" data-original-title="Add to Wish List"><i class="fa fa-heart-o"></i></button>
+                                                    </li>
+                                                    <li>
+                                                        <button title="" data-placement="top" data-toggle="tooltip" class="compare" type="button" data-original-title="Compare this Product"><i class="fa fa-exchange"></i></button>
+                                                    </li>
+                                                    <li>
+                                                        <button title="" data-placement="top" data-toggle="tooltip" class="quick-view" type="button" data-original-title="Quick View"><i class="fa fa-eye"></i></button>
+                                                    </li>
+                                                    <li>
+                                                        <button title="Add to Cart" class="addtocart-btn" type="button">Add to Cart</button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="caption product-detail">
+                                                <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
+                                                <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">Casual Shirt With Ruffle Hem</a></h4>
+                                                <p class="price product-price">$122.00<span class="price-tax">Ex Tax: $100.00</span></p>
+                                            </div>
+                                        </div>
+                                    </div></div></div></div>
+
+
+
+
+
+
+                        <div class="owl-controls clickable"><div class="owl-buttons"><div class="owl-prev">prev</div><div class="owl-next">next</div></div></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+{% endblock %}
+

@@ -1,0 +1,97 @@
+{%  extends 'backend/base.html.twig' %}
+
+
+{% block subtitle %}
+    <h4 class="page-title"> Point De Collecte</h4>
+{% endblock %}
+
+
+    {% block content %}
+
+        <div class="content-page">
+            <!-- Start content -->
+            <div class="content">
+                <div class="container-fluid">
+                    {%  for message in app.flashes('info') %}
+                        <div class="alert alert-success">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card-box table-responsive">
+                                <a href="{{ path('PointCollecte')}}"> <button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light m-b-5" >localisation</button></a>
+
+                                <div class="col-sm-12 col-md-6">
+                                    <div id="selection-datatable_filter" class="dataTables_filter">
+                                        <label>Recherche Par Pays:
+
+                                        </label>
+                                        <form method="POST">
+                                            <input type="text" name="pays">
+                                            <input type="submit" name="submit" value="Rechercher">
+                                        </form>
+                                    </div>
+                                </div>
+
+
+
+                                <table id="datatable" class="table table-bordered">
+                                    <thead>
+                                    <tr style="color:#99794e;">
+                                        <th>nom</th>
+                                        <th>pays</th>
+                                        <th>horaireTravail</th>
+                                        <th>lattitude</th>
+                                        <th>longitude</th>
+
+
+                                    </tr>
+                                    </thead>
+
+
+                                    <tbody>
+                                    {% for PointCollecte in PointCollecte %}
+                                        <tr>
+                                            <td>{{ PointCollecte.nom }}</td>
+                                            <td>{{ PointCollecte.pays }}</td>
+                                            <td>{{ PointCollecte.horaireTravail }}</td>
+                                            <td>{{ PointCollecte.lat }}</td>
+                                            <td>{{ PointCollecte.log }}</td>
+
+                                            <td>
+                                                <div class="btn-group btn-group-justified m-b-10">
+
+                                                    <a href="{{ path('PointCollecte_modification', {'idMagasin': PointCollecte.idMagasin }) }}"> <button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light m-b-5" >Modifier</button></a>
+
+                                                    <a href="{{ path('PointCollecte_suppression', {'idMagasin': PointCollecte.idMagasin }) }}"> <button type="button" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5">Supprimer</button> </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+                </div> <!-- container -->
+
+            </div> <!-- content -->
+
+            <footer class="footer text-right">
+                2016 - 2018 © Adminto. Coderthemes.com
+            </footer>
+
+        </div>
+
+    {% endblock %}

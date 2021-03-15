@@ -1,0 +1,48 @@
+livraison_homepage:
+    path:     /
+    defaults: { _controller: LivraisonBundle:Default:index }
+livraison_add:
+    path:     /add
+    defaults: { _controller: LivraisonBundle:Livraison:add }
+livraison_afficher:
+    path:     /afficher
+    defaults: { _controller: LivraisonBundle:Livraison:meslivraison }
+livraison_pdf:
+    path:     /afficherPdf/{idLivraison}
+    defaults: { _controller: LivraisonBundle:Livraison:pdf }
+Traiter_livraison:
+    path:     /traiterLivraison/{idLivraison}
+    defaults: { _controller: LivraisonBundle:Livraison:TraiterLivraison }
+livraison_afficherAdmin:
+    path:     /afficherAdmin
+    defaults: { _controller: LivraisonBundle:Livraison:AfficherLivraisonAdmin }
+livraison_suppression:
+    path:     /supprimerLivraison/{idLivraison}
+    defaults: { _controller: LivraisonBundle:Livraison:deleteLivraison }
+livraison_modification:
+    path:     /modifierLivraison/{idLivraison}
+    defaults: { _controller: LivraisonBundle:Livraison:modifierLivraison }
+livraison_plusdinfo:
+    path:     /plusdinfoLivraison/{idLivraison}
+    defaults: { _controller: LivraisonBundle:Livraison:plusdinfo }
+PointCollecte_add:
+    path:     /addMagasin
+    defaults: { _controller: LivraisonBundle:PointCollecte:addMagasin }
+PointCollecte_affichage:
+    path:     /afficherMagasin
+    defaults: { _controller: LivraisonBundle:PointCollecte:affichage }
+PointCollecte_suppression:
+    path:     /supprimerMagasin/{idMagasin}
+    defaults: { _controller: LivraisonBundle:PointCollecte:deleteMagasin }
+PointCollecte_modification:
+    path:     /modifierMagasin/{idMagasin}
+    defaults: { _controller: LivraisonBundle:PointCollecte:modifier }
+PointCollecte:
+    path:     /info
+    defaults: { _controller: LivraisonBundle:PointCollecte:pointcollecte }
+livraison_confirmation:
+    path:     /ConfirmerAdmin/{idLivraison}
+    defaults: { _controller: LivraisonBundle:Livraison:ConfirmerAdmin }
+
+
+

@@ -1,0 +1,198 @@
+
+{%  extends 'frontend/base.html.twig' %}
+{% block content %}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('BundleExterne/css/rating.css') }}" />
+
+    <div class="body_wrapper">
+
+        <section class="breadcrumb_area"
+                 style="background-image: url('{{ asset('image/feedbacks/Img-01.jpg') }}'); background-position:  center center; background-repeat: no-repeat; background-size: cover;">
+            <img class="breadcrumb_shap" src="{{ asset('image/feedbacks/banner_bg.png') }}" alt="">
+            <div class="container">
+                <div class="breadcrumb_content text-center">
+                    <h1 class="f_p f_700 f_size_50 w_color l_height50 mb_20">Envoyer Feedback</h1>
+                    <p class="f_400 w_color f_size_16 l_height26">Nous avons traiter Merci de votre confiance !!<br> </p>
+                </div>
+            </div>
+        </section>
+        <section class="job_apply_area sec_pad bg_color">
+            <div class="container">
+                <div class="row flex-row-reverse">
+                    <div class="col-lg-4 pl_70">
+                        <div class="job_info">
+                            <div class="info_head">
+                              <a href="{{ path('detail_livreur',{'id':idLivreur.idEmp}) }}">
+                                <h6 class="f_p f_600 f_size_18 t_color3">
+
+                                    Consulter ses feedbacks</h6>
+                              </a>
+                                <i class="fa fa-info-circle" style="font-size: 105px;align-items: center;"></i>
+
+                            </div>
+                            <div class="info_item">
+                                <div class="icon icon_1">
+                                </div>
+                                <h6>Nom</h6>
+                                {#                                <p>{{ username }}</p>#}
+                            </div>
+                            <div class="info_item">
+                                <i class="ti-location-pin"></i>
+                                <h6>Email</h6>
+                                {#                                <p>{{ email }}</p>#}
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="job_apply">
+                            <div class="sec_title mb_70">
+                                <h3 class="f_p f_size_22 f_600 t_color3 mb_20">Ajouter Feedback</h3>
+                                <p class="f_400 f_size_15">
+                            </div>
+
+                            {{ form_start(form, {'attr': {'class':'row apply_form'}}) }}
+
+                            <div class="form-group col-lg-12">
+                                {{ form_widget(form.description,{'attr':{'type':'textarea','id':' message','cols':'30' ,'rows':'10','name':'description','placeholder':'Ajouter feedback, zip code'
+                                }})}}
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                <p class="text-center">
+                                    Avis</p>
+
+                                <center>
+                                    {{ form_widget(form.note)}}
+                                </center>
+
+                            </div>
+                            {#                                <div class="form-group col-md-12">#}
+                            {#                                    <select class="selectpickers">#}
+                            {#                                        <option value="menu_order">Produit manquant</option>#}
+                            {#                                        <option value="popularity">Manque de comptabilité des produits</option>#}
+                            {#                                        <option value="rating">Retard de transport</option>#}
+                            {#                                        <option value="date">Facture Probleme</option>#}
+                            {#                                    </select>#}
+                            {#                                </div>#}
+
+
+                            <div class="form-group col-lg-12">
+                                <div class="upload_box"> Insérer <image></image> :
+                                    {{ form_widget(form.file) }}
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                {{ form_widget(form.Ajouter,{'attr':{'type':'submit','class':'btn_three'}}) }}
+
+                            </div>
+                            {{ form_end(form) }}                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    {#    <div class="breadcrumb parallax" style=" background: linear-gradient(35deg, #1EAE98, #D8B5FF);">#}
+    {#        <h1 style="color: #0b0b0b;#}
+    {#        text-align:center;font-family:'Baskerville Old Face';font-weight:900;font-size:4em;color:#fff;text-shadow:0em 0.05em 0 rgba(0,0,0,0.25)}#}
+    {#" class="control-label" >Ajouter Réclamation Page#}
+
+    {#        </h1>#}
+    {#        <ul>#}
+    {#            <li><a href="index.html">Home</a></li>#}
+    {#            <li><a href="contact.html">Contact Us</a></li>#}
+    {#        </ul>#}
+    {#    </div>#}
+    {#    <div class="container">#}
+    {#        <div class="col-md-12">#}
+    {#            <input type="text" placeholder="Company Name (optional)">gg#}
+    {#        </div>#}
+    {#        <center>#}
+    {#            <div class="zero-clipboard">#}
+    {#                {{ form_errors(form) }}#}
+    {#                {{ form_start(form, {'attr': {'novalidate':'novalidate'}}) }}#}
+    {#                <h1 style="#}
+    {#               color:#000">Envoyer Votre Réclamation</h1>#}
+
+    {#                <div class="form-group" style="width: 670px;">#}
+    {#                    {{ form_widget(form.objet,{'attr':{'type':'text','class':' input','name':'objet',#}
+    {#                    }})}}#}
+    {#                    <span class="highlight"></span>#}
+    {#                    <span class="bar"></span>#}
+    {#                    <label class="lb">Objet</label>#}
+    {#                </div>#}
+    {#                <div class="form-group" style="width: 670px;">#}
+
+    {#                    {{ form_widget(form.description,{'attr':{'type':'textarea','class':' input','name':'description',#}
+    {#                    }})}}#}
+    {#                    {{ form_errors(form) }}#}
+
+    {#                    <span class="highlight"></span>#}
+    {#                    <span class="bar"></span>#}
+    {#                    <label class="lb">Description</label>#}
+    {#                </div>#}
+
+
+
+
+    {#                <center>#}
+    {#                    <div class="fileUpload blue-btn btn width100">#}
+    {#                        <span>Inserer L'image</span>#}
+    {#                        {{ form_widget(form.image,{'attr':{'type':'file','class':'uploadlogo'}}) }}</div></center>#}
+    {#                <div class="form-group">#}
+    {#                    <center><div>
+{{ form_widget(form.Ajouter,{'attr':{'type':'submit','class':'btn-hover color-7'}}) }}
+</div></center>#}
+    {#                </div>#}
+    {#            </div>#}
+
+    {#        </center>#}
+
+
+    {#        {{ form_end(form) }}#}
+    {#    </div>#}
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script src="{{ asset('BundleExterne/js/rating.js') }}"></script>
+    {#    <script>#}
+    {#        // You can modify the upload files to pdf's, docs etc#}
+    {#        //Currently it will upload only images#}
+    {#        $(document).ready(function($) {#}
+    {#            // Upload btn#}
+    {#            $(".uploadlogo").change(function() {#}
+    {#                readURL(this);#}
+    {#            });#}
+    {#            function readURL(input) {#}
+    {#                var url = input.value;#}
+    {#                var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();#}
+    {#                if (input.files && input.files[0] && (ext == "png" || ext == "jpeg" || ext == "jpg" || ext == "gif" || ext == "svg")) {#}
+    {#                    var path = $('.uploadlogo').val();#}
+    {#                    var filename = path.replace(/^.*\\/, "");#}
+    {#                    $('.fileUpload span').html('Uploaded logo : ' + filename);#}
+    {#                    // console.log(filename);#}
+    {#                } else {#}
+    {#                    $(".uploadlogo").val("");#}
+    {#                    $('.fileUpload span').html('Only Images Are Allowed!');#}
+    {#                }#}
+    {#            }#}
+    {#        });#}
+    {#    </script>#}
+
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
+
+{% endblock %}

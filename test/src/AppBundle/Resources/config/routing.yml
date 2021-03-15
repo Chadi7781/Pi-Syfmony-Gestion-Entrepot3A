@@ -1,0 +1,9 @@
+homepage:
+    path:     /Accueil
+    defaults: { _controller: AppBundle:Default:Accueil }
+redirection:
+    path:     /home
+    defaults: { _controller: AppBundle:Security:redirect }
+redirection1:
+    path:     /home1
+    defaults: { _controller: comment-bundle:Thread:newThreads }

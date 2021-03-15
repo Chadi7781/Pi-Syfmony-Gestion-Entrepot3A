@@ -1,0 +1,31 @@
+{%  extends 'frontend/base.html.twig' %}
+{% block content %}
+    {% for depot in depots %}
+
+<div class="content col-md-12" style="margin-top: 50px ;text-align: center;">
+    <div class="blog1 blog">
+        <div class="blog-image"> <a href="#" class="blog-imagelink">
+                <img src="{{ asset('image') }}/blog/blog_1.jpg" alt="#">
+            </a>
+            <span class="blog-hover"></span>
+        </div>
+        <div class="blog-content"> <span class="blog-date">02/05/2016</span>
+            <h2 class="blog-name">
+                <a href="#">Adresse:{{ depot.adresse }}</a>
+
+        <br/>
+                <a href="#">Surface:{{ depot.surface }}</a>
+                <br/>
+                <a href="#">Prix:{{ depot.prix }}</a>
+            </h2>
+            {% if depot.etat == "dispo" %}
+            <a  href="{{ path('location_show',{'id': depot.id}) }}" class="blog-readmore text-center">Louer</a> </div>
+                {% endif %}
+    </div>
+    {% endfor %}
+
+
+    </div>
+    <div class="text-center">{{ knp_pagination_render(depots) }}</div>
+
+{% endblock %}

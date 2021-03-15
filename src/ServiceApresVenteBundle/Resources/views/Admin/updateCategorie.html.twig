@@ -1,0 +1,44 @@
+{% block body -%}
+    <div class="bd-example">
+        <i class="fa fa-pencil-square-o"  style="font-size: 20px; color: #ff8acc;" id="" data-toggle="modal" data-target="#exampleModal{{ entity.idCat }}" ></i>
+        <div class="modal fade show" id="exampleModal{{ entity.idCat }}"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <br><br><br>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLabel">Modfier Catégorie</h4>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        {{ form_start(edit_form) }}
+                        <div class="form-group">
+                            <label for="recipient-name" class="form-control-label">Nom:</label>
+                            {{ form_widget(edit_form.nom,{'attr':{'class':'form-control'}} ) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_widget(edit_form.file,{'attr':{'class':'form-control'}} ) }}
+                        </div>
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                        {{ form_row(edit_form.Valider,{'attr':{'class':'btn btn-primary waves-effect waves-light'}}) }}
+
+
+                    </div>
+                    {{ form_rest(edit_form) }}
+                    {{ form_end(edit_form) }}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

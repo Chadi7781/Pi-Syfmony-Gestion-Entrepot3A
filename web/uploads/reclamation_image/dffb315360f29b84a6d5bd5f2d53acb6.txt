@@ -1,0 +1,230 @@
+-- phpMyAdmin SQL Dump
+-- version 4.9.2
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  jeu. 13 fév. 2020 à 13:30
+-- Version du serveur :  10.4.10-MariaDB
+-- Version de PHP :  7.1.33
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de données :  `gestion_entrepot`
+--
+CREATE DATABASE IF NOT EXISTS `gestion_entrepot` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `gestion_entrepot`;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `commande`
+--
+
+DROP TABLE IF EXISTS `commande`;
+CREATE TABLE IF NOT EXISTS `commande` (
+  `id_commande` int(100) NOT NULL,
+  `date` date NOT NULL,
+  `quantite` int(100) NOT NULL,
+  `adresse_dest` varchar(100) NOT NULL,
+  `prix` int(100) NOT NULL,
+  `type` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_commande`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `depot`
+--
+
+DROP TABLE IF EXISTS `depot`;
+CREATE TABLE IF NOT EXISTS `depot` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `pays` varchar(30) NOT NULL,
+  `atittude` varchar(40) NOT NULL,
+  `langitude` varchar(50) NOT NULL,
+  `surface` int(11) NOT NULL,
+  `idproduit` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `facture`
+--
+
+DROP TABLE IF EXISTS `facture`;
+CREATE TABLE IF NOT EXISTS `facture` (
+  `id_facture` int(100) NOT NULL,
+  `id_livraison` varchar(100) NOT NULL,
+  `type_paiement` varchar(100) NOT NULL,
+  `date` date NOT NULL,
+  PRIMARY KEY (`id_facture`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `facture_avoir`
+--
+
+DROP TABLE IF EXISTS `facture_avoir`;
+CREATE TABLE IF NOT EXISTS `facture_avoir` (
+  `id_facture` int(100) NOT NULL,
+  `date` date NOT NULL,
+  `motif_de_retour` varchar(85) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `feedback`
+--
+
+DROP TABLE IF EXISTS `feedback`;
+CREATE TABLE IF NOT EXISTS `feedback` (
+  `id_feed` int(11) NOT NULL,
+  `description` varchar(90) NOT NULL,
+  `note` int(5) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `fos_user`
+--
+
+DROP TABLE IF EXISTS `fos_user`;
+CREATE TABLE IF NOT EXISTS `fos_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(180) NOT NULL,
+  `username_canonical` varchar(180) DEFAULT NULL,
+  `email` varchar(180) NOT NULL,
+  `email_canonical` varchar(180) DEFAULT NULL,
+  `enabled` tinyint(1) DEFAULT NULL,
+  `salt` varchar(255) DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `last_login` datetime DEFAULT NULL,
+  `confirmation_token` varchar(180) DEFAULT NULL,
+  `password_requested_at` datetime DEFAULT NULL,
+  `roles` longtext NOT NULL COMMENT '(DC2Type:array)',
+  `activite` varchar(200) DEFAULT NULL,
+  `telephone` int(11) DEFAULT NULL,
+  `adresse` varchar(1000) DEFAULT NULL,
+  `photo` varchar(1000) DEFAULT NULL,
+  `Mission` varchar(50) DEFAULT NULL,
+  `Date_Naissance` date DEFAULT NULL,
+  `Prenom` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_957A6479A0D96FBF` (`email_canonical`),
+  UNIQUE KEY `UNIQ_957A647992FC23A8` (`username_canonical`),
+  UNIQUE KEY `UNIQ_957A6479C05FB297` (`confirmation_token`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `livraison`
+--
+
+DROP TABLE IF EXISTS `livraison`;
+CREATE TABLE IF NOT EXISTS `livraison` (
+  `id_livraison` int(100) NOT NULL,
+  `adresse_depart` varchar(100) NOT NULL,
+  `adresse_arrive` varchar(100) NOT NULL,
+  `photo_produit` varchar(100) NOT NULL,
+  `prix` int(100) NOT NULL,
+  `fragile` varchar(100) NOT NULL,
+  `poids` int(100) NOT NULL,
+  `etat` varchar(100) NOT NULL,
+  `id_magasin` int(100) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  PRIMARY KEY (`id_livraison`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `magasin`
+--
+
+DROP TABLE IF EXISTS `magasin`;
+CREATE TABLE IF NOT EXISTS `magasin` (
+  `id_magasin` int(100) NOT NULL,
+  `pays` varchar(100) NOT NULL,
+  `log` int(100) NOT NULL,
+  `lat` int(100) NOT NULL,
+  `nom` int(100) NOT NULL,
+  PRIMARY KEY (`id_magasin`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `produit`
+--
+
+DROP TABLE IF EXISTS `produit`;
+CREATE TABLE IF NOT EXISTS `produit` (
+  `id_produit` int(100) NOT NULL,
+  `photo_produit` varchar(100) NOT NULL,
+  `poids` int(100) NOT NULL,
+  `prix` int(100) NOT NULL,
+  `etat` tinyint(1) NOT NULL,
+  `desription` varchar(100) NOT NULL,
+  `categorie` varchar(100) NOT NULL,
+  `id_depot` int(11) NOT NULL,
+  PRIMARY KEY (`id_produit`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `reclamation`
+--
+
+DROP TABLE IF EXISTS `reclamation`;
+CREATE TABLE IF NOT EXISTS `reclamation` (
+  `id_rec` int(11) NOT NULL AUTO_INCREMENT,
+  `objet` varchar(50) NOT NULL,
+  `description` varchar(100) NOT NULL,
+  `etat` int(1) NOT NULL,
+  `date` date NOT NULL,
+  `id_user` varchar(30) NOT NULL,
+  PRIMARY KEY (`id_rec`)
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `reclamation`
+--
+
+INSERT INTO `reclamation` (`id_rec`, `objet`, `description`, `etat`, `date`, `id_user`) VALUES
+(1, 'oakok', 'sok', 0, '2020-02-12', '1235'),
+(2, 'sdqsdqsddsqdd', 'dsqdqsd', 0, '2020-02-12', '1235'),
+(3, 'sidjsidjsij', 'dsqijdiqsjdq', 0, '2020-02-12', '1235'),
+(4, 'jdsoqsj', 'ossqojqodjqso', 0, '2020-02-12', '1235'),
+(5, 'sdqosd', 'odjqsodjqsojdoqs', 0, '2020-02-12', '1235'),
+(6, 'kjijijijijijijijijijfsd', 'fdoskfodskfosdkf', 0, '2020-02-12', '1235'),
+(7, 'dsoqkdosqko', 'kdosqkdoqskdo', 0, '2020-02-12', '1235'),
+(8, 'fdizoddqosi', 'dsqdiqsd', 0, '2020-02-12', '1235'),
+(9, 'ali', 'disjdis', 0, '2020-02-13', '1235'),
+(10, 'jihen', 'chadi', 0, '2020-02-13', '1235'),
+(11, 'sdqrg', 'sergs', 0, '2020-02-13', '1235'),
+(12, 'sdqrg', 'sergs', 0, '2020-02-13', '1235'),
+(13, 'abc', 'def', 0, '2020-02-13', '1235');
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

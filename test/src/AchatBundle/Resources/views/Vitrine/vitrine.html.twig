@@ -1,0 +1,425 @@
+
+
+{%  extends 'frontend/base.html.twig' %}
+
+{% block content %}
+    <style>
+
+
+        .iconbb {
+            float: left;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            padding-left: 3%;
+            width: 30%;
+        }
+
+
+        .textbb {
+            margin: 5px;
+            padding-left: 34%;
+            width: auto;
+        }
+
+        .snip1519 {
+            font-family: 'Roboto', Arial, sans-serif;
+            position: relative;
+            float: left;
+            left: 10%;
+
+            overflow: hidden;
+            margin: 10px 1%;
+            min-width: 250px;
+            max-width: 310px;
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 5px;
+            border-top: 5px solid #6253e1;
+
+            color: #9e9e9e;
+            text-align: center;
+            font-size: 16px;
+
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.35);
+        }
+
+        .snip1519 *,
+        .snip1519 *:before {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            -webkit-transition: all 0.1s ease-out;
+            transition: all 0.1s ease-out;
+        }
+
+        .snip1519 figcaption {
+            padding: 12% 10% 14%;
+        }
+
+        .snip1519 img {
+
+            font-size: 54px;
+            color: #fff;
+            width: 80px;
+            line-height: 50px;
+
+            /*box-shadow: 0 4px 15px 0 rgba(126, 52, 161, 0.75);*/
+            /*border-radius: 50%;*/
+            padding: 0;
+            margin: 0 0 10px;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .snip1519 h3 {
+            color: #3c3c3c;
+            font-size: 20px;
+            font-weight: 300;
+            line-height: 24px;
+            margin: 10px 0;
+        }
+
+        .snip1519 p {
+            font-size: 0.9em;
+            font-weight: 300;
+            margin: 0 0 20px;
+        }
+
+        .snip1519 .button {
+            text-decoration: none;
+            color: #777;
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            padding: 5px 10px;
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+        }
+
+        .snip1519 .button:before {
+            background-color: #6253e1;
+            position: absolute;
+            top: 100%;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            content: '';
+            z-index: -1;
+            opacity: 0;
+        }
+
+        .snip1519 .button:hover {
+            color: #fff;
+        }
+
+        .snip1519 .button:hover:before {
+            top: 0;
+            opacity: 1;
+        }
+
+
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+        body{
+            background: #f2f2f2;
+        }
+
+        .search {
+            width: 100%;
+            position: relative;
+            display: flex;
+        }
+
+        .searchTerm {
+            width: 100%;
+            border: 3px solid #00B4CC;
+            border-right: none;
+            padding: 5px;
+            height: 20px;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+            color: #9DBFAF;
+        }
+
+        .searchTerm:focus{
+            color: #00B4CC;
+        }
+
+        .searchButton {
+            width: 800px;
+            height: 36px;
+            border: 1px solid #00B4CC;
+            background: #00B4CC;
+            text-align: center;
+            color: #fff;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+
+    </style>
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
+
+
+    <div class="body_wrapper">
+
+        <section class="breadcrumb_area"
+                 style="background-image: url('{{ asset('image/feedbacks/Img-01.jpg') }}'); background-position:  center center; background-repeat: no-repeat; background-size: cover;">
+            <img class="breadcrumb_shap" src="{{ asset('image/feedbacks/banner_bg.png') }}" alt="">
+            <div class="container">
+                <div class="breadcrumb_content text-center">
+                    <h1 class="f_p f_700 f_size_50 w_color l_height50 mb_20">Notre Vitrine</h1>
+                    <p class="f_400 w_color f_size_16 l_height26">Merci de votre confiance !!<br> </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="container">
+        <div class="cms_searvice">
+
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="payment_features_item text-center">
+                    <img src="{{ asset('uploads/icon.png') }}" alt="">
+                    <h4>Interchange fees</h4>
+                    <p>Oxford I don't want no agro naff sloshed. I bite your arm off mush hunky-dory nice one ummm I'm telling lurgy we.!</p>
+                    <a href="#" class="learn_btn_two">Learn More <i class="ti-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="payment_features_item text-center">
+                    <img src="{{ asset('uploads/icon2.png') }}" alt="">
+                    <h4>Our Corporate</h4>
+                    <p>Oxford I don't want no agro naff sloshed. I bite your arm off mush hunky-dory nice one ummm I'm telling lurgy we.!</p>
+                    <a href="#" class="learn_btn_two">Learn More <i class="ti-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="payment_features_item text-center">
+                    <img src="{{ asset('uploads/icon3.png') }}"alt="">
+                    <h4>European Regulation</h4>
+                    <p>Oxford I don't want no agro naff sloshed. I bite your arm off mush hunky-dory nice one ummm I'm telling lurgy we.!</p>
+                    <a href="#" class="learn_btn_two">Learn More <i class="ti-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+    <div id="center">
+        <div class="container">
+            <div class="row">
+
+                <script>
+
+                </script>
+                <div class="content col-sm-12">
+                    <div class="customtab">
+                        <h3 class="productblock-title">Notre Produits</h3>
+
+
+                    </div>
+                    <section style="padding: 55px;">
+                        <div class="top-right pull-right">
+
+                        <div id="search" class="input-group">
+
+
+                            <form method="post">
+                                <input id="prixx"   type="text" name="prixx" placeholder="rechercher" >
+                            </form>
+                                </span></div>
+                        </div>
+                        <div class="faq_tab">
+                            <h4 class="f_p t_color3 f_600 f_size_22 mb_40">Navigation</h4>
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="purchas-tab" data-toggle="tab" href="#purchas" role="tab" aria-controls="purchas" aria-selected="true">Catégorie Produit</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="returns-tab" data-toggle="tab" href="#returns" role="tab" aria-controls="returns" aria-selected="false">Mes favoris</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="price-tab"
+                        href="{{ path('index') }}" >Mon Panier</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="care-tab" data-toggle="tab" href="#care" role="tab" aria-controls="care" aria-selected="false">Care &amp; Repair</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </section>
+
+                    <h2></h2>
+                    <div id="result"></div>
+                    <div>
+                    <form action="#" method="post" id="ratingsForm">
+
+                        <div class="col-md-12 product-model-sec" id="init">
+
+                    {% for produits in produits %}
+
+                    <figure class="snip1519" >
+
+                        <figcaption>
+                                        <img src="{{ asset('uploadsProduit/produit_image/' ~ produits.photo) }}"  title="iPod Classic"  class="img-responsive" />
+                                        <p class="card-title">{{ produits.libelle }} {{ produits.prix }}</p>
+                            <p class="card-description">
+                                            <a href="{{ path('ajouter_note_produit',{'note' : 1 , 'idProduit' : produits.id}) }}"><i class="fa fa-star"></i> </a>
+                                            <a href="{{ path('ajouter_note_produit',{'note' : 2 , 'idProduit' : produits.id}) }}"><i class="fa fa-star"></i> </a>
+                                            <a href="{{ path('ajouter_note_produit',{'note' : 3 , 'idProduit' :produits.id}) }}"><i class="fa fa-star"></i> </a>
+                                            <a href="{{ path('ajouter_note_produit',{'note' : 4 , 'idProduit' : produits.id}) }}"><i class="fa fa-star"></i> </a>
+                                            <a href="{{ path('ajouter_note_produit',{'note' : 5 , 'idProduit' :produits.id}) }}"><i class="fa fa-star"></i> </a>
+
+                            </p>
+
+
+                            <div class="col-xs-4">
+                                            <span class="color1">
+
+                                                  {% set n = 0 %}
+                                                    {% for fav in listfav  %}
+                                                            {% if fav.produit.id!=produits.id %}
+                                                            {% set n = n+1 %}
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                    {% if listfav|length > n %}
+                                                        <img  id="{{ produits.id }}" src="{{ asset ('uploads/black_heart.png') }}" class="img-responsive" alt="" style="width: 50px;" onclick="starAction({{ produits.id  }})">
+                                                    {% else %}
+                                                        <img id="{{ produits.id }}" src="{{ asset ('uploads/white_heart.png') }}" class="img-responsive" alt=""  style="width: 50px;" onclick="starAction({{ produits.id  }})">
+
+                                                    {% endif %}
+
+                                            </span>
+                                        </div>
+                            <div class="col-xs-4">
+
+
+                                        <span>
+                                            <a href="{{ path ('cart_add',{'id': produits.id}) }}">
+                                     <img src="{{ asset ('uploads/cart.png') }}" class="img-responsive" alt="" style="width: 50px;">
+                                            </a>
+                                            </span>
+
+
+
+                            </div>
+
+                                        <div class="col-xs-4">
+
+
+                                        <span class="color1">
+                                            <a href="{{ path('detail_produit',{'id':produits.id}) }}">
+
+                                        <img  id="{{ produits.id }}" src="{{ asset ('uploads/eye.png') }}" class="img-responsive " alt="" style="width: 50px;">
+                                            </a>
+                                            </span>
+
+
+                                        </div>
+
+
+                        </figcaption>
+                    </figure>
+                    {% endfor %}
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+        <script src="{{asset('assets/js/jquery.min.js') }}">    </script>
+        <script>
+
+
+        function starAction(id) {
+                if(document.getElementById(id).src== "http://localhost/test/test/web/uploads/white_heart.png") {
+                    document.getElementById(id).src="{{ asset ('uploads/black_heart.png')}}" ;
+                        $.ajax({
+                    type: "post",
+                    url: "{{ path('favoris_produit') }}",
+                    data: {"id":id}
+                })
+            }else {
+                document.getElementById(id).src="{{ asset ('uploads/white_heart.png')}}";
+                $.ajax({
+                    type: "post",
+                    url: "{{ path('non_favoris') }}",
+                    data: {"id":id}
+                })
+            }
+        }
+
+
+
+
+        $(document).ready(function () {
+
+            $("#prixx").keyup(function(){
+                console.log("ttt");
+
+                var filter = $("#prixx").val();
+                var data = {"prixx":filter};
+                $.ajax({
+                    type: "post",
+                    url: "{{ path('city_autocomplete') }}",
+                    data:data,
+                    success: function(data){
+                        $("#result").html('<figure class="snip1519" id="xd">'+'</figure>')
+                        $.each(data,function(k,v){
+                            $("#init").hide();
+                            $("#xd").append(
+                                '<figcaption>'+
+                                '<img  class="img-responsive"  src="http://localhost/test/test/web/uploadsProduit/produit_image/'+v.photo+'">'+
+
+                                ' <p class="card-title">'+v.libelle+'</p>'+
+
+                                '<span class="item_price">Prix: '+v.prix+'</span>'+
+                                // '<span class="item_price">Auteur: '+v.idUser.username+'</span>'+
+                                '</figcaption>'
+                            );
+                            if ($("#prixx").val()==''){
+
+                                $("#init").show();
+                                $("#result").empty();
+
+                            }
+
+                        })
+
+
+                    }
+
+
+
+                });
+
+            });
+
+
+        });
+
+
+        {#function noteProduitAction(id,note) {#}
+        {#    $.ajax({#}
+        {#        type : "post",#}
+        {#        url :"{{ path('ajout_note_produit') }}",#}
+        {#        data: {"id" : id,"note":note}#}
+        {#    });#}
+        {#}#}
+
+
+    </script>
+
+{% endblock %}

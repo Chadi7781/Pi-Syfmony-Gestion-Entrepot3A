@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <base href="https://localhost/Test/">
+    <title style="color:#332893;" >S4S facture</title>
+    <link rel="stylesheet" href="{{ absolute_url(asset('css/style.css')) }}"  />
+</head>
+<body>
+<header class="clearfix">
+    <div id="logo">
+        <img src="{{ absolute_url(asset('image/s4s.png')) }}">
+
+    </div>
+    <div id="company">
+        <h2 class="name">Stock For Speed</h2>
+        <div>3 Rue de Russie,Tunis,Tunisie</div>
+        <div> Tèl :(+216) 23-000-000</div>
+        <div><a href="mailto:company@example.com">S4S@company.com</a></div>
+        <div> Merci Pour Votre Confiance!</div>
+    </div>
+    </div>
+</header>
+<main>
+    <div id="details" class="clearfix" >
+        <div id="client">
+            <div class="to">Facturè A: </div>
+            <h2 class="name">{{app.user.username}}</h2>
+            <div class="email"><a href="mailto:john@example.com">{{app.user.email}}</a></div>
+        </div>
+        <div id="invoice">
+            <h1>Facture S4S</h1>
+            <div class="date">Date de generation de facture: {{app.user.lastLogin|date('d-m-Y')}}</div>
+            <div class="date">Date de Reception du collier : 30/06/2014</div>
+        </div>
+    </div>
+    <table border="0" cellspacing="0" cellpadding="0">
+        <thead>
+        <tr>
+            <th class="no" style="background:#332893;">Reference du facture</th>
+            <th class="desc">Le Produit est Fragile ?</th>
+            <th class="unit">Poids</th>
+            <th class="total "style="background:#332893;"> PRIX TOTAL</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="no" style="background:#332893;">{{ livraison.idLivraison }}</td>
+            <td class="desc">{{ livraison.fragile }}</td>
+            <td class="unit">{{ livraison.poids }} kg </td>
+            <td class="total" style="background:#332893;">{{ livraison.prix }} en dinars</td>
+
+        </tr>
+        </tbody>
+    </table>
+    <div id="details" class="clearfix" >
+        <div id="client">
+        <h2 class="name" style="color:#399FDF ;text-decoration:underline;font-family: Arial, sans-serif ;size: 30px"> Information Gènèrale :</h2>
+    </div>
+    </div>
+    <p>
+        <label class="name" > Adresse d'Expediteur  :</label>
+            <label class="name">  {{ livraison.adresseDepart }}</label>
+
+    </p>
+
+        <p>
+            <label style="=color:red;"> Adresse Destinataire  :</label>
+
+            <label> {{ livraison.adresseArrive }}</label>
+
+        </p>
+        <p>
+            <label style="=color:red;"> Point De Collecte  :</label>
+
+            <label> {{ livraison.idMagasin.nom|default(' Vous avez Choisi la livraison a Domicile') }}</label>
+
+        </p>
+    <div id="details" class="clearfix" >
+        <div id="client">
+            <h2 class="name" style="color:#399FDF ;text-decoration:underline;font-family: Arial, sans-serif ;size: 30px;alignment: left"> Photo du Produit :</h2>
+        </div>
+    </div>
+    <div id="details" class="clearfix" >
+
+        <div id="company">
+        <div >
+            <figure >
+                <img src="{{absolute_url( asset('image/' ~ livraison.photoProduit)) }}" style="width: 200px" alt="image description">
+            </figure>
+        </div>
+        </div>
+    </div>
+
+    <div id="details" class="clearfix" >
+        <div id="client">
+            <h2 class="name" style="color:#399FDF ;text-decoration:underline;font-family: Arial, sans-serif ;size: 30px;alignment: left"> Votre Qr Code :</h2>
+        </div>
+    </div>
+    <div id="details" class="clearfix" >
+
+        <div id="company">
+            <div >
+                <figure >
+                    <img src="{{ qrcode_data_uri('S4S FACTURE' ~ livraison.idLivraison) }}" />
+                </figure>
+            </div>
+        </div>
+    </div>
+
+
+
+</main>
+
+</body>
+</html>

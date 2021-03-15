@@ -1,0 +1,33 @@
+{%  extends 'frontend/base.html.twig' %}
+
+{% block content %}
+
+
+<div id="center">
+    <div class="container">
+        <div class="row">
+            <div class="content col-sm-12">
+                <div class="customtab">
+                    <h3 class="productblock-title">Choisire Categorie</h3>
+                     </div>
+
+                <div id="tab-furniture" class="tab-content">
+                    <div class="box">
+                        <div id="special-slidertab" class="row owl-carousel product-slider">
+                            {% for i in categorie %}
+                            <div class="item">
+                                <div class="product-thumb">
+                                    <div class=""> <a href="{{ path('ajouter',{'id':i.id}) }}"> <img src="{{ asset('uploadsProduit/produit_image/' ~ i.photo) }}" alt="" title="iPod Classic" /> </a>
+                                    </div>
+
+
+                                    <div class="caption product-detail">
+                                        <h4 class="product-name"><a href="{{ path('ajouter',{'id':i.id}) }}" title="Casual Shirt With Ruffle Hem">{{i.nom}}</a></h4>
+
+                                    </div> </div>
+                                    </div>
+                            {% endfor%}
+
+
+{% endblock %}
+

@@ -1,0 +1,25 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+<div class="forny-container">
+
+    <div class="forny-inner">
+        <div class="forny-form">
+            <div class="mb-8 text-center forny-logo">
+                <img src="{{ asset('image/s4s.png') }}" style="max-width: 20%;">
+            </div>
+            <div class="text-center">
+                <h4>Bienvenue chez S4S</h4>
+                <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+                <a href="{{ path('livraison_afficher') }}"   class="notify-btn animated fadeInRightShort">Accueil</a>
+            </div>
+
+    {% if targetUrl %}
+    <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
+    {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock fos_user_content %}

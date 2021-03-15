@@ -1,0 +1,77 @@
+
+{%  extends 'backend/base.html.twig' %}
+
+
+{% block subtitle %}
+    <a href="index.html" class="waves-effect"><i class="mdi mdi-view-dashboard"></i> <span> Liste des Depots </span> </a>
+
+{% endblock %}
+
+    {% block content %}
+
+        <div class="content-page">
+            <!-- Start content -->
+            <div class="content">
+                <div class="container-fluid">
+
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card-box table-responsive">
+                                <a href="{{ path('depot_new') }}" class="btn btn-primary">Creer un depot</a>
+                                <table id="datatable-buttons" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th>Adresse</th>
+                                        <th>Etat</th>
+                                        <th>Surface</th>
+                                        <th>Action</th>
+
+                                    </tr>
+                                    </thead>
+
+
+                                    <tbody>
+                                    {% for dep in depots %}
+                                        <tr>
+                                            <td>{{ dep.adresse }}</td>
+                                            <td>{{ dep.etat }}</td>
+                                            <td>{{ dep.surface }}</td>
+
+
+                                            <td>
+                                                {#<button class="btn btn-success">Modifier</button>#}
+                                                <a class="btn btn-success" href="{{ path('depot_edit', {'id': dep.id}) }}">Editer</a>
+                                                <a class="btn btn-danger" href="{{ path('depot_delete', {'id': dep.id}) }}">Supprimer</a>
+                                            </td>
+
+                                        </tr>
+                                    {% endfor %}
+
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end row -->
+
+
+
+
+
+
+
+
+
+                </div> <!-- container -->
+
+            </div> <!-- content -->
+
+            <footer class="footer text-right">
+                2016 - 2018 © Adminto. Coderthemes.com
+            </footer>
+
+        </div>
+    {% endblock %}

@@ -1,0 +1,774 @@
+
+
+{%  extends 'backend/base.html.twig' %}
+
+
+{% block content %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style>
+
+    table tr:nth-child(even){
+        background-color: #e4e3e3
+    }
+
+    th {
+        background: #333;
+        color: #fff;
+    }
+
+    .pagination {
+        margin: 0;
+    }
+
+    .pagination li:hover{
+        cursor: pointer;
+    }
+
+    .header_wrap {
+        padding:30px 0;
+    }
+    .num_rows {
+        width: 20%;
+        float:left;
+    }
+    .tb_search{
+        width: 20%;
+        float:right;
+    }
+    .pagination-container {
+        width: 70%;
+        float:left;
+    }
+
+    .rows_count {
+        width: 20%;
+        float:right;
+        text-align:right;
+        color: #999;
+    }
+
+
+    /* Hide default HTML checkbox */
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    /* The slider */
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    input:checked + .slider {
+        background-color: #2196F3;
+    }
+
+    input:focus + .slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 34px;
+    }
+
+    .slider.round:before {
+        border-radius: 50%;
+    }
+</style>
+
+
+<div class="content-page">
+    <style>
+        .slidecontainer {
+            width: 100%;
+        }
+        .slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 25px;
+            background: #d3d3d3;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+        }
+        .slider:hover {
+            opacity: 1;
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            background: #EC7575;
+            cursor: pointer;
+        }
+        .slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            background: #EC7575;
+            cursor: pointer;
+        }
+        .show-on-hover:hover > ul.dropdown-menu {
+            display: block;
+        }
+        .list-notificacao{
+            min-width: 400px;
+            background: #ffffff;
+        }
+        .list-notificacao li{
+            border-bottom : 1px #d8d8d8 solid;
+            text-align    : justify;
+            padding       : 5px 10px 5px 10px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .list-notificacao li:hover{
+            background: #f1eeee;
+        }
+        .list-notificacao li:hover .exclusaoNotificacao{
+            display: block;
+        }
+        .list-notificacao li  p{
+            color: black;
+            width: 305px;
+        }
+        .list-notificacao li .exclusaoNotificacao{
+            width: 25px;
+            min-height: 40px;
+            position: absolute;
+            right: 0;
+            display: none;
+        }
+        .list-notificacao .media img{
+            width: 40px;
+            height: 40px;
+            float:left;
+            margin-right: 10px;
+        }
+        .badgeAlert {
+            display: inline-block;
+            min-width: 10px;
+            padding: 3px 7px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1;
+            vertical-align: baseline;
+            white-space: nowrap;
+            text-align: center;
+            background-color: #d9534f;
+            border-radius: 10px;
+            position: absolute;
+            margin-top: -10px;
+            margin-left: -10px
+        }
+    </style>
+
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+
+
+
+    <nav class="navbar-custom">
+        <li class="hide-phone">
+            <div class="nav navbar-nav navbar">
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span class="glyphicon glyphicon-bell alertNotificacao"></span>
+                        <span class='badgeAlert' id="count">{{ mgilet_notification_unseen_count(notifiableEntity) }}</span>
+                        <span class="caret"></span></a>
+                    <ul class="list-notificacao dropdown-menu">
+                        {%  set var=0 %}
+                        {% for notifiableNotification in notifiableNotifications %}
+                            {% if notifiableNotification.seen==0 %}
+                                {% set var=var+1 %}
+                                <li id='item_notification_{{ var }}'>
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <a href="">
+                                                <img alt="64x64" class="media-object" data-src="holder.js/64x64" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWZhMWJmZmI3MCB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1ZmExYmZmYjcwIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMy40Njg3NSIgeT0iMzYuNSI+NjR4NjQ8L3RleHQ+PC9nPjwvZz48L3N2Zz4=" data-holder-rendered="true"> </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <form action="{{ mgilet_notification_generate_path('notification_mark_as_seen', notifiableNotification.notifiableEntity, notifiableNotification.notification) }}"
+                                                  method="post">
+                                                <div class='exclusaoNotificacao'><button  class='btn btn-danger btn-xs button_exclusao' id='{{ var }}' onclick='excluirItemNotificacao(this)'>x</button>
+                                                </div>
+                                            </form>
+
+                                            <h4 class="media-heading">{{  notifiableNotification.notification.subject }}</h4>
+                                            <p>{{  notifiableNotification.notification.message }}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+
+            </div>
+
+        </li>
+        <ul class="list-unstyled topbar-right-menu float-right mb-0">
+
+            <li>
+                <!-- Notification -->
+                <!-- /.navbar-collapse -->
+
+                <!-- End Notification bar -->
+            </li>
+
+
+
+        </ul>
+    </nav>
+    <!-- Start content -->
+    <div class="content">
+
+
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-12">
+
+                    <div class="card-box table-responsive">
+
+                        <h4 class="m-t-0 header-title">Liste des Récalamtions</h4>
+
+
+                        <p class="text-muted font-14 m-b-30">
+
+                        </p>
+                        <div id="datatable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer"><div class="row"><div class="col-sm-12 col-md-12"><div class="dataTables_length" id="datatable_length">
+
+
+                                        <div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="datatable_length">
+                                                    <ul class="list-unstyled topbar-right-menu float-right mb-0">
+
+
+                                                        <li class="hide-phone">
+                                                            <form class="app-search">
+                                                                <input type="text" placeholder="Recherche Reclamation..." class="form-control" style="width: 400%;" id="search_input_all"
+                                                                       onkeyup="FilterkeyWord_all_table()">
+                                                                <br>
+                                                                <button type="submit"><i class="fa fa-search"></i></button>
+                                                            </form>
+                                                        </li>
+
+                                                    </ul>
+                                                </div></div></div>
+                                        <div class="header_wrap">
+                                            <div class="rows">
+                                                <div class="col-sm-12">
+                                                    <div class="form-group"> 	<!--		Show Numbers Of Rows 		-->
+                                                        <select style="height: 50%;" class  ="form-control" name="state" id="maxRows">
+
+
+                                                            <option value="2">2</option>
+                                                            <option value="5">5</option>
+
+                                                            <option value="50">Tout</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="rows">
+                                            <div class="col-sm-12">
+
+                                                <table id= "table-id" class="table table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
+
+
+                                                    <thead>
+                                                    <tr role="row">
+                                                        <th  >Objet</th>
+                                                        <th  >date</th>
+                                                        <th >Traiter</th>
+                                                        <th >detail</th>
+
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    {% for reclamations in reclamations %}
+                                                        <tr>
+                                                            <td>{{ reclamations.objet}}</td>
+                                                            <td>{{ reclamations.date |date }}</td>
+                                                            {#                                            <td>{{ reclamations.etat }}</td>#}
+
+
+                                                            <td>
+
+
+                                                                {%  if reclamations.etat == 0 %}
+
+                                                            <a href="{{ path ('reponse_reclamation',{'id': reclamations.idRec}) }}">
+                                                                <span id ='encour' class="label label-danger label-wide">En cours</span>
+
+                                                            </a>
+
+                                                                    {% else %}
+
+{#                                                                <div class="modal fade"  style="float: -50;" id="myModal{{ reclamations.idRec }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">#}
+
+{#                                                                    <div class="modal-dialog" >#}
+{#                                                                        <div class="modal-content">#}
+{#                                                                            <div class="modal-header">#}
+{#                                                                                <h4 class="modal-title" id="myModalLabel">Bienvenue</h4>#}
+{#                                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>#}
+{#                                                                            </div>#}
+
+{#                                                                            <div class="modal-body">#}
+{#                                                                                <h4>Traiter Réclamation</h4>#}
+{#                                                                                <hr>#}
+{#                                                                                <p>Voullez vous vraiement traiter ce reclamation  ??</p>#}
+
+{#                                                                            </div>#}
+{#                                                                            <div class="modal-footer">#}
+{#                                                                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Annuler</button>#}
+
+{#                                                                                <a href="{{ path ('admin_traiter_reclamation',{'id': reclamations.idRec}) }}" data-toggle="myModal" class="btn btn-danger waves-effect waves-light"  id="lien" >Traiter</a>#}
+{#                                                                                {% endif %}#}
+
+
+
+
+{#                                                                            </div>#}
+{#                                                                        </div><!-- /.modal-content -->#}
+{#                                                                    </div><!-- /.modal-dialog -->#}
+{#                                                                </div><!-- /.modal -->#}
+{#                                                                {% if reclamations.etat == 1 %}#}
+                                                                    <span class="label label-success label-wide">Traité</span>
+
+
+
+                                                                    {#                                                <label class="switch">#}
+                                                                    {#                                                    <input type="checkbox" >#}
+                                                                    {#                                                    <span class="slider round"></span>#}
+                                                                    {#                                                </label>#}
+                                                                {% endif %}
+
+
+                                                            </td>
+
+                                                            <td>
+
+                                                                <i class="fa fa-th-list"  style="font-size: 20px; color: #00aced;" data-toggle="modal" data-target="#myModal{{ reclamations.idRec }}"></i>
+
+                                                                <div class="modal fade" id="myModal{{ reclamations.idRec }}"
+                                                                     tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                                    <div class="modal-dialog">
+                                                                        <br><br><br><br>
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h4 class="modal-title" id="myModalLabel"> Description de reclamtion :</h4>
+
+                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <div class="row">
+
+                                                                                    <div class="col-lg-12">
+
+
+                                                                                        <div class="text-custom">                                    {{ reclamations.description }}
+                                                                                        </div>
+
+                                                                                        <img src="{{ asset('uploads/reclamation_image/' ~ reclamations.image) }}">
+                                                                                    </div>
+                                                                                    <div class="col-lg-6">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </td>
+                                                        </tr>
+
+                                                    {% endfor %}
+                                                    <tbody>
+                                                </table>
+                                            </div></div>
+                                        <!--		Start Pagination -->
+                                        <div class='pagination-container'>
+                                            <nav>
+                                                <ul class="pagination">
+                                                    <!--	Here the JS Function Will Add the Rows -->
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                        <div class="rows_count"></div>
+
+                                    </div>
+                                </div>
+                                <!-- 		End of Container -->
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <!--  Developed By Yasser Mas -->
+
+
+
+                    <!-- Custom Modals -->
+
+
+
+
+
+
+
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+
+
+                    <script>
+
+                        getPagination('#table-id');
+                        $('#maxRows').trigger('change');
+                        function getPagination (table){
+
+                            $('#maxRows').on('change',function(){
+                                $('.pagination').html('');						// reset pagination div
+                                var trnum = 0 ;									// reset tr counter
+                                var maxRows = parseInt($(this).val());			// get Max Rows from select option
+
+                                var totalRows = $(table+' tbody tr').length;		// numbers of rows
+                                $(table+' tr:gt(0)').each(function(){			// each TR in  table and not the header
+                                    trnum++;									// Start Counter
+                                    if (trnum > maxRows ){						// if tr number gt maxRows
+
+                                        $(this).hide();							// fade it out
+                                    }if (trnum <= maxRows ){$(this).show();}// else fade in Important in case if it ..
+                                });											//  was fade out to fade it in
+                                if (totalRows > maxRows){						// if tr total rows gt max rows option
+                                    var pagenum = Math.ceil(totalRows/maxRows);	// ceil total(rows/maxrows) to get ..
+                                    //	numbers of pages
+                                    for (var i = 1; i <= pagenum ;){			// for each page append pagination li
+                                        $('.pagination').append('<li data-page="'+i+'">\
+								      <span>'+ i++ +'<span class="sr-only">(current)</span></span>\
+								    </li>').show();
+                                    }											// end for i
+
+
+                                } 												// end if row count > max rows
+                                $('.pagination li:first-child').addClass('active'); // add active class to the first li
+
+
+                                //SHOWING ROWS NUMBER OUT OF TOTAL DEFAULT
+                                showig_rows_count(maxRows, 1, totalRows);
+                                //SHOWING ROWS NUMBER OUT OF TOTAL DEFAULT
+
+                                $('.pagination li').on('click',function(e){		// on click each page
+                                    e.preventDefault();
+                                    var pageNum = $(this).attr('data-page');	// get it's number
+                                    var trIndex = 0 ;							// reset tr counter
+                                    $('.pagination li').removeClass('active');	// remove active class from all li
+                                    $(this).addClass('active');					// add active class to the clicked
+
+
+                                    //SHOWING ROWS NUMBER OUT OF TOTAL
+                                    showig_rows_count(maxRows, pageNum, totalRows);
+                                    //SHOWING ROWS NUMBER OUT OF TOTAL
+
+
+
+                                    $(table+' tr:gt(0)').each(function(){		// each tr in table not the header
+                                        trIndex++;								// tr index counter
+                                        // if tr index gt maxRows*pageNum or lt maxRows*pageNum-maxRows fade if out
+                                        if (trIndex > (maxRows*pageNum) || trIndex <= ((maxRows*pageNum)-maxRows)){
+                                            $(this).hide();
+                                        }else {$(this).show();} 				//else fade in
+                                    }); 										// end of for each tr in table
+                                });										// end of on click pagination list
+                            });
+                            // end of on select change
+
+                            // END OF PAGINATION
+
+                        }
+
+
+
+
+
+
+                        //ROWS SHOWING FUNCTION
+                        function showig_rows_count(maxRows, pageNum, totalRows) {
+                            //Default rows showing
+                            var end_index = maxRows*pageNum;
+                            var start_index = ((maxRows*pageNum)- maxRows) + parseFloat(1);
+                            var string = 'Showing '+ start_index + ' to ' + end_index +' of ' + totalRows + ' entries';
+                            $('.rows_count').html(string);
+                        }
+
+                        // // CREATING INDEX
+                        // function default_index() {
+                        //     $('table tr:eq(0)').prepend('<th> <Objet></Objet> </th>')
+                        //
+                        //     var id = 0;
+                        //
+                        //     $('table tr:gt(0)').each(function(){
+                        //         id++
+                        //         $(this).prepend('<td>'+id+'</td>');
+                        //     });
+                        // }
+
+                        // All Table search script
+                        function FilterkeyWord_all_table() {
+
+// Count td if you want to search on all table instead of specific column
+
+                            var count = $('.table').children('tbody').children('tr:first-child').children('td').length;
+
+                            // Declare variables
+                            var input, filter, table, tr, td, i;
+                            input = document.getElementById("search_input_all");
+                            var input_value =     document.getElementById("search_input_all").value;
+                            filter = input.value.toLowerCase();
+                            if(input_value !=''){
+                                table = document.getElementById("table-id");
+                                tr = table.getElementsByTagName("tr");
+
+                                // Loop through all table rows, and hide those who don't match the search query
+                                for (i = 1; i < tr.length; i++) {
+
+                                    var flag = 0;
+
+                                    for(j = 0; j < count; j++){
+                                        td = tr[i].getElementsByTagName("td")[j];
+                                        if (td) {
+
+                                            var td_text = td.innerHTML;
+                                            if (td.innerHTML.toLowerCase().indexOf(filter) > -1) {
+                                                //var td_text = td.innerHTML;
+                                                //td.innerHTML = 'shaban';
+                                                flag = 1;
+                                            } else {
+                                                //DO NOTHING
+                                            }
+                                        }
+                                    }
+                                    if(flag==1){
+                                        tr[i].style.display = "";
+                                    }else {
+                                        tr[i].style.display = "none";
+                                    }
+                                }
+                            }else {
+                                //RESET TABLE
+                                $('#maxRows').trigger('change');
+                            }
+                        }
+                    </script>
+
+
+
+                    <script>
+                        $( document ).ready(function() {
+
+                            //NotifsCount = {{ mgilet_notification_count(notifiableEntity) }};
+                            $('input[name=iCheck]').each(function () {
+                                var self = $(this),
+                                    label = self.next(),
+                                    label_text = label.text();
+                                label.remove();
+                                self.iCheck({
+                                    checkboxClass: 'icheckbox_line-red',
+                                    radioClass: 'iradio_line-red',
+                                    insert: '<div class="icheck_line-icon"></div>' + label_text
+                                });
+                            });
+                            $("#search").keyup(function () {
+                                UpdateCov();
+                            });
+                            $('input[name=iCheck]').on('ifChecked', function (event) {
+                                UpdateCov();
+                            });
+                            $('select').change(function () {
+                                UpdateCov();
+                            });
+                            UpdateCov();
+                        });
+
+                        function excluirItemNotificacao(e){
+                            $('#item_notification_'+e.id).remove();
+                        }
+                        function UpdateCov() {
+                            $.ajax({
+                                type: 'POST',
+                                url: "{{ path("chercher_reclamation") }}",
+                                data: {
+                                    date: textDate,
+                                    input: $("#search").val(),
+                                    type: $('input[name=iCheck]:checked').val(),
+                                    SortBy: $('select').val()
+                                },
+                                success: function (data) {
+                                    $('#container').hide();
+                                    $('#covoiturages').html("<div id=\"container\"  class=\"container\"> </div>");
+                                    $.each(data, function (k, el) {
+                                        $('#container').append(
+                                            " <div class=\"col-md-3 feature-grid\">\n" +
+                                            "                    <a><img src=\"{{ asset('images/Ressources/DefaultUser.png') }}\" alt=\"\"/>\n" +
+                                            "                      <p>" + el.idU.username + "</p>" +
+                                            "                        <div class=\"arrival-info\">\n" +
+                                            "                            <h4>From</h4>\n" +
+                                            "                            <p>" + el.depart + "</p>\n" +
+                                            "                            <h4>To</h4>\n" +
+                                            "                            <p>" + el.destination + "</p>\n" +
+                                            "                        </div>\n" +
+                                            "                        <div class=\"viw\">\n" +
+                                            "                                <a href=\"/covoiturage/Afficher?id=" + el.id + "\"><span class=\"glyphicon glyphicon-eye-open\" aria-hidden=\"true\"></span>View</a>\n" +
+                                            "                        </div>\n" +
+                                            "                    </a>\n" +
+                                            "                </div>"
+                                        )
+                                    })
+                                }
+                            });
+                        }
+                        //          }
+                        var slider = document.getElementById("myRange");
+                        var output = document.getElementById("demo");
+                        var today = new Date();
+                        prev = 0;
+                        textDate = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate()
+                        slider.oninput = function() {
+                            if(this.value>prev){
+                                today.setDate(today.getDate()+(this.value-prev));
+                                prev=this.value;
+                            }else {
+                                today.setDate(today.getDate()+(this.value-prev));
+                                prev=this.value;
+                            }
+                            if(this.value==0)
+                                output.innerHTML = 'Today';
+                            else
+                                output.innerHTML = today.getDate()+"/"+(today.getMonth()+1)+"/"+today.getFullYear();
+                            textDate = today.getFullYear()+"-"+(today.getMonth()+1)+"-"+today.getDate()
+                            UpdateCov();
+                        };
+
+
+                    </script>
+
+                    <script>
+
+
+                        //
+
+
+
+                        function autoReload() {
+
+
+                            setTimeout(function() {
+
+
+                                $.ajax({
+
+
+                                    url: 'http://localhost/ProjetWebSymfony/test/web/app_dev.php/serviceApresVentes/Admin/readReclamation',
+
+
+                                    success: function(data) {
+
+
+                                        $("#test_container").load(" #test_container");
+
+
+                                    }
+
+
+                                });
+
+
+
+
+                                autoReload();  // refresh the page every 5 seconds
+
+
+                            }, 15000);
+
+
+                        }
+
+
+
+
+                        autoReload();
+
+
+
+                    </script>
+                    {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

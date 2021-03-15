@@ -1,0 +1,99 @@
+{%  extends 'backend/base.html.twig' %}
+
+
+{% block subtitle %}
+    <h4 class="page-title"> Livraison</h4>
+{% endblock %}
+
+
+    {% block content %}
+
+        <div class="content-page">
+            <!-- Start content -->
+            <div class="content">
+                <div class="container-fluid">
+
+
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card-box table-responsive">
+
+                                <div class="col-sm-12 col-md-6">
+                                    <div id="selection-datatable_filter" class="dataTables_filter">
+                                        <label style="color: #8B0000 ; font-family:Arial Black, Gadget, sans-serif ;">Recherche Par Etat:
+
+                                        </label>
+                                        <form method="POST" style="margin-bottom: 80px">
+                                            <select class= "col-sm-12 col-md-6" style="color: black ; Gadget; sans-serif ;size: 20px" name="etat" >
+                                                <option value="All">All</option>
+                                                <option value="En Cours">En Cours</option>
+                                                <option value="Confirmer">Confirmer</option>
+                                            </select>
+                                            <input type="submit" name="submit"  value="Rechercher">
+                                        </form>
+
+
+                                    </div>
+                                </div>
+
+
+
+                                <table id="datatable" class="table table-bordered">
+                                    <thead>
+                                    <tr style="color:#99794e;">
+                                        <th>Adresse d'Expediteur</th>
+                                        <th>Adresse Destinataire</th>
+                                        <th>Photo du Produit</th>
+                                        <th>Date de Reception</th>
+                                        <th>Etat</th>
+
+
+                                    </tr>
+                                    </thead>
+
+
+                                    <tbody>
+                                    {% for livraison in livraison %}
+                                        <tr>
+                                            <td>{{ livraison.adresseDepart }}</td>
+                                            <td>{{ livraison.adresseArrive }}</td>
+                                            <td><figure >
+                                                    <img src="{{ asset('image/' ~ livraison.photoProduit) }}" style="width: 100px" alt="image description">
+                                                </figure></td>
+                                            <td>{{ livraison.dateReception }}</td>
+                                            <td>{{ livraison.etat }}</td>
+
+
+                                            <td>
+                                            <div class="btn-group btn-group-justified m-b-10">
+                                                <a href="{{ path('Traiter_livraison', {'idLivraison': livraison.idLivraison }) }}"> <button type="button" class="btn btn-custom btn-bordred waves-effect waves-light w-md m-b-5" >Traiter Demande De Livraison</button></a>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </div> <!-- container -->
+
+        </div> <!-- content -->
+
+        <footer class="footer text-right">
+            2016 - 2018 © Adminto. Coderthemes.com
+        </footer>
+
+        </div>
+
+    {% endblock %}

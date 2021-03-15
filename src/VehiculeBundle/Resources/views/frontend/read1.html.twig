@@ -1,0 +1,31 @@
+{% if v == NULL %}
+    <h3>Pas de vehicules</h3>
+{% else %}
+    <h1> les vehicules</h1>
+    <table border="1" align="center">
+        <tr>
+            <td>matricule</td>
+            <td>Photo</td>
+            <td>type</td>
+            <td>marque</td>
+            <td>puissance</td>
+            <td>Kilometrage</td>
+            <td>nbre de place</td>
+            <td>Prix   </td>
+
+
+        </tr>
+        {% for i in v %}
+            <tr>
+                <td> {{ i.matricule }}</td>
+                <td> <img src="{{ asset('imgvehiculess/'~i.photo )}}" style="width: 100px; height: 50px"></td>
+                <td> {{ i.type }}</td>
+                <td> {{ i.marque }}</td>
+                <td> {{ i.puissance }}</td>
+                <td> {{ i.Kilometrage }}</td>
+                <td> {{ i.nbPlace }}</td>
+                <td> {{ i.prix }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}

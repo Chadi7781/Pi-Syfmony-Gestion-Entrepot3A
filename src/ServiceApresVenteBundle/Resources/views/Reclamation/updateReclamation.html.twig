@@ -1,0 +1,108 @@
+
+{%  extends 'frontend/base.html.twig' %}
+
+{% block content %}
+    <link href="{{ asset('style.css') }}" rel="stylesheet">
+
+
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('BundleExterne/css/rating.css') }}" />
+    <div class="body_wrapper">
+
+        <section class="breadcrumb_area"
+                 style="background-image: url('{{ asset('image/feedbacks/Img-01.jpg') }}'); background-position:  center center; background-repeat: no-repeat; background-size: cover;">
+            <img class="breadcrumb_shap" src="{{ asset('image/feedbacks/banner_bg.png') }}" alt="">
+            <div class="container">
+                <div class="breadcrumb_content text-center">
+                    <h1 class="f_p f_700 f_size_50 w_color l_height50 mb_20">Modifier Réclamation</h1>
+                </div>
+            </div>
+        </section>
+        <section class="job_apply_area sec_pad bg_color" style="background-color: #fff">
+            <div class="container">
+                <div class="row flex-row-reverse">
+                    <div class="col-lg-8 pl_70">
+
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="job_apply">
+                            <div class="sec_title mb_70">
+                                <h3 class="f_p f_size_22 f_600 t_color3 mb_20">Modifier votre réclamation avant qui'il vaut etre colutré aprés sa
+                                traitement par l"admin</h3>
+                            </div>
+
+                            {{ form_start(form, {'attr': {'class':'row apply_form'}}) }}
+
+                            <div class="form-group col-lg-12">
+                                {{ form_widget(form.objet,{'attr':{'type':'text','name':'objet','placeholder':'Objet'}})}}
+                            </div>
+                            <div class="form-group col-lg-12">
+                                {{ form_widget(form.description,{'attr':{'type':'textarea','id':' message','cols':'30' ,'rows':'10','name':'description','placeholder':'Description saisir type de réclamation, zip code'
+                                }})}}
+                            </div>
+                            {#                                <div class="form-group col-md-12">#}
+                            {#                                    <select class="selectpickers">#}
+                            {#                                        <option value="menu_order">Produit manquant</option>#}
+                            {#                                        <option value="popularity">Manque de comptabilité des produits</option>#}
+                            {#                                        <option value="rating">Retard de transport</option>#}
+                            {#                                        <option value="date">Facture Probleme</option>#}
+                            {#                                    </select>#}
+                            {#                                </div>#}
+
+
+                            <div class="form-group col-lg-12">
+                                <div class="upload_box"> Upload Your Resume Here :
+                                    {{ form_widget(form.file,{'attr':{'type':'file'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                {{ form_widget(form.Valider,{'attr':{'value':'modifier','type':'submit','class':'btn_three'}}) }}
+
+                            </div>
+                            {{ form_end(form) }}                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="{{ asset('BundleExterne/js/rating.js') }}"></script>
+    <script>
+        // You can modify the upload files to pdf's, docs etc
+        //Currently it will upload only images
+        $(document).ready(function($) {
+
+            // Upload btn
+            $(".uploadlogo").change(function() {
+                readURL(this);
+            });
+
+            function readURL(input) {
+                var url = input.value;
+                var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+                if (input.files && input.files[0] && (ext == "png" || ext == "jpeg" || ext == "jpg" || ext == "gif" || ext == "svg")) {
+                    var path = $('.uploadlogo').val();
+                    var filename = path.replace(/^.*\\/, "");
+                    $('.fileUpload span').html('Uploaded logo : ' + filename);
+                    // console.log(filename);
+                } else {
+                    $(".uploadlogo").val("");
+                    $('.fileUpload span').html('Only Images Are Allowed!');
+                }
+            }
+        });
+    </script>
+{% endblock %}

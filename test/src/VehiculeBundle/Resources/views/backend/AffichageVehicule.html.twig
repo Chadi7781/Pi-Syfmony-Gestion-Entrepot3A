@@ -1,0 +1,69 @@
+{%  extends 'backend/base.html.twig' %}
+
+{% block content %}
+<div class="content-page">
+    <!-- Start content -->
+    <div class="content">
+        <div class="container-fluid">
+    <!-- Start content -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card-box table-responsive">
+                            <h4 class="m-t-0 header-title">Toutes les vehicules en stock</h4>
+                            <table id="selection-datatable" class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th> Numéro d'immatriculation</th>
+                                    <th>Type</th>
+                                    <th>Marque</th>
+                                    <th>Puissance</th>
+                                    <th>Kilometrage</th>
+                                    <th>Nombre Places</th>
+                                    <th>Photo</th>
+                                    <th>Etat</th>
+                                    <th>Prix</th>
+                                </tr>
+                                </thead>
+
+
+                                <tbody>
+                                {%  for message in app.flashes('info') %}
+                                    <div class="alert alert-success">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                                {% for i in v %}
+                                    <tr>
+
+                                        <td><a href="{{ path('vehicules_Admin_affiche1vehicule',{'matricule':i.matricule}) }}"> {{ i.matricule }}</a> </td>
+                                        <td> {{ i.type }}</td>
+                                        <td> {{ i.marque }}</td>
+                                        <td> {{ i.puissance }}</td>
+                                        <td> {{ i.Kilometrage }}</td>
+                                        <td> {{ i.nbPlace }}</td>
+                                        <td> <img src="{{ asset('imgvehiculess/'~i.photo )}}" style="width: 100px; height: 50px"></td>
+                                        <td> {{ i.etat }}</td>
+                                        <td> {{ i.prix }}</td>
+                                    </tr>
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="main-navigation ">
+                        {{ knp_pagination_render(v) }}
+                    </div>
+                </div> <!-- end row -->
+        </div>
+    </div>
+</div>
+
+        <footer class="footer text-right">
+            2016 - 2018 © Adminto. Coderthemes.com
+        </footer>
+
+
+{% endblock %}
+
+

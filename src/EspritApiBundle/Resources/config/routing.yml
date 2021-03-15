@@ -1,0 +1,141 @@
+esprit_api_homepage:
+    path:     /login
+    defaults: { _controller: EspritApiBundle:UtilisateurApi:login }
+
+get_pass:
+    path:     /getPassword
+    defaults: { _controller: EspritApiBundle:UtilisateurApi:GetPassbyEmail }
+register:
+    path:     /register
+    defaults: { _controller: EspritApiBundle:UtilisateurApi:register }
+
+all_cat:
+    path:     /categorie/all
+    defaults: { _controller: EspritApiBundle:RecFeedApi:allCat }
+
+all_reclamation:
+    path:     /reclamations/allRec
+    defaults: { _controller: EspritApiBundle:ReclamationApi:allRec }
+
+add_reclamataion:
+    path:     /reclamations/addReclamation
+    defaults: { _controller: EspritApiBundle:ReclamationApi:addReclamation }
+
+detail_reclamation:
+    path:     /reclamations/detail
+    defaults: { _controller: EspritApiBundle:ReclamationApi:detailReclamation }
+
+
+
+by_id_rec_feed_cat:
+    path:     /recfeed/byid
+    defaults: { _controller: EspritApiBundle:RecFeedApi:catById }
+
+imagerecfeedcat_detaill:
+    path:     /recfeedcat/images
+    defaults: { _controller: EspritApiBundle:RecFeedCatApi:Image }
+
+edit_recfeed_cat:
+    path:     /editCat
+    defaults: { _controller: EspritApiBundle:RecFeedApi:editRecFeed }
+
+image_detaill:
+    path:     /reclamations/images
+    defaults: { _controller: EspritApiBundle:ReclamationApi:Image }
+
+
+all_users:
+    path:     /utilisateurs/all
+    defaults: { _controller: EspritApiBundle:UtilisateurApi:AllUsers }
+
+get_user_id:
+    path:     /utilisateurs/all
+    defaults: { _controller: EspritApiBundle:UtilisateurApi:AllUsers }
+editUser:
+    path:     /edit_user
+    defaults: { _controller: EspritApiBundle:UtilisateurApi:EditUser }
+
+imgUser:
+    path:     /image_user
+    defaults: { _controller: EspritApiBundle:UtilisateurApi:ImagesUser }
+
+getUser:
+    path:     /get/user/
+    defaults: { _controller: EspritApiBundle:UtilisateurApi:GetUserbyId }
+
+all_livreur:
+    path:     /livreurs/all
+    defaults: { _controller: EspritApiBundle:FeedbackApi:allLivreur }
+by_id_livreur:
+    path:     /livreurs
+    defaults: { _controller: EspritApiBundle:FeedbackApi:GetIdLivreur }
+
+AjouterRate:
+    path:     /livreur/add/rate
+    defaults: { _controller: EspritApiBundle:FeedbackApi:AjouterRate }
+
+add:
+    path:     /feedbacks/add
+    defaults: { _controller: EspritApiBundle:FeedbackApi:add }
+
+all_feedback:
+    path:     /feedbacks/all
+    defaults: { _controller: EspritApiBundle:FeedbackApi:allFeedback }
+
+all_rating:
+    path:     /feedbacks/ratingAll
+    defaults: { _controller: EspritApiBundle:FeedbackApi:allLRating }
+
+get_number_rating:
+    path:     /feedback/getRatingNumber
+    defaults: { _controller: EspritApiBundle:FeedbackApi:getNbrRating }
+get_feedback_note_livreur:
+    path:     /feedback/getNoteLivreur
+    defaults: { _controller: EspritApiBundle:FeedbackApi:getRatingByLivreur }
+
+api_conf_res:
+    path:     /reclamations/confirmerReclamation
+    defaults: { _controller: EspritApiBundle:ReclamationApi:confirmerReclamation }
+
+get_reclamation_by_id_user:
+    path:     /reclamations/byUser
+    defaults: { _controller: EspritApiBundle:ReclamationApi:getReclamationByIdUser }
+get_reclamation_by_id_userr:
+    path:     /reclamations/byUserId
+    defaults: { _controller: EspritApiBundle:ReclamationApi:mesReclamation }
+get_reclamation_modifier:
+    path:     /reclamations/modifier
+    defaults: { _controller: EspritApiBundle:ReclamationApi:modifierReclamation }
+
+number_reclamation:
+    path:     /reclamations/getNbr
+    defaults: { _controller: EspritApiBundle:ReclamationApi:getNbrReclamation }
+number_feedback:
+    path:     /feedbacks/getNbr
+    defaults: { _controller: EspritApiBundle:FeedbackApi:getNbrFeedback }
+read_produit_vitirne:
+    path:     /produitVitrine/all
+    defaults: { _controller: EspritApiBundle:VitrineApi:readProduit }
+detail_prod:
+    path:     /produits/detailProduit
+    defaults: { _controller: EspritApiBundle:VitrineApi:detailProduit }
+produit_reclamer:
+    path:     /produitCommande
+    defaults: { _controller: EspritApiBundle:ReclamationApi:reclamerProduit }
+
+livreur:
+    path:     /livreur/allLivreur
+    defaults: { _controller: EspritApiBundle:FeedbackApi:listTopLivreur }
+
+image_livreur:
+    path:     /imageLivreur
+    defaults: { _controller: EspritApiBundle:FeedbackApi:imageLivreur }
+
+
+total_livreur_user_rating:
+    path:     /ratingsUsers
+    defaults: { _controller: EspritApiBundle:FeedbackApi:getTotalRatingFromUser }
+
+search_rec:
+    path:     /search
+    defaults: { _controller: EspritApiBundle:ReclamationApi:search }

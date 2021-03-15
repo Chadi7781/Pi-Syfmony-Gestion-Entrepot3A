@@ -1,0 +1,134 @@
+service_apres_vente_homepage:
+    path:     /front
+    defaults: { _controller: ServiceApresVenteBundle:Default:index }
+
+read_feedback_me:
+    path:     /readFeedback
+    defaults: { _controller: ServiceApresVenteBundle:Feedback:readFeedback }
+
+add_feedback:
+    path:    /createFeedback/{id}
+    defaults: {_controller: ServiceApresVenteBundle:Feedback:createFeedback}
+
+update_feedback:
+    path:    /update/{id}
+    defaults: {_controller: ServiceApresVenteBundle:Feedback:updateFeedback}
+
+delete_feedback:
+    path:   /delete/{id}
+    defaults: {_controller:ServiceApresVenteBundle:Feedback:deleteFeedback}
+
+envoyer_reclamation:
+    path:    /envoyerReclamation
+    defaults: {_controller: ServiceApresVenteBundle:Reclamation:envoyerReclamation}
+
+read_reclamation:
+    path:     /readReclamation
+    defaults: { _controller: ServiceApresVenteBundle:Reclamation:readReclamation }
+
+add_reclamation:
+    path:    /createReclamation/{id_cat}/{idp}/{idpc}
+    defaults: {_controller: ServiceApresVenteBundle:Reclamation:createReclamation}
+
+update_reclamation:
+    path:    /updateReclamation/{id}
+    defaults: {_controller: ServiceApresVenteBundle:Reclamation:updateReclamation}
+
+read_produit_commande:
+    path:    /readProduitCommande/{nom}
+    defaults: {_controller: ServiceApresVenteBundle:Reclamation:reclmaerProduit}
+
+read_livreur:
+    path:    /readLivreur/{nom}
+    defaults: {_controller: ServiceApresVenteBundle:Feedback:listTopLivreur}
+
+
+
+display_categorie:
+    path:   /showCategorie/{nom}/{idp}/{idpc}
+    defaults: {_controller:ServiceApresVenteBundle:RecFeedCat:name}
+
+
+categorie_show:
+        path:     /{id}/show
+        defaults: { _controller: "ServiceApresVenteBundle:RecFeedCat:show" }
+
+categorie_new:
+        path:     /new
+        defaults: { _controller: "ServiceApresVenteBundle:RecFeedCat:new" }
+
+admin_add_categorie:
+    path:    /admin/createCategorie
+    defaults: {_controller: "ServiceApresVenteBundle:RecFeedCat:createCategorie"}
+    requirements: { _method: post }
+
+
+admin_read_categorie:
+    path:    /admin/readCategorie
+    defaults: {_controller: ServiceApresVenteBundle:RecFeedCat:readCategorie}
+
+admin_update_categorie:
+    path:    /admin/{id}/updateCategorie
+    defaults: {_controller: "ServiceApresVenteBundle:RecFeedCat:updateCategorie"}
+
+admin_categorie_delete:
+    path:    /admin/deleteCategorie/{id}
+    defaults: {_controller: ServiceApresVenteBundle:RecFeedCat:deleteCategorie}
+
+admin_lister_notification:
+    path:    /Lister
+    defaults: {_controller: ServiceApresVenteBundle:Reclamation:Lister}
+
+chercher_reclamation:
+    path:     /Chercher
+    defaults: { _controller: ServiceApresVenteBundle:Reclamation:Chercher }
+admin_read_feedback:
+    path:    /admin/readFeedback
+    defaults: {_controller: ServiceApresVenteBundle:Feedback:listFeedback}
+
+admin_read_reclamation:
+    path:    /admin/readReclamation
+    defaults: {_controller: ServiceApresVenteBundle:Reclamation:listReclamation}
+
+admin_traiter_reclamation:
+    path:    /admin/traiterReclamation/{id}
+    defaults: {_controller: ServiceApresVenteBundle:Reclamation:traiterEtat}
+
+
+ajax_search:
+    path:    /search
+    defaults: {_controller: ServiceApresVenteBundle:Reclamation:search}
+
+detailed_feed:
+    path:     /detail/{id}
+    defaults: { _controller: ServiceApresVenteBundle:Feedback:showdetailed }
+
+detailed_rec:
+    path:     /detailReclamation/{id}/{cat}
+    defaults: { _controller: ServiceApresVenteBundle:Reclamation:showdetailed }
+
+admin_dashboard:
+    path:     /back
+    defaults: { _controller: ServiceApresVenteBundle:Default:afficherStatitstiqueAdminL }
+
+
+detail_livreur:
+    path:     /detailLivreur/{id}
+    defaults: { _controller: ServiceApresVenteBundle:Feedback:getLivreurById }
+
+
+facture_avoir:
+    path:     /factureAvoir
+    defaults: { _controller: ServiceApresVenteBundle:Reclamation:factureAvoir }
+
+reponse_reclamation:
+    path:     /reponseReclamation/{id}
+    defaults: { _controller: ServiceApresVenteBundle:Reclamation:reponseAdminReclamation }
+#admin:
+#    path:     /
+#    defaults: { _controller: ServiceApresVenteBundle:Default:user }
+
+
+
+
+

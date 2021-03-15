@@ -1,0 +1,442 @@
+
+
+{% extends 'frontend/base.html.twig' %}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{{ asset('BundleExterne/css/rating.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset('style.css') }}" />
+
+
+
+
+
+
+<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.blue-orange.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
+
+
+<div class="body_wrapper">
+    <section class="breadcrumb_area"
+             style="background-image: url('{{ asset('image/feedbacks/Img-01.jpg') }}'); background-position:  center center; background-repeat: no-repeat; background-size: cover;">
+
+        <img class="breadcrumb_shap" src="{{ asset('image/feedbacks/banner_bg.png') }}" alt="">
+        <div class="container">
+            <div class="breadcrumb_content text-center">
+                <h1 class="f_p f_700 f_size_50 w_color l_height50 mb_20">Liste Des Commandes</h1>
+                <p class="f_400 w_color f_size_16 l_height26">
+                    Vous allez pouvoir consulter votre liste des commande et réclamer <br> que vous souhaitez plus rapidement.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+
+
+
+            <div class="row s_service_info">
+                <br>
+                {% for quantite in items %}
+                    <div class="col-lg-12 col-sm-6">
+                        <div class="s_service_item wow fadeInLeft" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                            <div class="solid_overlay"></div>
+                            <div class="icon icon_1">
+                                <i class="fa fa-user"></i>
+                            </div>
+                            <h5 class="f_p f_size_20 f_600 t_color">Commande numero {{ quantite.getIdCommande() }}</h5>
+                            <p class="l_height28">Quantite : {{ quantite.total  |date}}</p>
+                            <p class="l_height28">Date : {{ quantite.getDate()  |date}}</p>
+{#                            <p class="l_height28">Adresse Destination : {{ quantite.getQuantite() }}</p>#}
+{#                            <a href="{{ path('display_categorie',{'nom':'reclamation'})}} " class="learn_btn_two">Réclamer <i class="ti-arrow-right"></i></a>#}
+
+                        </div>
+                    </div>
+                    <br>
+                {% endfor %}
+
+
+
+
+
+                {#             #%en       <a href="{{ path('detailed_rec',{'id': reclamations.idRec    }) }}">#}
+                {#                        <img src="{{ asset('uploads/reclamation_image/' ~ reclamations.image) }}" alt="" style="#}
+                {#                                         width: 100%;#}
+                {#                                         height: 20vh;#}
+                {#                                         object-fit: cover;#}
+                {#                                         ">#}
+
+
+
+
+
+
+
+                {#                <div  class="mdl-card__supporting-text">#}
+                {#                    <h4><a href="{{ path('detailed_rec',{'id': reclamations.idRec}) }}">#}
+                {#                           </a></h4>#}
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+            <!-- jQuery is necessary -->
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+            <script type="text/javascript">
+                jQuery(document).ready(function() {
+                    var searchRequest = null;
+                    $("#search").keyup(function() {
+                        var minlength = 3;
+                        var that = this;
+                        var value = $(this).val();
+                        var entitySelector = $("#entitiesNav").html('');
+                        if (value.length >= minlength ) {
+                            if (searchRequest != null)
+                                searchRequest.abort();
+                            searchRequest = $.ajax({
+                                type: "GET",
+                                url: "{{ path('ajax_search') }}",
+                                data: {
+                                    'q' : value
+                                },
+                                dataType: "text",
+                                success: function(msg){
+                                    //we need to check if the value is the same
+                                    if (value==$(that).val()) {
+                                        var result = JSON.parse(msg);
+                                        $.each(result, function(key, arr) {
+                                            $.each(arr, function(id, value) {
+                                                if (key == 'entities') {
+                                                    if (id != 'error') {
+                                                        console.log(value[1])
+                                                        entitySelector.append('<li class="list-group-item">'+value[1]+'' +
+                                                            '<a href="/ProjetWebSymfony/test/web/app_dev.php/serviceApresVentes/detailReclamation/'+id+'")'+'' +
+                                                            '<img src="uploads/reclamation_image/'+value[0]
+                                                            +'"style="width: 50px; height: 50px;"/>' +
+                                                            ''+'</a></li>');
+                                                    } else {
+                                                        entitySelector.append('<li class="errorLi">'+value+'</li>');
+                                                    }
+                                                }
+                                            });
+                                        });
+                                    }
+                                }
+                            });
+                        }
+                    });
+                });
+            </script>
+            <script>
+                $(document).ready(function(){
+
+                    $(".btn1").click(function(){
+                        $("h1").slideUp();
+                    });
+
+                    $(".btn2").click(function(){
+                        $("h1").slideDown();
+                    });
+
+                    $(".btn3").click(function(){
+                        $("h1").slideToggle();
+                    });
+
+                });
+            </script>
+
+            <!-- Square card -->
+
+
+            {#    <div class="breadcrumb parallax" style=" background: linear-gradient(35deg, #1EAE98, #D8B5FF);">#}
+            {#        <h1 style="color: #0b0b0b;#}
+            {#        text-align:center;font-family:'Baskerville Old Face';font-weight:900;font-size:4em;color:#fff;text-shadow:0em 0.05em 0 rgba(0,0,0,0.25)}#}
+            {#" class="control-label" >Listes des Feedbacks#}
+
+            {#        </h1>#}
+            {#        <ul>#}
+            {#            #}{#            <li><a href="index.html">Home</a></li>#}
+            {#            #}{#            <li><a href="contact.html">Contact Us</a></li>#}
+            {#        </ul>#}
+            {#    </div>#}
+            {#    {%  for message in app.flashes('info') %}#}
+            {#        <div class="alert alert-success">#}
+            {#            {{ message }}#}
+            {#        </div>#}
+            {#    {% endfor %}#}
+
+            {#<div class="content col-sm-9"  {{ app.session.flashbag.peek('info')|length > 0 ? '' : 'mb-5' }}">#}
+
+            {#{% if count | number_format ==0 %}#}
+            {#{%  for message in app.flashes('info') %}#}
+            {#    <div class="alert alert-info">#}
+            {#        {{ message }}#}
+            {#    </div>#}
+            {#{% endfor %}#}
+
+            {#{% endif %}#}
+
+
+            {#<div class="content-page">#}
+            {#    <!-- Start content -->#}
+            {#    <div class="content">#}
+            {#        <div class="row">#}
+            {#            <div class="col-xl-4">#}
+
+
+            {#                {%  for feedbacks in feedbacks %}#}
+
+            {#                    <div class="text-center card-box">#}
+            {#                        <a href="#" class="blog-imagelink">#}
+            {#                            <img src="{{ asset('uploads/feedback_image/' ~ feedbacks.image) }}" alt="">#}
+
+
+            {#                           {{ feedbacks.datefeedback |date  }} <i class="fa fa-share-square-o"></i></a>#}
+
+
+            {#                        </a> <span class="blog-hover"></span> </div>#}
+            {#                    <div class="blog-content"> <span class="blog-date"></span>#}
+            {#                        <h2>Sujet de feedback concernat: {{ feedbacks.idc }}</h2>#}
+            {#                        <h2 class="blog-name"><a href="single-blog.html">{{ feedbacks.description }}</a> </h2>#}
+            {#                            <span class="blog-author">utilisateur numero <a href="#">{{ feedbacks.id}}</a> </span> <span class="blog-comment">3 comments</span>#}
+            {#                        <a href="{{ path('update_feedback', {'id':feedbacks.idFeed}) }}" class="button">#}
+
+
+            {#                            Modifier#}
+            {#                        </a>#}
+
+
+            {#                    </div>#}
+            {#                    <div class="blog-desc">.</div>#}
+
+
+            {#                </div>#}
+            {#            {% endfor %}#}
+
+            {#            </div>#}
+            {#            <!-- end blog-home -->#}
+            {#            <div class="col-sm-3 hidden-xs column-right" id="column-right">#}
+            {#                <div class="Categories right-sidebar-widget">#}
+            {#                    <div class="columnblock-title">Categories</div>#}
+            {#                    <div class="category_block">#}
+            {#                        <ul class="box-category">#}
+            {#                            <li><a href="#">Video Post Format</a></li>#}
+            {#                            <li><a href="#">Quote Post Format</a></li>#}
+            {#                            <li><a href="#">Gallery Post Format</a></li>#}
+            {#                            <li><a href="#">Link Post Format</a></li>#}
+            {#                            <li><a href="#">Address Book</a></li>#}
+            {#                            <li><a href="#">Wish Post Format</a></li>#}
+            {#                            <li><a href="#">Order Post Format</a></li>#}
+            {#                            <li><a href="#">Uncategorized Post Format</a></li>#}
+            {#                            <li><a href="#">Post Format</a></li>#}
+            {#                            <li><a href="#">Transactions Post Format</a></li>#}
+            {#                            <li><a href="#">Returns Post Format</a></li>#}
+            {#                            <li><a href="#">Post Format</a></li>#}
+            {#                            <li><a href="#">Recurring Post Format</a></li>#}
+            {#                        </ul>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#                <div class="Categories right-sidebar-widget">#}
+            {#                    <div class="columnblock-title">Tag</div>#}
+            {#                    <ul class="tagcloud">#}
+            {#                        <li><a href="#">Gallery</a></li>#}
+            {#                        <li><a href="#">Grid</a></li>#}
+            {#                        <li><a href="#">Large</a></li>#}
+            {#                        <li><a href="#">Slider</a></li>#}
+            {#                        <li><a href="#">Personal</a></li>#}
+            {#                        <li><a href="#">Youtube</a></li>#}
+            {#                        <li><a href="#">Trending</a></li>#}
+            {#                        <li><a href="#">Quote</a></li>#}
+            {#                        <li><a href="#">Simple</a></li>#}
+            {#                    </ul>#}
+            {#                </div>#}
+            {#                <div class="recentpost right-sidebar-widget">#}
+            {#                    <div class="columnblock-title">Recent Posts</div>#}
+            {#                    <div class="category_block">#}
+            {#                        <ul class="box-category">#}
+            {#                            <li><a href="#">Video Post Format</a></li>#}
+            {#                            <li><a href="#">Gallery Post Format</a></li>#}
+            {#                            <li><a href="#">Link Post Format</a></li>#}
+            {#                            <li><a href="#">Wish Post Format</a></li>#}
+            {#                            <li><a href="#">Uncategorized Post Format</a></li>#}
+            {#                            <li><a href="#">Transactions Post Format</a></li>#}
+            {#                            <li><a href="#">Post Format</a></li>#}
+            {#                        </ul>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#                <div class="latestblog right-sidebar-widget">#}
+            {#                    <div class="columnblock-title">Latest Blog</div>#}
+            {#                    <div class="blog_block">#}
+            {#                        <ul class="list-unstyled blog-wrapper owl-carousel owl-theme" id="latestblog" style="opacity: 1; display: block;">#}
+            {#                            <div class="owl-wrapper-outer"><div class="owl-wrapper" style="width: 2100px; left: 0px; display: block; transition: all 800ms ease 0s; transform: translate3d(-840px, 0px, 0px);"><div class="owl-item" style="width: 210px;"><li class="item blog-slider-item">#}
+            {#                                            <div class="blog1 blog">#}
+            {#                                                <div class="blog-image"> <a href="#" class="blog-imagelink"><img src="image/blog/blog_1.jpg" alt="#"></a> <span class="blog-hover"></span> <span class="blog-readmore-outer"><a href="#" class="blog-readmore">Read More</a></span> </div>#}
+            {#                                                <div class="blog-content">#}
+            {#                                                    <span class="blog-date">02/05/2016</span>#}
+
+
+            {#                                                    <h2 class="blog-name"><a href="single-blog.html">Explore collections that look great and feel incredible, whatever ...</a></h2>#}
+
+            {#                                                    <div class="blog-desc"></div>#}
+            {#                                                    <span class="blog-author">By <a href="#">funchuk wangadu</a> </span><span class="blog-comment">3Comments</span> <a href="#" class="blog-readmore">Read More</a> </div>#}
+            {#                                            </div>#}
+            {#                                        </li></div><div class="owl-item" style="width: 210px;"><li class="item blog-slider-item">#}
+            {#                                            <div class="blog2 blog">#}
+            {#                                                <div class="blog-image"> <a href="#" class="blog-imagelink"><img src="image/blog/blog_2.jpg" alt="#"></a> <span class="blog-hover"></span> <span class="blog-readmore-outer"><a href="#" class="blog-readmore">Read More</a></span> </div>#}
+            {#                                                <div class="blog-content">#}
+            {#                                                    <span class="blog-date">02/05/2016</span>#}
+
+
+            {#                                                    <h2 class="blog-name"><a href="single-blog.html">Explore collections that look great and feel incredible, whatever ...</a></h2>#}
+
+            {#                                                    <div class="blog-desc"></div>#}
+            {#                                                    <span class="blog-author">By <a href="#">funchuk wangadu</a> </span><span class="blog-comment">3Comments</span> <a href="#" class="blog-readmore">Read More</a> </div>#}
+            {#                                            </div>#}
+            {#                                        </li></div><div class="owl-item" style="width: 210px;"><li class="item blog-slider-item">#}
+            {#                                            <div class="blog3 blog">#}
+            {#                                                <div class="blog-image"> <a href="#" class="blog-imagelink"><img src="image/blog/blog_3.jpg" alt="#"></a> <span class="blog-hover"></span> <span class="blog-readmore-outer"><a href="#" class="blog-readmore">Read More</a></span> </div>#}
+            {#                                                <div class="blog-content">#}
+            {#                                                    <span class="blog-date">02/05/2016</span>#}
+
+
+            {#                                                    <h2 class="blog-name"><a href="single-blog.html">Explore collections that look great and feel incredible, whatever ...</a></h2>#}
+
+            {#                                                    <div class="blog-desc"></div>#}
+            {#                                                    <span class="blog-author">By <a href="#">funchuk wangadu</a> </span><span class="blog-comment">3Comments</span> <a href="#" class="blog-readmore">Read More</a> </div>#}
+            {#                                            </div>#}
+            {#                                        </li></div><div class="owl-item" style="width: 210px;"><li class="item blog-slider-item">#}
+            {#                                            <div class="blog4 blog">#}
+            {#                                                <div class="blog-image"> <a href="#" class="blog-imagelink"><img src="image/blog/blog_4.jpg" alt="#"></a> <span class="blog-hover"></span> <span class="blog-readmore-outer"><a href="#" class="blog-readmore">Read More</a></span> </div>#}
+            {#                                                <div class="blog-content">#}
+            {#                                                    <span class="blog-date">02/05/2016</span>#}
+
+
+            {#                                                    <h2 class="blog-name"><a href="single-blog.html">Explore collections that look great and feel incredible, whatever ...</a></h2>#}
+
+            {#                                                    <div class="blog-desc"></div>#}
+            {#                                                    <span class="blog-author">By <a href="#">funchuk wangadu</a> </span><span class="blog-comment">3Comments</span> <a href="#" class="blog-readmore">Read More</a> </div>#}
+            {#                                            </div>#}
+            {#                                        </li></div><div class="owl-item" style="width: 210px;"><li class="item blog-slider-item">#}
+            {#                                            <div class="blog5 blog">#}
+            {#                                                <div class="blog-image"> <a href="#" class="blog-imagelink"><img src="image/blog/blog_5.jpg" alt="#"></a> <span class="blog-hover"></span> <span class="blog-readmore-outer"><a href="#" class="blog-readmore">Read More</a></span> </div>#}
+            {#                                                <div class="blog-content">#}
+            {#                                                    <span class="blog-date">02/05/2016</span>#}
+
+
+            {#                                                    <h2 class="blog-name"><a href="single-blog.html">Explore collections that look great and feel incredible, whatever ...</a></h2>#}
+
+            {#                                                    <div class="blog-desc"></div>#}
+            {#                                                    <span class="blog-author">By <a href="#">funchuk wangadu</a> </span><span class="blog-comment">3Comments</span> <a href="#" class="blog-readmore">Read More</a> </div>#}
+            {#                                            </div>#}
+            {#                                        </li></div></div></div>#}
+
+
+
+
+            {#                        </ul>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            </div>#}
+            {#        </div>#}
+            {#    </div>#}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            {#</div>#}
+
+
+
+
+
+
+            <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
+
+
+
+            {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            {#<!DOCTYPE html>#}
+            {#<html lang="en">#}
+            {#<head>#}
+            {#    <meta charset="UTF-8">#}
+            {#    <title>Title</title>#}
+            {#    <img src="{{ asset('unnamed.jpg') }}" id="imgLogo" width="350px">#}
+
+            {#        <link href=" " rel="stylesheet" type="text/css" />#}
+
+            {#</head>#}
+            {#<body>#}
+            {#<center>#}
+            {#    <h1>List des feedback</h1>#}
+            {#    <table border="1">#}
+            {#        <tr><th>Id</th><th>Titre</th><th>Description</th><th>Categories</th><th>Action</th></tr>#}
+            {#        <tr>#}
+            {#            {% for feedback in feedbacks %}#}
+            {#        <tr>#}
+            {#            <td> {{ feedback.idFeed }}</td>#}
+            {#            <td> {{ feedback.description }}</td>#}
+            {#            <td>{{ feedback.idc.nom }}</td>#}
+            {#            <td> {{ feedback.rating |rating }}</td>#}
+            {#            <td>#}
+            {#                <a href="{{ path('update_feedback',{'id':feedback.idFeed}) }}">Modifier</a>#}
+            {#            </td><td>#}
+            {#            <a href="{{ path('delete_feedback',{'id':feedback.idFeed}) }}">Supprimer</a>#}
+            {#            </td>#}
+
+
+            {#        </tr>#}
+            {#        {% endfor %}#}
+            {#    </table>#}
+            {#</center>#}
+
+
+            {#</body>#}
+            {#</html>#}
+            {#{% endblock %}#}

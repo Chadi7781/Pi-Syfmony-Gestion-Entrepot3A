@@ -1,0 +1,117 @@
+{% extends 'frontend/base.html.twig' %}
+
+{% block content %}
+    <style>
+        .background-slider {
+            background-image: url({{ asset('assets/5ec5e-slider-1.jpg') }});
+            background-size: cover;
+            color: #eee;
+        }
+
+    </style>
+    <div class="">
+        <div id="page-title" class="background-slider">
+            <div class="text-center">
+                <div class="container z-index-2 position-relative">
+                    <div class="padding-tb-100px">
+                        <div class="text-center margin-bottom-30px">
+                            <img src="{{ asset('assets/blog-1.jpg') }}" alt="" width=1700px height=500px>
+                            <h4 >Super Fast and Easy</h4>
+                        </div>
+
+
+                        <script>
+                            var app = document.getElementById('writer');
+                            var typewriter = new Typewriter(app, {
+                                loop: true
+                            });
+                            typewriter.typeString('Bootstrap 4 Toolkit')
+                                .pauseFor(2500)
+                                .deleteAll()
+                                .typeString('Revolution Slider')
+                                .pauseFor(2500)
+                                .deleteAll()
+                                .typeString('Responsive Design')
+                                .start();
+
+                        </script>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <br>
+
+    <div class="container">
+        {% for i in v %}
+       <hr align="center" width="100%" color="" size="3">
+
+        <div class="row">
+            <div class="content col-sm-12">
+
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="thumbnails">
+                            <div><a class="thumbnail fancybox" href="{{ path('Vehicules_Client_maVehicule',{'matricule':i.matricule}) }}" title="122.00">
+                                    <img src="{{ asset('imgvehiculess/'~i.photo) }}" title="{{i.marque}}" alt="{{i.marque}}"  class="img-responsive"width="200" height="110"></a></div>
+                            <div id="product-thumbnail" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
+                                <div class="owl-wrapper-outer">
+                                </div>
+
+                                <div class="owl-controls clickable"><div class="owl-buttons"><div class="owl-prev">prev</div><div class="owl-next">next</div></div></div></div>
+                        </div>
+                    </div>
+
+                        <div class="col-sm-7 prodetail">
+                            <h1 class="productpage-title" name="matricule">{{ i.marque | upper }} </h1>
+                            <i class="fa fa-car">  {{i.matricule}}</i>
+                            <ul class="list-unstyled productinfo-details-top">
+                                <li>
+
+                                    <h2 class="productpage-price">{{ i.prix }} DT/semaine</h2>
+                                </li>
+                                <li><span class="productinfo-tax">{{i.kilometrage}} km parcourru avant la location</span></li>
+                            </ul>
+                        <hr>
+                        <ul class="list-unstyled product_info">
+                            <li>
+                                <label>Type:</label>
+                                {{ i.type }}
+                                <span> <a href="#"></a></span></li>
+                            <li>
+                                <label>Pissance:</label>
+                                {{ i.puissance }}
+                                <span> </span></li>
+                            <li>
+                                <label>Nombre de places:</label>
+                                {{ i.nbPlace }}
+                                <span></span></li>
+                        </ul>
+
+
+
+
+
+                        <div class="button-group list-btn">
+
+                            <ul class="button-group list-btn">
+
+
+                                <li>
+                                    {# <i class="fa fa-shopping-bag"></i>#}
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+{% endblock %}
+

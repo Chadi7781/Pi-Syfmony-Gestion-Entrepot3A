@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+
+
+    <title>{% block title %} Stock For Speed {% endblock %}</title>
+    {% block stylesheets %}
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+        <meta name="author" content="Coderthemes">
+
+        <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
+
+        <link href="{{ asset('assets/plugins/summernote/summernote-bs4.css') }}" rel="stylesheet" /><!-- Custom box css -->
+        <link href="{{ asset('assets/plugins/custombox/dist/custombox.min.css') }}" rel="stylesheet">
+
+        <!-- App css -->
+        <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css" />
+ {% endblock %}
+
+
+
+</head>
+<body>
+<body class="fixed-left">
+{% block header %}
+    <!-- Begin page -->
+    <div id="wrapper">
+
+        <!-- Top Bar Start -->
+        <div class="topbar">
+
+            <!-- LOGO -->
+            <div class="topbar-left">
+                <a href="index.html" class="logo"><span>Admin<span>to</span></span><i class="mdi mdi-layers"></i></a>
+            </div>
+
+            <!-- Button mobile view to collapse sidebar menu -->
+            <div class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+
+                    <!-- Page title -->
+                    <ul class="nav navbar-nav list-inline navbar-left">
+                        <li class="list-inline-item">
+                            <button class="button-menu-mobile open-left">
+                                <i class="mdi mdi-menu"></i>
+                            </button>
+                        </li>
+                        <li class="list-inline-item">
+                            {% block subtitle %}
+                            {% endblock %}
+                        </li>
+                    </ul>
+
+                </div><!-- end container -->
+            </div><!-- end navbar -->
+        </div>
+        <!-- Top Bar End -->
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="left side-menu">
+            <div class="sidebar-inner slimscrollleft">
+
+                <!-- User -->
+                <div class="user-box">
+                    <div class="user-img">
+                        <img src="{{ asset('assets/images/users/avatar-1.jpg') }}" alt="user-img" title="Mat Helme" class="rounded-circle img-thumbnail img-responsive">
+                        <div class="user-status offline"><i class="mdi mdi-adjust"></i></div>
+                    </div>
+                    <h5><a href="#">Mat Helme</a> </h5>
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <a href="#" >
+                                <i class="mdi mdi-settings"></i>
+                            </a>
+                        </li>
+
+                        <li class="list-inline-item">
+                            <a href="{{ path('fos_user_security_logout')}}" class="text-custom">
+                                <i class="mdi mdi-power"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End User -->
+                <!--- Sidemenu -->
+                <div id="sidebar-menu">
+                    <ul>
+                        <li class="text-muted menu-title">Navigation</li>
+
+                        <li>
+                            <a href="{{ path('chart_index') }}" class="waves-effect"><i class="mdi mdi-view-dashboard"></i> <span> Dashboard </span> </a>
+                        </li>
+                        <li class="has_sub">
+                            <a href="#" class="waves-effect"><i class="mdi mdi-car-pickup"></i></span><span> Gestion véhicules </span></a>
+                            <ul class="list-unstyled">
+                                <li><a href="{{ path('vehicules_ajout')}}">Ajouter véhicule</a></li>
+                                <li><a href="{{ path('vehicules_Admin_affiche')}}">Toutes les véhicules</a></li>
+                                <li><a href="{{ path('vehicules_Admin_vehiculesmaintenues')}}">Les véhicules maintenues</a></li>
+                                <li><a href="{{ path('vehicules_Admin_contarts')}}">Les véhicules louées</a></li>
+                                {#  <li><a href="#">Recover Password</a></li>
+                                  <li><a href="#">Lock Screen</a></li>
+                                  <li><a href="#">Confirm Mail</a></li>
+                                  <li><a href="#">Error 404</a></li>
+                                  <li><a href="#">Error 500</a></li>#}
+                            </ul>
+                        </li>
+
+
+                        <li class="has_sub">
+                            <a href="#" class="waves-effect"><i class="mdi mdi-details"></i></span><span> Service Aprés Vente </span></a>
+                            <ul class="list-unstyled">
+                                <li><a href="{{ path('admin_dashboard')}}">Acceuil</a></li>
+                                <li><a href="{{ path('admin_read_categorie')}}">Gestion catégorie réclamation</a></li>
+                                <li><a href="{{ path('admin_read_reclamation')}}">Consulter réclamations</a></li>
+                                <li><a href="{{ path('admin_read_feedback')}}">Consulter Feedback</a></li>
+                                {#  <li><a href="#">Recover Password</a></li>
+                                  <li><a href="#">Lock Screen</a></li>
+                                  <li><a href="#">Confirm Mail</a></li>
+                                  <li><a href="#">Error 404</a></li>
+                                  <li><a href="#">Error 500</a></li>#}
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="{{ path('employee_index') }}" class="waves-effect"><i class="mdi mdi-format-font"></i> <span> Gestion employé </span> </a>
+                        </li>
+
+                        <li class="has_sub">
+                            <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-invert-colors"></i> <span> Gestion stock </span> <span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled">
+                                <li><a href="ui-buttons.html">Buttons</a></li>
+                                <li><a href="ui-cards.html">Cards</a></li>
+                                <li><a href="ui-draggable-cards.html">Draggable Cards</a></li>
+                                <li><a href="ui-checkbox-radio.html">Checkboxs-Radios</a></li>
+                                <li><a href="ui-material-icons.html">Material Design Icons</a></li>
+                                <li><a href="ui-font-awesome-icons.html">Font Awesome</a></li>
+                                <li><a href="ui-dripicons.html">Dripicons</a></li>
+                                <li><a href="ui-themify-icons.html">Themify Icons</a></li>
+                                <li><a href="ui-modals.html">Modals</a></li>
+                                <li><a href="ui-notification.html">Notification</a></li>
+                                <li><a href="ui-range-slider.html">Range Slider</a></li>
+                                <li><a href="ui-components.html">Components</a>
+                                <li><a href="ui-sweetalert.html">Sweet Alert</a>
+                                <li><a href="ui-treeview.html">Tree view</a>
+                                <li><a href="ui-widgets.html">Widgets</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="{{ path('depot_index') }}" class="waves-effect"><i class="mdi mdi-format-font"></i> <span> Gestion Dépot</span> </a>
+                        </li>
+
+                        <li class="has_sub">
+                            <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-view-list"></i> <span> Gestion livraison </span> <span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled">
+                                <li><a href="{{ path('livraison_afficherAdmin')}}">Afficher Livraison</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="has_sub">
+                            <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-view-list"></i> <span> Point de Collecte </span> <span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled">
+                                <li><a href="{{ path('PointCollecte_affichage')}}">Afficher les point de collecte</a></li>
+                                <li><a href="{{ path('PointCollecte_add')}}">Ajouter Point de Collecte</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="has_sub">
+                            <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-chart-donut-variant"></i><span> Gestion categories </span> <span class="menu-arrow"></span></a>
+                        <li><a href="{{ path('affichercate')}}">Afficher les categorie</a></li>
+                        </li>
+
+
+
+
+
+
+
+
+
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <!-- Sidebar -->
+                <div class="clearfix"></div>
+
+            </div>
+
+
+        </div>
+
+        <!-- Left Sidebar End -->
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+
+        <!-- Right Sidebar -->
+        <div class="side-bar right-bar">
+            <a href="javascript:void(0);" class="right-bar-toggle">
+                <i class="mdi mdi-close-circle-outline"></i>
+            </a>
+            <h4 class="">Notifications</h4>
+            <div class="notification-list nicescroll">
+                <ul class="list-group list-no-border user-list">
+                    <li class="list-group-item">
+                        <a href="{{path('reponse_reclamation',{'id':5}) }}" class="user-list-item">
+                            <div class="avatar">
+                                <img src="{{ asset('assets/images/users/avatar-2.jpg') }}" alt="">
+                            </div>
+                            <div class="user-desc">
+{#                                <span class="name">{{ mgilet_notification_count(app.user) }}</span>#}
+
+{#                                <span class="desc">{{  mgilet_notification_render(app.user)}}</span>#}
+                                <span class="time"></span>
+                            </div>
+                        </a>
+                    </li>
+{#                    <li class="list-group-item">#}
+{#                        <a href="#" class="user-list-item">#}
+{#                            <div class="icon bg-info">#}
+{#                                <i class="mdi mdi-account"></i>#}
+{#                            </div>#}
+{#                            <div class="user-desc">#}
+{#                                <span class="name">New Signup</span>#}
+{#                                <span class="desc">There are new settings available</span>#}
+{#                                <span class="time">5 hours ago</span>#}
+{#                            </div>#}
+{#                        </a>#}
+{#                    </li>#}
+{#                    <li class="list-group-item">#}
+{#                        <a href="#" class="user-list-item">#}
+{#                            <div class="icon bg-pink">#}
+{#                                <i class="mdi mdi-comment"></i>#}
+{#                            </div>#}
+{#                            <div class="user-desc">#}
+{#                                <span class="name">New Message received</span>#}
+{#                                <span class="desc">There are new settings available</span>#}
+{#                                <span class="time">1 day ago</span>#}
+{#                            </div>#}
+{#                        </a>#}
+{#                    </li>#}
+{#                    <li class="list-group-item active">#}
+{#                        <a href="#" class="user-list-item">#}
+{#                            <div class="avatar">#}
+{#                                <img src="{{ asset('assets/images/users/avatar-3.jpg') }}" alt="">#}
+{#                            </div>#}
+{#                            <div class="user-desc">#}
+{#                                <span class="name">James Anderson</span>#}
+{#                                <span class="desc">There are new settings available</span>#}
+{#                                <span class="time">2 days ago</span>#}
+{#                            </div>#}
+{#                        </a>#}
+{#                    </li>#}
+{#                    <li class="list-group-item active">#}
+{#                        <a href="#" class="user-list-item">#}
+{#                            <div class="icon bg-warning">#}
+{#                                <i class="mdi mdi-settings"></i>#}
+{#                            </div>#}
+{#                            <div class="user-desc">#}
+{#                                <span class="name">Settings</span>#}
+{#                                <span class="desc">There are new settings available</span>#}
+{#                                <span class="time">1 day ago</span>#}
+{#                            </div>#}
+{#                        </a>#}
+{#                    </li>#}
+
+
+                </ul>
+            </div>
+        </div>
+        <!-- /Right-bar -->
+
+    </div>
+    <!-- END wrapper -->
+
+    <!-- ============================================================== -->
+    <!-- End Right content here -->
+    <!-- ============================================================== -->
+
+
+{% endblock %}
+
+
+
+
+{% block content %}
+{% endblock %}
+
+
+
+
+
+
+
+
+{% block footer %}
+
+
+    <footer class="footer text-right">
+        2016 - 2018 © Adminto. Coderthemes.com
+    </footer>
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/js/modernizr.min.js') }}"></script>
+
+    <!-- jQuery  -->
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/js/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/detect.js') }}"></script>
+    <script src="{{ asset('assets/js/fastclick.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.blockUI.js') }}"></script>
+    <script src="{{ asset('assets/js/waves.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.nicescroll.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.slimscroll.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.scrollTo.min.js') }}"></script>
+
+    <!-- KNOB JS -->
+    <!--[if IE]>
+    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-knob/excanvas.js') }}"></script>
+    <![endif]-->
+    <script src="{{ asset('assets/plugins/jquery-knob/jquery.knob.js') }}"></script>
+
+    <!--Morris Chart-->
+    <script src="{{ asset('assets/plugins/morris/morris.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/raphael/raphael-min.js') }}"></script>
+
+    <!-- Dashboard init -->
+    <script src="{{ asset('assets/pages/jquery.dashboard.js') }}"></script>
+
+    <!-- App js -->
+    <script src="{{ asset('assets/js/jquery.core.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.app.js') }}"></script>
+
+
+{% endblock %}
+
+
+
+
+</body>
+</html>

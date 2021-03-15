@@ -1,0 +1,87 @@
+
+{%  extends 'backend/base.html.twig' %}
+{% block subtitle %}
+    <a href="index.html" class="waves-effect"><i class="mdi mdi-view-dashboard"></i> <span> Liste des employés </span> </a>
+
+{% endblock %}
+{% block titre %}
+    <h4 class="page-title">Editer un Employé</h4>
+{% endblock %}
+
+
+    {% block content %}
+
+        <div class="content-page">
+            <!-- Start content -->
+            <div class="content">
+                <div class="container-fluid">
+                    {{ form_start(edit_form) }}
+                    {{ form_errors(edit_form) }}
+
+
+                    <div class="row">
+                        <div class="form-group col col-md-6">
+                            <label>CIN</label>
+                            {{ form_widget(edit_form.CIN, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="form-group col col-md-6">
+                            <label>Adresse</label>
+                            {{ form_widget(edit_form.ADRESSE, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="form-group col col-md-6">
+                            <label>Nom</label>
+                            {{ form_widget(edit_form.USERNAME, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="form-group col col-md-6">
+                            <label>Email</label>
+                            {{ form_widget(edit_form.EMAIL, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="form-group col col-md-6">
+                            <label>Prénom</label>
+                            {{ form_widget(edit_form.PRENOM, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="form-group col col-md-6">
+                            <label>DateNaissance</label>
+                            {{ form_widget(edit_form.DATENAISSANCE, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="form-group col col-md-6">
+                            <label>Telephone</label>
+                            {{ form_widget(edit_form.Telephone, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="form-group col col-md-6">
+                            <label>Mission</label>
+                            {{ form_widget(edit_form.MISSION, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="form-group col col-md-12 text-center">
+                            <button class="btn btn-success" style="float: center">Editer</button>
+                        </div>
+
+
+
+
+
+                    </div>
+
+                    {{ form_end(edit_form) }}
+
+                    <!-- end row -->
+
+
+
+
+
+
+
+
+
+                </div> <!-- container -->
+
+            </div> <!-- content -->
+
+            <footer class="footer text-right">
+                2016 - 2018 © Adminto. Coderthemes.com
+            </footer>
+
+        </div>
+    {% endblock %}
+

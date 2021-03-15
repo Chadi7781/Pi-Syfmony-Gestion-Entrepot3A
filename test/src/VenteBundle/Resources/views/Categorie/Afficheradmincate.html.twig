@@ -1,0 +1,455 @@
+
+
+{%  extends 'backend/base.html.twig' %}
+
+
+{% block content %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style>
+
+    table tr:nth-child(even){
+        background-color: #e4e3e3
+    }
+
+    th {
+        background: #333;
+        color: #fff;
+    }
+
+    .pagination {
+        margin: 0;
+    }
+
+    .pagination li:hover{
+        cursor: pointer;
+    }
+
+    .header_wrap {
+        padding:30px 0;
+    }
+    .num_rows {
+        width: 20%;
+        float:left;
+    }
+    .tb_search{
+        width: 20%;
+        float:right;
+    }
+    .pagination-container {
+        width: 70%;
+        float:left;
+    }
+
+    .rows_count {
+        width: 20%;
+        float:right;
+        text-align:right;
+        color: #999;
+    }
+
+
+    /* Hide default HTML checkbox */
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    /* The slider */
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    input:checked + .slider {
+        background-color: #2196F3;
+    }
+
+    input:focus + .slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 34px;
+    }
+
+    .slider.round:before {
+        border-radius: 50%;
+    }
+</style>
+
+<div class="content-page">
+
+
+
+    <!-- Start content -->
+    <div class="content">
+
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-12">
+
+                    <div class="card-box table-responsive">
+
+                        <h4 class="m-t-0 header-title">Liste des categorie</h4>
+
+
+                        <p class="text-muted font-14 m-b-30">
+
+                        </p>
+                        <div id="datatable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer"><div class="row"><div class="col-sm-12 col-md-12"><div class="dataTables_length" id="datatable_length">
+
+
+                                        <div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="datatable_length">
+                                                    <ul class="list-unstyled topbar-right-menu float-right mb-0">
+
+
+                                                        <li class="hide-phone">
+                                                            <form class="app-search">
+                                                                <input type="text" placeholder="Recherche categorie..." class="form-control" style="width: 400%;" id="search_input_all"
+                                                                       onkeyup="FilterkeyWord_all_table()">
+                                                                <br>
+                                                                <button type="submit"><i class="fa fa-search"></i></button>
+                                                            </form>
+                                                        </li>
+
+                                                    </ul>
+                                                </div></div></div>
+                                        <div class="header_wrap">
+                                            <div class="rows">
+                                                <div class="col-sm-12">
+                                                    <div class="form-group"> 	<!--		Show Numbers Of Rows 		-->
+                                                        <select style="height: 50%;" class  ="form-control" name="state" id="maxRows">
+
+
+                                                            <option value="2">2</option>
+                                                            <option value="5">5</option>
+
+                                                            <option value="50">Show ALL Rows</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="rows">
+                                            <div class="col-sm-12">
+
+                                                <table id= "table-id" class="table table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
+
+
+                                                    <thead>
+                                                    <tr role="row">
+
+                                                        <th  >Nom</th>
+
+                                                        <th  >Action</th>
+                                                        <th  >Détaill</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    {% for i in paginator %}
+                                                        <tr>
+                                                            <td>{{ i.nom}}</td>
+
+                                                            <td><a href="{{ path('supprimercat',{'id':i.id}) }}"> Supprimer</a><a href="{{ path('modifiercat',{'id':i.id}) }}">/Modifier</a></td>
+                                                            <td>
+
+
+                                                                                    <img style="width: 90px;" src="{{ asset('uploadsProduit/produit_image/' ~ i.photo) }}">
+
+                                                            </td>
+                                                        </tr>
+
+                                                    {% endfor %}
+                                                    </tbody>
+                                                </table>
+                                            </div></div>
+                                        <!--		Start Pagination -->
+                                        <div class='pagination-container'>
+                                            <nav>
+                                                <ul class="pagination">
+                                                    <!--	Here the JS Function Will Add the Rows -->
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                        <div class="rows_count">Showing 11 to 20 of 91 entries</div>
+
+                                    </div>
+                                </div>
+                                <!-- 		End of Container -->
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <!--  Developed By Yasser Mas -->
+
+
+
+                    <!-- Custom Modals -->
+
+
+
+
+
+
+
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+
+
+                    <script>
+
+                        getPagination('#table-id');
+                        $('#maxRows').trigger('change');
+                        function getPagination (table){
+
+                            $('#maxRows').on('change',function(){
+                                $('.pagination').html('');						// reset pagination div
+                                var trnum = 0 ;									// reset tr counter
+                                var maxRows = parseInt($(this).val());			// get Max Rows from select option
+
+                                var totalRows = $(table+' tbody tr').length;		// numbers of rows
+                                $(table+' tr:gt(0)').each(function(){			// each TR in  table and not the header
+                                    trnum++;									// Start Counter
+                                    if (trnum > maxRows ){						// if tr number gt maxRows
+
+                                        $(this).hide();							// fade it out
+                                    }if (trnum <= maxRows ){$(this).show();}// else fade in Important in case if it ..
+                                });											//  was fade out to fade it in
+                                if (totalRows > maxRows){						// if tr total rows gt max rows option
+                                    var pagenum = Math.ceil(totalRows/maxRows);	// ceil total(rows/maxrows) to get ..
+                                    //	numbers of pages
+                                    for (var i = 1; i <= pagenum ;){			// for each page append pagination li
+                                        $('.pagination').append('<li data-page="'+i+'">\
+								      <span>'+ i++ +'<span class="sr-only">(current)</span></span>\
+								    </li>').show();
+                                    }											// end for i
+
+
+                                } 												// end if row count > max rows
+                                $('.pagination li:first-child').addClass('active'); // add active class to the first li
+
+
+                                //SHOWING ROWS NUMBER OUT OF TOTAL DEFAULT
+                                showig_rows_count(maxRows, 1, totalRows);
+                                //SHOWING ROWS NUMBER OUT OF TOTAL DEFAULT
+
+                                $('.pagination li').on('click',function(e){		// on click each page
+                                    e.preventDefault();
+                                    var pageNum = $(this).attr('data-page');	// get it's number
+                                    var trIndex = 0 ;							// reset tr counter
+                                    $('.pagination li').removeClass('active');	// remove active class from all li
+                                    $(this).addClass('active');					// add active class to the clicked
+
+
+                                    //SHOWING ROWS NUMBER OUT OF TOTAL
+                                    showig_rows_count(maxRows, pageNum, totalRows);
+                                    //SHOWING ROWS NUMBER OUT OF TOTAL
+
+
+
+                                    $(table+' tr:gt(0)').each(function(){		// each tr in table not the header
+                                        trIndex++;								// tr index counter
+                                        // if tr index gt maxRows*pageNum or lt maxRows*pageNum-maxRows fade if out
+                                        if (trIndex > (maxRows*pageNum) || trIndex <= ((maxRows*pageNum)-maxRows)){
+                                            $(this).hide();
+                                        }else {$(this).show();} 				//else fade in
+                                    }); 										// end of for each tr in table
+                                });										// end of on click pagination list
+                            });
+                            // end of on select change
+
+                            // END OF PAGINATION
+
+                        }
+
+
+
+
+
+
+                        //ROWS SHOWING FUNCTION
+                        function showig_rows_count(maxRows, pageNum, totalRows) {
+                            //Default rows showing
+                            var end_index = maxRows*pageNum;
+                            var start_index = ((maxRows*pageNum)- maxRows) + parseFloat(1);
+                            var string = 'Showing '+ start_index + ' to ' + end_index +' of ' + totalRows + ' entries';
+                            $('.rows_count').html(string);
+                        }
+
+                        // // CREATING INDEX
+                        // function default_index() {
+                        //     $('table tr:eq(0)').prepend('<th> <Objet></Objet> </th>')
+                        //
+                        //     var id = 0;
+                        //
+                        //     $('table tr:gt(0)').each(function(){
+                        //         id++
+                        //         $(this).prepend('<td>'+id+'</td>');
+                        //     });
+                        // }
+
+                        // All Table search script
+                        function FilterkeyWord_all_table() {
+
+// Count td if you want to search on all table instead of specific column
+
+                            var count = $('.table').children('tbody').children('tr:first-child').children('td').length;
+
+                            // Declare variables
+                            var input, filter, table, tr, td, i;
+                            input = document.getElementById("search_input_all");
+                            var input_value =     document.getElementById("search_input_all").value;
+                            filter = input.value.toLowerCase();
+                            if(input_value !=''){
+                                table = document.getElementById("table-id");
+                                tr = table.getElementsByTagName("tr");
+
+                                // Loop through all table rows, and hide those who don't match the search query
+                                for (i = 1; i < tr.length; i++) {
+
+                                    var flag = 0;
+
+                                    for(j = 0; j < count; j++){
+                                        td = tr[i].getElementsByTagName("td")[j];
+                                        if (td) {
+
+                                            var td_text = td.innerHTML;
+                                            if (td.innerHTML.toLowerCase().indexOf(filter) > -1) {
+                                                //var td_text = td.innerHTML;
+                                                //td.innerHTML = 'shaban';
+                                                flag = 1;
+                                            } else {
+                                                //DO NOTHING
+                                            }
+                                        }
+                                    }
+                                    if(flag==1){
+                                        tr[i].style.display = "";
+                                    }else {
+                                        tr[i].style.display = "none";
+                                    }
+                                }
+                            }else {
+                                //RESET TABLE
+                                $('#maxRows').trigger('change');
+                            }
+                        }
+                    </script>
+
+                    <script>
+
+
+                        //
+
+
+
+                        function autoReload() {
+
+
+                            setTimeout(function() {
+
+
+                                $.ajax({
+
+
+                                    url: 'http://localhost/ProjetWebSymfony/test/web/app_dev.php/serviceApresVentes/Admin/readReclamation',
+
+
+                                    success: function(data) {
+
+
+                                        $("#test_container").load(" #test_container");
+
+
+                                    }
+
+
+                                });
+
+
+
+
+                                autoReload();  // refresh the page every 5 seconds
+
+
+                            }, 15000);
+
+
+                        }
+
+
+
+
+                        autoReload();
+
+
+
+                    </script>
+                <center>
+                    <a href="{{ path('ajoutercate')}}">
+                        <button type="button" class="btn btn-primary btn-bordred waves-effect w-md waves-light m-b-5">Ajouter</button>
+                    </a>  </center>
+                    {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

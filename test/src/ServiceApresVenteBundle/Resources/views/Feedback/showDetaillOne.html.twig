@@ -1,0 +1,440 @@
+{% extends 'frontend/base.html.twig' %}
+
+{% block content %}
+
+
+    <style>
+
+
+        p {
+            font-weight: 300;
+
+            line-height: 1.6;
+            font-family: Helvetica;
+            text-align: justify;
+            margin: 0;
+            font-size: 14px;
+            color: white;
+            background-color: #0c7cd5;
+            border: 1px solid black;
+            text-align: justify;
+            padding: 15px;
+            margin: 10px;
+        }
+
+        .breadcrumb_area {
+            background-image: -moz-linear-gradient(180deg, #5e2ced 0%, #a485fd 100%);
+            background-image: -webkit-linear-gradient(180deg, #5e2ced 0%, #a485fd 100%);
+            background-image: -ms-linear-gradient(180deg, #5e2ced 0%, #a485fd 100%);
+            position: relative;
+            z-index: 1;
+            padding: 235px 0px 125px;
+            overflow: hidden;
+        }
+
+        .breadcrumb_area .breadcrumb_shap {
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: -1;
+        }
+
+        /*================= End breadcrumb_area css =================*/
+        /*================= Start breadcrumb_area_two css =================*/
+        .breadcrumb_area_two {
+            background: #f8f6fe;
+            position: relative;
+            padding: 235px 0px 125px;
+            z-index: 1;
+        }
+
+        .breadcrumb_area_two .breadcrumb_shap {
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: -1;
+            height: 100%;
+            width: 100%;
+            background-size: cover;
+        }
+
+        .breadcrumb_area_two .bubble li {
+            background: #5e2ced;
+            opacity: 0.1;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .breadcrumb_area_two .bubble li:nth-child(1) {
+            left: 220px;
+            bottom: 50px;
+            -webkit-animation: spin3 2s infinite alternate;
+            animation: spin3 2s infinite alternate;
+        }
+
+        .breadcrumb_area_two .bubble li:nth-child(2) {
+            left: 35%;
+            top: 100px;
+            -webkit-animation: spin 2s infinite alternate;
+            animation: spin 2s infinite alternate;
+        }
+
+        .breadcrumb_area_two .bubble li:nth-child(3) {
+            left: 40%;
+            width: 51px;
+            height: 51px;
+            bottom: 50px;
+            -webkit-animation: spin1 3s infinite alternate;
+            animation: spin1 3s infinite alternate;
+        }
+
+        .breadcrumb_area_two .bubble li:nth-child(4) {
+            left: 42%;
+            bottom: 50px;
+            width: 20px;
+            height: 20px;
+        }
+
+        .breadcrumb_area_two .bubble li:nth-child(5) {
+            left: 76%;
+            width: 51px;
+            height: 51px;
+            top: 160px;
+            -webkit-animation: spin1 3s infinite alternate;
+            animation: spin1 3s infinite alternate;
+        }
+
+        .breadcrumb_area_two .bubble li:nth-child(6) {
+            left: 75%;
+            width: 30px;
+            height: 30px;
+            top: 186px;
+        }
+
+        .breadcrumb_area_two .bubble li:nth-child(7) {
+            left: 52%;
+            top: 150px;
+            width: 20px;
+            height: 20px;
+            -webkit-animation: spin2 2s infinite alternate;
+            animation: spin2 2s infinite alternate;
+        }
+
+        .breadcrumb_area_two .bubble li:nth-child(8) {
+            left: 90%;
+            top: 250px;
+            width: 20px;
+            height: 20px;
+            -webkit-animation: spin2 2s infinite alternate;
+            animation: spin2 2s infinite alternate;
+        }
+        .clearfix:after {
+            content:"\0020";
+            display:block;
+            height:0;
+            clear:both;
+            visibility:hidden;
+            overflow:hidden;
+        }
+
+        .clearfix {
+            display:block;
+        }
+
+        .iconbb {
+            float: left;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            padding-left: 3%;
+            width: 30%;
+        }
+
+
+        .textbb {
+            margin: 5px;
+            padding-left: 34%;
+            width: auto;
+        }
+
+        .snip1519 {
+            font-family: 'Roboto', Arial, sans-serif;
+            position: relative;
+            float: left;
+            left: 10%;
+
+            overflow: hidden;
+            margin: 10px 1%;
+            min-width: 250px;
+            max-width: 310px;
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 5px;
+            border-top: 5px solid #6253e1;
+
+            color: #9e9e9e;
+            text-align: center;
+            font-size: 16px;
+
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.35);
+        }
+
+        .snip1519 *,
+        .snip1519 *:before {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            -webkit-transition: all 0.1s ease-out;
+            transition: all 0.1s ease-out;
+        }
+
+        .snip1519 figcaption {
+            padding: 12% 10% 14%;
+        }
+
+        .snip1519 img {
+
+            font-size: 54px;
+            color: #fff;
+            width: 80px;
+            line-height: 50px;
+
+            /*box-shadow: 0 4px 15px 0 rgba(126, 52, 161, 0.75);*/
+            /*border-radius: 50%;*/
+            padding: 0;
+            margin: 0 0 10px;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .snip1519 h3 {
+            color: #3c3c3c;
+            font-size: 20px;
+            font-weight: 300;
+            line-height: 24px;
+            margin: 10px 0;
+        }
+
+        .snip1519 p {
+            font-size: 0.9em;
+            font-weight: 300;
+            margin: 0 0 20px;
+        }
+
+        .snip1519 .button {
+            text-decoration: none;
+            color: #777;
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            padding: 5px 10px;
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+        }
+
+        .snip1519 .button:before {
+            background-color: #6253e1;
+            position: absolute;
+            top: 100%;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            content: '';
+            z-index: -1;
+            opacity: 0;
+        }
+
+        .snip1519 .button:hover {
+            color: #fff;
+        }
+
+        .snip1519 .button:hover:before {
+            top: 0;
+            opacity: 1;
+        }
+
+
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+        body{
+            background: #f2f2f2;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .search {
+            width: 100%;
+            position: relative;
+            display: flex;
+        }
+
+        .searchTerm {
+            width: 100%;
+            border: 3px solid #00B4CC;
+            border-right: none;
+            padding: 5px;
+            height: 20px;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+            color: #9DBFAF;
+        }
+
+        .searchTerm:focus{
+            color: #00B4CC;
+        }
+
+        .searchButton {
+            width: 40px;
+            height: 36px;
+            border: 1px solid #00B4CC;
+            background: #00B4CC;
+            text-align: center;
+            color: #fff;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        /*Resize the wrap to see the search bar change!*/
+        .wrap{
+            width: 30%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Demo purposes only */
+
+
+
+    </style>
+
+
+
+
+
+
+    <div class="breadcrumb parallax" style=  " background: #5e2ced;
+     background-position:  center center; background-repeat: no-repeat; background-size: cover;">
+
+
+        <h1 style="color: #0b0b0b;
+            text-align:center;font-family:'Baskerville Old Face';font-weight:900;font-size:4em;color:#fff;text-shadow:0em 0.05em 0 rgba(0,0,0,0.25)}
+    " class="control-label" >Détail de feedback
+
+        </h1>
+
+    </div>
+    <!-- Page Content -->
+    <div class="container">
+
+    <br><br>
+    <a href="{{  path('read_feedback')}}"><i class="fa fa-arrow-circle-o-left "style="font-size: 70px; color: black"></i></a>
+    <hr>
+    <br><br>
+    <div class="row">
+
+        <div class="col-lg-12">
+
+
+
+            <!-- Preview Image -->
+            <img class="img-fluid rounded" src="{{ asset('uploads/feedback_image/' ~ image) }}" style="width: 100%;height: 500px;">
+
+
+            <h4>{{ date|date }}</h4>
+        </div>
+        <div class="row">
+
+            <div class="col-lg-12">
+
+                <p class="lead">{{ descripion }}</p>
+
+            </div>
+        </div>
+        <!-- Date/Time -->
+
+
+
+        <!-- Post Content -->
+
+
+        <hr>
+
+        {#        <!-- Comments Form -->#}
+        {#        <div class="card my-4">#}
+        {#            <h5 class="card-header">Leave a Comment:</h5>#}
+        {#            <div class="card-body">#}
+        {#                <form action="{{ path('add_comment') }}" method="post" id="comment">#}
+        {#                    <div class="form-group">#}
+
+        {#                        <textarea class="form-control" rows="3" name="comment" placeholder="Comment here"></textarea>#}
+
+        {#                    </div>#}
+        {#                    <button type="submit" class="btn btn-primary">Submit</button>#}
+        {#                </form>#}
+        {#            </div>#}
+        {#        </div>#}
+
+        {#        <!-- Single Comment -->#}
+        {#        {% for comment in posts.comments %}#}
+        {#        <div class="media mb-4">#}
+        {#            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">#}
+        {#            <div class="media-body">#}
+        {#                <h5 class="mt-0">{{ comment.getUser().getUsername() }}</h5>#}
+        {#                <p>{{ comment.getContent() }}</p>#}
+        {#                {% if is_granted('IS_AUTHENTICATED_FULLY') %}#}
+        {#                    {% if(comment.user.id== app.user.id) %}#}
+
+
+        {#                        <!-- Button trigger modal -->#}
+        {#                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">#}
+        {#                            Delete#}
+        {#                        </button>#}
+
+        {#                        <!-- Modal -->#}
+        {#                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">#}
+        {#                            <div class="modal-dialog" role="document">#}
+        {#                                <div class="modal-content">#}
+        {#                                    <div class="modal-header">#}
+        {#                                        <h5 class="modal-title" id="exampleModalLabel">Alert </h5>#}
+        {#                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">#}
+        {#                                            <span aria-hidden="true">&times;</span>#}
+        {#                                        </button>#}
+        {#                                    </div>#}
+        {#                                    <div class="modal-body">#}
+        {#                                        Do you really want to delete your comment ?#}
+        {#                                    </div>#}
+        {#                                    <div class="modal-footer">#}
+        {#                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>#}
+        {#                                        <a href="{{ path('delete_comment',{'id': comment.id}) }}"><button type="button" class="btn btn-primary">Delete Comment</button></a>#}
+        {#                                    </div>#}
+        {#                                </div>#}
+        {#                            </div>#}
+        {#                        </div>#}
+        {#                    {% else %}#}
+
+
+        {#                    {% endif %}#}
+        {#                {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}#}
+        {#                    <br>#}
+
+        {#                {% endif %}#}
+
+        {#            </div>#}
+        {#            {% endfor %}#}
+        {#            <!-- Comment with nested comments -->#}
+
+
+
+        <br><br><br><br><br>
+
+
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+{% endblock %}

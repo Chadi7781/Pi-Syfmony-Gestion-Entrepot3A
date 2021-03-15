@@ -1,0 +1,123 @@
+{%  extends 'backend/base.html.twig' %}
+
+
+{% block content %}
+    <link  href="{{ asset('BundleExterne/css/rating.css') }}" rel="stylesheet">
+    <!-- default styles -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/css/star-rating.min.css" media="all" rel="stylesheet" type="text/css" />
+
+    <!-- optionally if you need to use a theme, then include the theme CSS file as mentioned below -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/themes/krajee-svg/theme.css" media="all" rel="stylesheet" type="text/css" />
+
+
+    <div class="content-page">
+        <!-- Start content -->
+        <div class="content">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-xl-4">
+                    </div><!-- end col -->
+                </div>
+                <!-- end row -->
+
+                <div class="row">
+                    {% for entity in feedbacks %}
+
+                    <div class="col-xl-4">
+                        <div class="text-center card-box">
+                            <div class="dropdown pull-right">
+                                <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="mdi mdi-dots-vertical"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <!-- item-->
+                                    <a href="" class="dropdown-item">Traiter</a>
+                                    <!-- item-->
+
+                                </div>
+                            </div>
+                            <div>
+                                <img src="{{ asset('assets/images/feedbacks/user.png') }}" class="rounded-circle thumb-xl img-thumbnail m-b-10" alt="profile-image">
+
+
+                                <p class="text-muted font-13"><strong>Note :</strong>
+
+                                    <label for="input-1" class="control-label">{{ entity.note }}</label>
+
+
+
+                                    <div class="text-left"><p class="text-muted font-13"><strong>Nom :</strong> <span class="m-l-15">Chedi Troudi</span></p>
+
+
+                                </div>
+
+                                <button type="button" class="btn btn-custom btn-rounded waves-effect waves-light" data-toggle="modal" data-target="#myModal{{ entity.idFeed }}">Détail</button>
+                                <div class="modal fade" id="myModal{{ entity.idFeed }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <br><br><br><br>
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title" id="myModalLabel"> Description de feedback :</h4>
+
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+
+                                                    <div class="col-lg-6">
+
+                                                        <ul>
+                                                            <p>                                    {{ entity.description }}
+                                                            </p>
+                                                        </ul>
+
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                    </div> <!-- end col -->
+                    {% endfor %}
+
+                </div>
+                <!-- end row -->
+
+
+                <!-- end row -->
+
+            </div> <!-- container -->
+
+        </div> <!-- content -->
+
+
+    </div>
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="{{ asset('BundleExterne/js/rating.js') }}"></script>
+
+    <!-- important mandatory libraries -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/js/star-rating.min.js" type="text/javascript"></script>
+
+    <!-- optionally if you need to use a theme, then include the theme JS file as mentioned below -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/themes/krajee-svg/theme.js"></script>
+
+    <!-- optionally if you need translation for your language then include locale file as mentioned below -->
+{% endblock %}

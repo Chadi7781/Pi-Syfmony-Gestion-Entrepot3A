@@ -1,0 +1,327 @@
+
+{% extends 'frontend/base.html.twig' %}
+
+{% block content %}
+    <div class="body_wrapper">
+
+    <section class="breadcrumb_area"
+             style="background-image: url('{{ asset('image/feedbacks/Img-01.jpg') }}'); background-position:  center center; background-repeat: no-repeat; background-size: cover;">
+        <img class="breadcrumb_shap" src="{{ asset('image/feedbacks/banner_bg.png') }}" alt="">
+        <div class="container">
+            <div class="breadcrumb_content text-center">
+                <h1 class="f_p f_700 f_size_50 w_color l_height50 mb_20">Votre Panier</h1>
+                <p class="f_400 w_color f_size_16 l_height26">Merci de votre confiance !!<br> </p>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="container">
+        <div class="row">
+
+
+{#            <div class="col-sm-9" >#}
+{#                    <div class="table-responsive">#}
+{#                        {% if items | length >0 %}#}
+
+{#                            <table id="myTable" class="table">#}
+{#                                <thead>#}
+{#                                <tr>#}
+{#                                    <td class="text-center">Image</td>#}
+{#                                    <td class="text-center">Produit</td>#}
+{#                                    <td class="text-center">Prix</td>#}
+{#                                    <td class="text-left">Quantite</td>#}
+{#                                    <td class="text-center">Total</td>#}
+{#                                    <td class="text-center">Action</td>#}
+{#                                </tr>#}
+{#                                </thead>#}
+
+{#                                <tbody>#}
+{#                                {%  for item in items %}#}
+{#                                <form method="post" action="{{path('ajout_commande')}}">#}
+
+{#                                    <tr>#}
+{#                                        <td class="text-center">#}
+{#                                            <img class="img-thumbnail" style="width: 50px;height: 55px;"  src="{{ asset('uploadsProduit/produit_image/' ~ item.produit.photo) }}"   />#}
+
+{#                                        <td class="text-center">{{ item.produit.libelle }}</td>#}
+{#                                        <td class="text-center" id="prix" >{{item.produit.prix }}</td>#}
+
+{#                                            <td class="text-center">#}
+{#                                                <div class="quantity">#}
+{#                                                    <div class="product-qty">#}
+{#                                                        <button class="ar_top" type="button"><i class="ti-angle-up"></i></button>#}
+{#                                                        <input type="number" name="qty" id="qty" value="1" title="Quantity:" class="manual-adjust">#}
+{#                                                        <button class="ar_down" type="button"><i class="ti-angle-down"></i></button>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                                <input type="number" style="width: 20px;" class="form-controle quantity" size="1" value="{{ item.qunatiteEnStock}}" name="_quantity">#}
+{#                                                </td>#}
+
+{#                                        <td class="text-center" id="total">{{item.qunatiteEnStock  *item.produit.prix}}</td>#}
+{#                                        <div class="center-block" style="margin-left: 250px;">#}
+
+{#                                        <td>#}
+{#                                                <a href="{{ path('cart_remove',{'id':item.produit.id}) }}">#}
+{#                                                    <button class="btn btn-danger" title="" data-toggle="tooltip" type="button" data-original-title="Remove">#}
+{#                                                        <i class="fa fa-times-circle"></i>#}
+
+{#                                                    </button>#}
+{#                                                </a>#}
+{#                                            <a href="{{ path('cart_remove',{'id':item.produit.id}) }}">#}
+{#                                                <button class="btn btn-secondary" title="" data-toggle="tooltip" type="button" data-original-title="Remove">#}
+{#                                                    <i class="fa fa-edit"></i>#}
+
+{#                                                </button>#}
+{#                                            </a>#}
+{#                                        </td>#}
+{#                                        </div>#}
+
+{#                                    </tr>#}
+
+
+{#                                    {% endfor %}#}
+{#                                    <button type="submit" >Finaliser votre commande </button>#}
+
+{#                                    <input type="submit" class="button update-cart-button rounded" name="update_cart" value="Update Cart"/>#}
+
+{#                                </form>#}
+{#                                </tbody>#}
+{#                                <tfoot>#}
+
+
+{#                                </tfoot>#}
+{#                            </table>#}
+{#                        {% else %}#}
+{#                            <div class="container">#}
+
+{#                                <section class="download_area">#}
+{#                                    <div class="container">#}
+{#                                        <div class="download_content thanks_content">#}
+{#                                            <h2>Panier</h2>#}
+
+{#                                            <img class="img-fluid" src="{{ asset('uploads/nocart.jpg') }}" style="width: 100px;height: 100px;" alt="">#}
+{#                                            <h2>Vous n'avez aucune panier  !</h2>#}
+{#                                            <a href="{{ path('vitrine_read_produit') }}">Retour au vitirne</a>#}
+{#                                            #}{#                                    <a href="{{ path('listeC') }}">Consulter votre Historique <i class="arrow_right"></i></a>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </section>#}
+{#                            </div>#}
+{#                        {% endif %}#}
+
+{#                    </div>#}
+
+
+
+
+{#                </div>#}
+            {% if items |length >0 %}
+
+    <section class="shopping_cart_area sec_pad bg_color">
+        <div class="container">
+            <div class="cart_title">
+                <div class="row">
+                    <div class="col-md-6 col-4">
+                        <h6 class="f_p">PRODUCT</h6>
+                    </div>
+                    <div class="col-md-2 col-3">
+                        <h6 class="f_p">PRICE</h6>
+                    </div>
+                    <div class="col-md-2 col-3">
+                        <h6 class="f_p"> QUANTITY</h6>
+                    </div>
+                    <div class="col-md-2 col-2">
+                        <h6 class="f_p">TOTAL</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <form method="post" action="{{path('ajout_commande')}}">
+{#            <form method="post" action="">#}
+                <div class="table-responsive">
+
+
+                    <table class="row table cart_table mb-0">
+                        <tbody>
+
+                        {%  for item in items %}
+
+                        <tr>
+                            <td class="product col-lg-12 col-md-5 col-sm-5 col-xs-5" data-title="PRODUCT">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <img   alt="" src="{{ asset('uploadsProduit/produit_image/' ~ item.produit.photo) }}"   />
+                                    </div>
+
+                                    <div class="media-body">
+                                        <h5 class="mb-1">{{ item.produit.libelle }}</h5>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2" data-title="PRICE">
+                                <div class="total">{{item.produit.prix }}</div>
+                            </td>
+                            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2" data-title="QUANTITY">
+                                <div class="quantity">
+                                    <div class="product-qty">
+
+{#                                        <input type="number" style="width: 20px;" class="manual-adjust quantity" size="1" value="{{ item.qunatiteEnStock}}" name="_quantity">#}
+                                     <input type="number" style="width: 20px;" class="form-controle quantity" size="1" value="{{ item.qunatiteEnStock}}" name="_quantity">
+                                    </div>
+                                </div>
+
+                            </td>
+                            <td class="col-lg-2 col-md-3 col-sm-3 col-xs-3" data-title="TOTAL">
+                                <div class="del-item">
+                                    <a href="#" class="total">{{item.qunatiteEnStock  *item.produit.prix}}</a>
+
+                                    <a href="{{ path('cart_remove',{'id':item.produit.id}) }}">
+
+
+                                    <i class="fa fa-close"></i></a>
+                                </div>
+                            </td>
+{#                            <tr class="cart-subtotal">#}
+{#                                <th>Subtotal</th>#}
+{#                                <td data-title="Subtotal"><span class="amount">$870</span></td>#}
+{#                            </tr>#}
+                        </tr>
+
+                        {% endfor %}
+                        </tbody>
+
+                    </table>
+                </div>
+            </form>
+                <div class="hr"></div>
+                <div class="row">
+                    <div class="col-lg-8 col-md-6 actions">
+                            <div class="action_btn">
+                                <a href="{{ path('envoi_sms') }}">
+
+                                <button type="submit" class="cart_btn" name="update_cart" value="Update cart">Finaliser achat</button>
+                                </a>
+                                <a href="{{ path('historique') }}" class="cart_btn cart_btn_two" name="update_cart" value="Update cart">Historique</a>
+
+                            </div>
+
+                    </div>
+                    <div class="col-lg-4 col-md-6 actions">
+                        <div class="cart_box">
+                            <table class="shop_table">
+                                <tbody>
+                                <tr class="cart-subtotal">
+                                    <th>Total</th>
+                                    <td data-title="Subtotal"><span class="amount">{{total}}</span></td>
+                                </tr>
+
+                                </tbody>
+
+                            </table>
+                        </div>
+                        <a href="#" class="checkout_button"> Proceed to checkout</a>
+                    </div>
+                </div>
+                {% else %}
+                {#                        {% else %}#}
+                                            <div class="container">
+
+                                                <section class="download_area">
+                                                    <div class="container">
+                                                        <div class="download_content thanks_content">
+                                                            <h2>Panier</h2>
+
+                                                            <img class="img-fluid" src="{{ asset('uploads/nocart.jpg') }}" style="width: 100px;height: 100px;" alt="">
+                                                            <h2>Vous n'avez aucune panier  !</h2>
+{#                                                            <a href="{{ path('vitrine_read_produit') }}">Retour au vitirne</a>#}
+{#                                                                                                <a href="{{ path('index') }}">Consulter votre Historique <i class="arrow_right"></i></a>#}
+                                                        </div>
+                                                    </div>
+                                                </section>
+                                            </div>
+                                        {% endif %}
+
+            </form>
+        </div>
+    </section>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="{{ asset('assets/js/jquery.min.js') }}"></script>
+
+    <script>
+
+
+
+
+
+       function updateQ (id) {
+
+           $.ajax({
+               type: "POST",
+               url: "{{ path('update_quantite') }}",
+               data: {"id": id},
+               success:function(id){
+                   
+
+
+
+
+               }
+
+           });
+       }
+
+
+    </script>
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
+    <script src="{{ asset('main.js') }}"></script>
+
+
+
+    {#<h1>Votre panier</h1>#}
+
+    {#{% if items |length >0 %}#}
+    {#    <table class="table">#}
+    {#        <thead>#}
+    {#        <tr>#}
+    {#            <th>Produit</th>#}
+    {#            <th>Prix</th>#}
+    {#            <th>Quantite</th>#}
+    {#            <th>Total</th>#}
+    {#            <th></th>#}
+    {#        </tr>#}
+    {#        <tbody>#}
+    {#            {% for item in items %}#}
+    {#            <tr>#}
+    {#                <td>{{ item.produit.libelle  }}</td>#}
+    {#                <td>{{ item.produit.prix }}</td>#}
+    {#                <td>{{ item.quantite }}</td>#}
+    {#                <td>{{ item.produit.prix * item.quantite }}</td>#}
+    {#                <td>#}
+    {#                    <a href="#" class="btn btn-danger btn-sm">#}
+    {#                        <i class="fa fa-trash"></i>#}
+    {#                    </a>#}
+    {#                </td>#}
+    {#            </tr>#}
+    {#        {% endfor %}#}
+    {#        </tbody>#}
+    {#        <tfoot>#}
+    {#        <tr>#}
+    {#            <td colspan="3" class="text-right">Total :</td>#}
+    {#            <td>{{ total }}</td>#}
+    {#            <td></td>#}
+    {#        </tr>#}
+    {#        </tfoot>#}
+    {#        </thead>#}
+    {#    </table>#}
+
+    {#{% else %}#}
+    {#    <h2>Panier vide</h2>#}
+    {#    {% endif %}#}
+
+{% endblock %}

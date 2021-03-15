@@ -1,0 +1,229 @@
+
+
+{% extends 'frontend/base.html.twig' %}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{{ asset('BundleExterne/css/rating.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset('style.css') }}" />
+
+
+
+
+
+
+<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.blue-orange.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
+
+
+<div class="body_wrapper">
+    <section class="breadcrumb_area"
+             style="background-image: url('{{ asset('image/feedbacks/Img-01.jpg') }}'); background-position:  center center; background-repeat: no-repeat; background-size: cover;">
+
+        <img class="breadcrumb_shap" src="{{ asset('image/feedbacks/banner_bg.png') }}" alt="">
+        <div class="container">
+            <div class="breadcrumb_content text-center">
+                <h1 class="f_p f_700 f_size_50 w_color l_height50 mb_20">Liste Des Commandes</h1>
+                <p class="f_400 w_color f_size_16 l_height26">
+                    Vous allez pouvoir consulter votre liste des commande et réclamer <br> que vous souhaitez plus rapidement.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <div class="album py-5 bg-light">
+        {% if items |length >0 %}
+
+        <div class="container">
+
+
+
+            <div class="row s_service_info">
+                <br>
+                {% for quantite in produitCmd %}
+                    <div class="col-lg-12 col-sm-6">
+                        <div class="s_service_item wow fadeInLeft" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                            <div class="solid_overlay"></div>
+                            <div class="img" style="width: 15%;height: 15%">
+                                {% for image in imageProd %}
+                                    <img src="{{ asset('uploadsProduit/produit_image/'~image.produit) }}">
+                                {% endfor %}                        
+                            </div>
+                            <h5 class="f_p f_size_20 f_600 t_color">Article : {{ quantite.produit}}</h5>
+                            {% for id in idproduit %}
+                                <p class="l_height28">Article numero : {{ id.produit}}</p>
+
+                            <p class="l_height28">id commande : {{ quantite.commande }}</p>
+                            <p class="l_height28">quantite : {{ quantite.quantite}}</p>
+
+                            <a href="{{ path('display_categorie',{'nom':'reclamation','idp':id.produit,'idpc':quantite.commande})}} " class="learn_btn_two">Réclamer <i class="ti-arrow-right"></i></a>
+
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                {% endfor %}
+
+                <br>
+            </div>
+        </div>
+            {% else %}
+                <div class="container">
+
+                    <section class="download_area">
+                        <div class="container">
+                            <div class="download_content thanks_content">
+                                <h2>Panier</h2>
+
+                                <img class="img-fluid" src="{{ asset('uploads/nocart.jpg') }}" style="width: 100px;height: 100px;" alt="">
+                                <h2>Vous n'avez aucun produit commandé  !</h2>
+                                <a href="{{ path('vitrine_read_produit') }}">Retour au Menu principal</a>
+                                <a href="{{ path('index') }}">Consulter Vitrine <i class="arrow_right"></i></a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+        {% endif %}
+
+
+
+
+
+
+
+</div>
+</div>
+
+
+
+            <!-- jQuery is necessary -->
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+            <script type="text/javascript">
+                jQuery(document).ready(function() {
+                    var searchRequest = null;
+                    $("#search").keyup(function() {
+                        var minlength = 3;
+                        var that = this;
+                        var value = $(this).val();
+                        var entitySelector = $("#entitiesNav").html('');
+                        if (value.length >= minlength ) {
+                            if (searchRequest != null)
+                                searchRequest.abort();
+                            searchRequest = $.ajax({
+                                type: "GET",
+                                url: "{{ path('ajax_search') }}",
+                                data: {
+                                    'q' : value
+                                },
+                                dataType: "text",
+                                success: function(msg){
+                                    //we need to check if the value is the same
+                                    if (value==$(that).val()) {
+                                        var result = JSON.parse(msg);
+                                        $.each(result, function(key, arr) {
+                                            $.each(arr, function(id, value) {
+                                                if (key == 'entities') {
+                                                    if (id != 'error') {
+                                                        console.log(value[1])
+                                                        entitySelector.append('<li class="list-group-item">'+value[1]+'' +
+                                                            '<a href="/ProjetWebSymfony/test/web/app_dev.php/serviceApresVentes/detailReclamation/'+id+'")'+'' +
+                                                            '<img src="uploads/reclamation_image/'+value[0]
+                                                            +'"style="width: 50px; height: 50px;"/>' +
+                                                            ''+'</a></li>');
+                                                    } else {
+                                                        entitySelector.append('<li class="errorLi">'+value+'</li>');
+                                                    }
+                                                }
+                                            });
+                                        });
+                                    }
+                                }
+                            });
+                        }
+                    });
+                });
+            </script>
+            <script>
+                $(document).ready(function(){
+
+                    $(".btn1").click(function(){
+                        $("h1").slideUp();
+                    });
+
+                    $(".btn2").click(function(){
+                        $("h1").slideDown();
+                    });
+
+                    $(".btn3").click(function(){
+                        $("h1").slideToggle();
+                    });
+
+                });
+            </script>
+
+
+
+
+
+
+            {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            {#<!DOCTYPE html>#}
+            {#<html lang="en">#}
+            {#<head>#}
+            {#    <meta charset="UTF-8">#}
+            {#    <title>Title</title>#}
+            {#    <img src="{{ asset('unnamed.jpg') }}" id="imgLogo" width="350px">#}
+
+            {#        <link href=" " rel="stylesheet" type="text/css" />#}
+
+            {#</head>#}
+            {#<body>#}
+            {#<center>#}
+            {#    <h1>List des feedback</h1>#}
+            {#    <table border="1">#}
+            {#        <tr><th>Id</th><th>Titre</th><th>Description</th><th>Categories</th><th>Action</th></tr>#}
+            {#        <tr>#}
+            {#            {% for feedback in feedbacks %}#}
+            {#        <tr>#}
+            {#            <td> {{ feedback.idFeed }}</td>#}
+            {#            <td> {{ feedback.description }}</td>#}
+            {#            <td>{{ feedback.idc.nom }}</td>#}
+            {#            <td> {{ feedback.rating |rating }}</td>#}
+            {#            <td>#}
+            {#                <a href="{{ path('update_feedback',{'id':feedback.idFeed}) }}">Modifier</a>#}
+            {#            </td><td>#}
+            {#            <a href="{{ path('delete_feedback',{'id':feedback.idFeed}) }}">Supprimer</a>#}
+            {#            </td>#}
+
+
+            {#        </tr>#}
+            {#        {% endfor %}#}
+            {#    </table>#}
+            {#</center>#}
+
+
+            {#</body>#}
+            {#</html>#}
+            {#{% endblock %}#}

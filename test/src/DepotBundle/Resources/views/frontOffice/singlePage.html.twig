@@ -1,0 +1,63 @@
+{%  extends 'frontend/base.html.twig' %}
+{% block content %}
+
+        <div class="content col-md-12" style="margin-top: 50px ;text-align: center;">
+        <div class="blog1 blog">
+            <div class="blog-image"> <a href="#" class="blog-imagelink">
+                    <img src="{{ asset('image') }}/blog/blog_1.jpg" alt="#">
+                </a>
+                <span class="blog-hover"></span>
+            </div>
+            <div class="blog-content"> <span class="blog-date">02/05/2016</span>
+                <h2 class="blog-name">
+                    <a href="#">Adresse:{{ location.adresse }}</a>
+
+                    <br/>
+                    <a href="#">Surface:{{ location.surface }}</a>
+                    <br/>
+                    <a href="#">Prix:{{ location.prix }}</a>
+                </h2>
+                {{ form_start(show_form, {'attr': {'id': 'myform'}}) }}
+                {{ form_errors(show_form) }}
+
+                <div class="row" style="margin-left: 35%">
+                <div class="form-group col col-md-3">
+                    <label>Date Debut</label>
+                    {{ form_widget(show_form.datedebut, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group col col-md-3">
+                    <label>Date Fin</label>
+                    {{ form_widget(show_form.datefin, {'attr': {'class': 'form-control'}}) }}
+                </div>
+    </div>
+    <div class="form-group col col-md-12 text-center">
+        <button class="btn btn-success" style="float: center">Ajouter</button>
+    </div>
+                {{ form_end(show_form) }}
+
+
+
+    {#</div>#}
+{% endblock %}
+
+                {#{% block javascripts %}#}
+                {#<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>#}
+                {#<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>#}
+                {#<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"></script>#}
+                {#<script>#}
+                {#// $(document).ready(function () {#}
+                {#//#}
+                {#// $( "#myform" ).validate({#}
+                {#// rules: {#}
+                {#// // EndDate: { greaterThan: "#StartDate" }#}
+                {#//#}
+                {#// },#}
+                {#// messages: {#}
+                {#// "form[CIN]": "CIN doit etre 8 chiffres",#}
+                {#// }#}
+                {#// });#}
+                {#//#}
+                {#// });#}
+
+                {#</script>#}
+{#{% endblock %}#}

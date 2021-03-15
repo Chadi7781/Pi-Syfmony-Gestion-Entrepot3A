@@ -1,0 +1,471 @@
+
+
+{% extends 'frontend/base.html.twig' %}
+{% block content %}
+
+    <style>
+
+        .breadcrumb_area {
+            background-image: -moz-linear-gradient(180deg, #5e2ced 0%, #a485fd 100%);
+            background-image: -webkit-linear-gradient(180deg, #5e2ced 0%, #a485fd 100%);
+            background-image: -ms-linear-gradient(180deg, #5e2ced 0%, #a485fd 100%);
+            position: relative;
+            z-index: 1;
+            padding: 235px 0px 125px;
+            overflow: hidden;
+        }
+
+        .breadcrumb_area .breadcrumb_shap {
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: -1;
+        }
+
+        /*================= End breadcrumb_area css =================*/
+        /*================= Start breadcrumb_area_two css =================*/
+        .breadcrumb_area_two {
+            background: #f8f6fe;
+            position: relative;
+            padding: 235px 0px 125px;
+            z-index: 1;
+        }
+
+        .breadcrumb_area_two .breadcrumb_shap {
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: -1;
+            height: 100%;
+            width: 100%;
+            background-size: cover;
+        }
+
+        .breadcrumb_area_two .bubble li {
+            background: #5e2ced;
+            opacity: 0.1;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .breadcrumb_area_two .bubble li:nth-child(1) {
+            left: 220px;
+            bottom: 50px;
+            -webkit-animation: spin3 2s infinite alternate;
+            animation: spin3 2s infinite alternate;
+        }
+
+        .breadcrumb_area_two .bubble li:nth-child(2) {
+            left: 35%;
+            top: 100px;
+            -webkit-animation: spin 2s infinite alternate;
+            animation: spin 2s infinite alternate;
+        }
+
+        .breadcrumb_area_two .bubble li:nth-child(3) {
+            left: 40%;
+            width: 51px;
+            height: 51px;
+            bottom: 50px;
+            -webkit-animation: spin1 3s infinite alternate;
+            animation: spin1 3s infinite alternate;
+        }
+
+        .breadcrumb_area_two .bubble li:nth-child(4) {
+            left: 42%;
+            bottom: 50px;
+            width: 20px;
+            height: 20px;
+        }
+
+        .breadcrumb_area_two .bubble li:nth-child(5) {
+            left: 76%;
+            width: 51px;
+            height: 51px;
+            top: 160px;
+            -webkit-animation: spin1 3s infinite alternate;
+            animation: spin1 3s infinite alternate;
+        }
+
+        .breadcrumb_area_two .bubble li:nth-child(6) {
+            left: 75%;
+            width: 30px;
+            height: 30px;
+            top: 186px;
+        }
+
+        .breadcrumb_area_two .bubble li:nth-child(7) {
+            left: 52%;
+            top: 150px;
+            width: 20px;
+            height: 20px;
+            -webkit-animation: spin2 2s infinite alternate;
+            animation: spin2 2s infinite alternate;
+        }
+
+        .breadcrumb_area_two .bubble li:nth-child(8) {
+            left: 90%;
+            top: 250px;
+            width: 20px;
+            height: 20px;
+            -webkit-animation: spin2 2s infinite alternate;
+            animation: spin2 2s infinite alternate;
+        }
+        .clearfix:after {
+            content:"\0020";
+            display:block;
+            height:0;
+            clear:both;
+            visibility:hidden;
+            overflow:hidden;
+        }
+
+        .clearfix {
+            display:block;
+        }
+
+        .iconbb {
+            float: left;
+            margin-left: 2px;
+            margin-right: 2px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            padding-left: 3%;
+            width: 30%;
+        }
+
+
+        .textbb {
+            margin: 5px;
+            padding-left: 34%;
+            width: auto;
+        }
+
+        .snip1519 {
+            font-family: 'Roboto', Arial, sans-serif;
+            position: relative;
+            float: left;
+            left: 10%;
+
+            overflow: hidden;
+            margin: 10px 1%;
+            min-width: 250px;
+            max-width: 310px;
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 5px;
+            border-top: 5px solid #6253e1;
+
+            color: #9e9e9e;
+            text-align: center;
+            font-size: 16px;
+
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.35);
+        }
+
+        .snip1519 *,
+        .snip1519 *:before {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            -webkit-transition: all 0.1s ease-out;
+            transition: all 0.1s ease-out;
+        }
+
+        .snip1519 figcaption {
+            padding: 12% 10% 14%;
+        }
+
+        .snip1519 img {
+
+            font-size: 54px;
+            color: #fff;
+            width: 80px;
+            line-height: 50px;
+
+            /*box-shadow: 0 4px 15px 0 rgba(126, 52, 161, 0.75);*/
+            /*border-radius: 50%;*/
+            padding: 0;
+            margin: 0 0 10px;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .snip1519 h3 {
+            color: #3c3c3c;
+            font-size: 20px;
+            font-weight: 300;
+            line-height: 24px;
+            margin: 10px 0;
+        }
+
+        .snip1519 p {
+            font-size: 0.9em;
+            font-weight: 300;
+            margin: 0 0 20px;
+        }
+
+        .snip1519 .button {
+            text-decoration: none;
+            color: #777;
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            padding: 5px 10px;
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+        }
+
+        .snip1519 .button:before {
+            background-color: #6253e1;
+            position: absolute;
+            top: 100%;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            content: '';
+            z-index: -1;
+            opacity: 0;
+        }
+
+        .snip1519 .button:hover {
+            color: #fff;
+        }
+
+        .snip1519 .button:hover:before {
+            top: 0;
+            opacity: 1;
+        }
+
+
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+        body{
+            background: #f2f2f2;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .search {
+            width: 100%;
+            position: relative;
+            display: flex;
+        }
+
+        .searchTerm {
+            width: 100%;
+            border: 3px solid #00B4CC;
+            border-right: none;
+            padding: 5px;
+            height: 20px;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+            color: #9DBFAF;
+        }
+
+        .searchTerm:focus{
+            color: #00B4CC;
+        }
+
+        .searchButton {
+            width: 40px;
+            height: 36px;
+            border: 1px solid #00B4CC;
+            background: #00B4CC;
+            text-align: center;
+            color: #fff;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        /*Resize the wrap to see the search bar change!*/
+        .wrap{
+            width: 30%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Demo purposes only */
+
+
+
+    </style>
+    <link rel="stylesheet" type="text/css" href="{{ asset('BundleExterne/css/rating.css') }}" />
+
+
+
+
+
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.blue-orange.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
+
+
+    <div class="breadcrumb parallax" style=  " background: #5e2ced;
+     background-position:  center center; background-repeat: no-repeat; background-size: cover;">
+
+
+        <h1 style="color: #0b0b0b;
+            text-align:center;font-family:'Baskerville Old Face';font-weight:900;font-size:4em;color:#fff;text-shadow:0em 0.05em 0 rgba(0,0,0,0.25)}
+    " class="control-label" >Historique des feedback
+
+        </h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </div>
+    {%  for message in app.flashes('info') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div  {{ app.session.flashbag.peek('info')|length > 0 ? '' : 'mb-5' }}">
+
+    {% if count | number_format ==0 %}
+        {%  for message in app.flashes('info') %}
+            <div class="alert alert-info">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+    {% endif %}
+    </div>
+
+    <a href="{{  path('envoyer_reclamation')}}"><i class="fa fa-arrow-circle-o-left "style="font-size: 70px; color: black"></i></a>
+    <hr>
+
+
+
+    <div class="album py-5 bg-light">
+    <div class="container">
+
+        <div class="sidebar-search" >
+            <div class="input-group custom-search-form">
+                <input    type="text" id="search" class="form-control widget_input" placeholder="Chercher..." style="width: 1180px;background: white">
+            </div>
+            <br>
+            <!-- /input-group -->
+            <ul class="nav" id="side-menu">
+                <li>
+                    <a href="#"> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level" id="entitiesNav">
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        {%  for reclamations in feedbacks %}
+
+            <figure class="snip1519" >
+
+                <figcaption>
+
+{#                    <a href="{{ path('detailed_rec',{'id': reclamations.idFeed}) }}">#}
+                        <img src="{{ asset('uploads/feedback_image/' ~ reclamations.image) }}" alt="" style="
+                                         width: 100%;
+                                         height: 20vh;
+                                         object-fit: cover;
+                                         ">
+                        <h2 class="mdl-card__title-text">{{ reclamations.description }}</h2>
+
+
+                        {{ reclamations.dateFeedback |date  }} <i class="fa fa-share-square-o"></i></a>
+
+                </figcaption>
+
+            </figure>
+        {% endfor %}
+
+
+        {#                <div  class="mdl-card__supporting-text">#}
+        {#                    <h4><a href="{{ path('detailed_rec',{'id': reclamations.idRec}) }}">#}
+        {#                           </a></h4>#}
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+    <!-- jQuery is necessary -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            var searchRequest = null;
+            $("#search").keyup(function() {
+                var minlength = 3;
+                var that = this;
+                var value = $(this).val();
+                var entitySelector = $("#entitiesNav").html('');
+                if (value.length >= minlength ) {
+                    if (searchRequest != null)
+                        searchRequest.abort();
+                    searchRequest = $.ajax({
+                        type: "GET",
+                        url: "{{ path('ajax_search') }}",
+                        data: {
+                            'q' : value
+                        },
+                        dataType: "text",
+                        success: function(msg){
+                            //we need to check if the value is the same
+                            if (value==$(that).val()) {
+                                var result = JSON.parse(msg);
+                                $.each(result, function(key, arr) {
+                                    $.each(arr, function(id, value) {
+                                        if (key == 'entities') {
+                                            if (id != 'error') {
+                                                console.log(value[1])
+                                                console.log(value[0])
+                                                entitySelector.append('<li><b>'+value[1]+'</b><a href="/reclamation/detail/'+id+'">'+'<img src="/uploads/reclamation_image/'+value[0]+'" style="width: 50px; height: 50px"/>'+'</a></li>');
+
+                                            } else {
+                                                entitySelector.append('<li class="errorLi">'+value+'</li>');
+                                            }
+                                        }
+                                    });
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+
+            $(".btn1").click(function(){
+                $("h1").slideUp();
+            });
+
+            $(".btn2").click(function(){
+                $("h1").slideDown();
+            });
+
+            $(".btn3").click(function(){
+                $("h1").slideToggle();
+            });
+
+        });
+    </script>
+
+{% endblock %}

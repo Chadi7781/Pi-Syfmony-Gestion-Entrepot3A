@@ -1,0 +1,1212 @@
+/* Smartphones (portrait and landscape) --  --  --  --  -- - */
+
+@media screen and (min-width: 304px) and (max-width: 667px) {
+    /* Styles */
+    /* Heading & Paragraph */
+    
+    h1 {
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 30px;
+        color: #fff;
+        letter-spacing: 1px;
+        font-weight: 400;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    }
+    p {
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 15px;
+        color: #fff;
+        letter-spacing: 1px;
+        font-weight: 300;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    }
+	.jumbotron {
+	
+            padding: 20px;
+            font-size:20px;
+      }
+	  /* Boby Background Service */
+
+body.demo-one {
+    background: url(../images/bg-1.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		background-position: 0% 0% !important;
+		height: 100vh;
+		width: 100%;
+
+}
+body.demo-two {
+    background: url(../images/animal.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		background-position: 0% 0% !important;
+		height: 100vh;
+		width: 100%;
+
+}
+body.demo-three {
+    background: url(../images/abstract-2100_1920.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		background-position: 0% 0% !important;
+		height: 100vh;
+		width: 100%;
+
+}
+body.demo-four {
+    background: url(../images/pexels-photo-230872.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		background-position: 0% 0% !important;
+		height: 100vh;
+		width: 100%;
+
+}
+body.demo-five {
+    background: url(../images/drummer-1208190_1920.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		background-position: 0% 0% !important;
+		height: 100vh;
+		width: 100%;
+
+}
+body.demo-six {
+    background: url(../images/fashion-show-1746579_1920.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		background-position: 0% 0% !important;
+		height: 100vh;
+		width: 100%;
+
+}
+body.demo-seven {
+    background: url(../images/books-1246674_1920.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		background-position: 0% 0% !important;
+		height: 100vh;
+		width: 100%;
+}
+body.demo-eight {
+    background: url(../images/food.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		background-position: 0% 0% !important;
+		height: 100vh;
+		width: 100%;
+
+}
+body.demo-nine {
+    background: url(../images/health.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		background-position: 0% 0% !important;
+		height: 100vh;
+		width: 100%;
+
+}
+body.demo-ten {
+    background: url(../images/pexels-photo-8674.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		background-position: 0% 0% !important;
+		height: 100vh;
+		width: 100%;
+}
+body.demo-eleven {
+    background: url(../images/pexels-photo-28807.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		background-position: 0% 0% !important;
+		height: 100vh;
+		width: 100%;
+
+}
+body.demo-twelve {
+    background: url(../images/pexels-photo-239520.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		background-position: 0% 0% !important;
+		height: 100vh;
+		width: 100%;
+
+}
+body.demo-thirteen{
+     background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%) !important;
+	 -webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		background-position: 0% 0% !important;
+		height: 100vh;
+		width: 100%;
+     }
+ body.demo-fourteen{
+    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%) !important;
+	-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		background-position: 0% 0% !important;
+		height: 100vh;
+		width: 100%;
+    }
+	body.demo-fifteen{
+	  
+        background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%) !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		background-position: 0% 0% !important;
+		height: 100vh;
+		width: 100%;
+     }
+	 body.demo-sixteen{
+     background-image: linear-gradient(60deg, #29323c 0%, #485563 100%) !important;
+    -webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		background-position: 0% 0% !important;
+		height: 100vh;
+		width: 100%;
+}
+ body.demo-seventeen{
+         background-image: linear-gradient(to right, #c1c161 0%, #c1c161 0%, #d4d4b1 100%) !important;
+    -webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		background-position: 0% 0% !important;
+		height: 100vh;
+		width: 100%;
+}
+}
+/* Smartphones (landscape) --  --  --  --  -- - */
+
+@media screen and (min-width: 304px) and (max-width: 667px)and (orientation: landscape) {
+    /* Styles */
+}
+/* Smartphones (portrait) --  --  --  --  -- - */
+
+@media screen and (max-width: 320px) {
+    /* Styles */
+}
+/* iPads (portrait and landscape) --  --  --  --  -- - */
+
+@media screen and (min-width: 668px) and (max-width: 1223px) {
+    /* Styles */
+    /* Heading & Paragraph */
+    
+    h1 {
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 40px;
+        color: #fff;
+        letter-spacing: 1px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    }
+    p {
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 16px;
+        color: #fff;
+        letter-spacing: 1px;
+        font-weight: 300;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    }
+	/* Boby Background Service */
+
+body.demo-one {
+    background: url(../images/bg-1.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+
+}
+body.demo-two {
+    background: url(../images/animal.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+
+}
+body.demo-three {
+    background: url(../images/abstract-2100_1920.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+
+}
+body.demo-four {
+    background: url(../images/pexels-photo-230872.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+
+}
+body.demo-five {
+    background: url(../images/drummer-1208190_1920.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+
+}
+body.demo-six {
+    background: url(../images/fashion-show-1746579_1920.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+
+}
+body.demo-seven {
+    background: url(../images/books-1246674_1920.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+
+}
+body.demo-eight {
+    background: url(../images/food.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+
+}
+body.demo-nine {
+    background: url(../images/health.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+
+}
+body.demo-ten {
+    background: url(../images/pexels-photo-8674.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+}
+body.demo-eleven {
+    background: url(../images/pexels-photo-28807.jpg) no-repeat center center fixed  !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+
+}
+body.demo-twelve {
+    background: url(../images/pexels-photo-239520.jpg) no-repeat center center fixed  !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+
+}
+body.demo-thirteen{
+     background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%) !important;
+	 -webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+   }
+body.demo-fourteen{
+    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%) !important;
+	-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+     }
+	 body.demo-fifteen{
+        background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%)  !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+    }
+	 body.demo-sixteen{
+	background-image: linear-gradient(60deg, #29323c 0%, #485563 100%) !important;
+   -webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+		}
+		body.demo-seventeen{
+         background-image: linear-gradient(to right, #c1c161 0%, #c1c161 0%, #d4d4b1 100%) !important;
+    -webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+}
+}
+/* iPads (landscape) --  --  --  --  -- - */
+
+@media screen and (min-width: 668px) and (max-width: 1223px) and (orientation: landscape) {
+    /* Styles */
+
+}
+/* iPads (portrait) --  --  --  --  -- - */
+
+@media screen and (min-width: 668px) and (max-width: 1223px) and (orientation: portrait) {
+    /* Styles */
+}
+/* Desktops and laptops --  --  --  --  -- - */
+
+@media screen and (min-width: 1224px) {
+    /* Styles */
+    /* Heading & Paragraph */
+    
+    h1 {
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 40px;
+        color: #fff;
+        letter-spacing: 1px;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    }
+    p {
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 17px;
+        color: #fff;
+        letter-spacing: 1px;
+        font-weight: 300;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    }
+	/* Boby Background Service */
+
+body.demo-one {
+    background: url(../images/bg-1.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+
+}
+body.demo-two {
+    background: url(../images/animal.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+
+}
+body.demo-three {
+    background: url(../images/abstract-2100_1920.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+
+}
+body.demo-four {
+    background: url(../images/pexels-photo-230872.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+
+}
+body.demo-five {
+    background: url(../images/drummer-1208190_1920.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+
+}
+body.demo-six {
+    background: url(../images/fashion-show-1746579_1920.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+
+}
+body.demo-seven {
+    background: url(../images/books-1246674_1920.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+
+}
+body.demo-eight {
+    background: url(../images/food.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+
+}
+body.demo-nine {
+    background: url(../images/health.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+
+}
+body.demo-ten {
+    background: url(../images/pexels-photo-8674.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+}
+body.demo-eleven {
+    background: url(../images/pexels-photo-28807.jpg) no-repeat center center fixed  !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+
+}
+body.demo-twelve {
+    background: url(../images/pexels-photo-239520.jpg) no-repeat center center fixed  !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+
+}
+body.demo-thirteen{
+     background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%) !important;
+	 -webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+    }
+body.demo-fourteen{
+    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%)  !important;
+	-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+     }
+	 body.demo-fifteen{
+
+      background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%)  !important;
+	  -webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+}
+ body.demo-sixteen{
+	background-image: linear-gradient(60deg, #29323c 0%, #485563 100%) !important;
+  -webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+		}
+		body.demo-seventeen{
+         background-image: linear-gradient(to right, #c1c161 0%, #c1c161 0%, #d4d4b1 100%) !important;
+   webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+		overflow: hidden;
+}
+}
+/* Large screens --  --  --  --  -- - */
+
+@media screen and (min-width: 1824px) {
+    /* Styles */
+    /* Heading & Paragraph */
+    
+    h1 {
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 36px;
+        color: #fff;
+        letter-spacing: 1px;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    }
+    p {
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 17px;
+        color: #fff;
+        letter-spacing: 1px;
+        font-weight: 400;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    }
+	/* Boby Background Service */
+
+body.demo-one {
+    background: url(../images/bg-1.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+
+}
+body.demo-two {
+    background: url(../images/animal.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+
+}
+body.demo-three {
+    background: url(../images/abstract-2100_1920.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+
+}
+body.demo-four {
+    background: url(../images/pexels-photo-230872.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+
+}
+body.demo-five {
+    background: url(../images/drummer-1208190_1920.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+
+}
+body.demo-six {
+    background: url(../images/fashion-show-1746579_1920.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+
+}
+body.demo-seven {
+    background: url(../images/books-1246674_1920.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+
+}
+body.demo-eight {
+    background: url(../images/food.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+
+}
+body.demo-nine {
+    background: url(../images/health.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+
+}
+body.demo-ten {
+    background: url(../images/pexels-photo-8674.jpg) no-repeat center center fixed !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+}
+body.demo-eleven {
+    background: url(../images/pexels-photo-28807.jpg) no-repeat center center fixed  !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+
+}
+body.demo-twelve {
+    background: url(../images/pexels-photo-239520.jpg) no-repeat center center fixed  !important;
+		-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+
+}
+body.demo-thirteen{
+     background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%) !important;
+	 -webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+}
+body.demo-fourteen{
+    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%) !important;
+	-webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+    }
+	body.demo-fifteen{
+
+       background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%) !important;
+	   -webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+}
+body.demo-sixteen{
+     background-image: linear-gradient(60deg, #29323c 0%, #485563 100%) !important;
+  
+	   -webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+}
+body.demo-seventeen{
+         background-image: linear-gradient(to right, #c1c161 0%, #c1c161 0%, #d4d4b1 100%) !important;
+   -webkit-background-size: cover !important;
+		-moz-background-size: cover !important;
+		-o-background-size: cover !important;
+		background-size: cover !important;
+		height: 100vh;
+		width: 100%;
+}
+
+}
+/* Page load Loader */
+
+.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('../images/loading.gif') 50% 50% no-repeat rgb(249, 249, 249);
+}
+/* Boby Background Service */
+
+body.demo-one {
+    background: url(../images/bg-1.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+body.demo-two {
+    background: url(../images/animal.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+body.demo-three {
+    background: url(../images/abstract-2100_1920.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+body.demo-four {
+    background: url(../images/pexels-photo-230872.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+body.demo-five {
+    background: url(../images/drummer-1208190_1920.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+body.demo-six {
+    background: url(../images/fashion-show-1746579_1920.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+body.demo-seven {
+    background: url(../images/books-1246674_1920.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+body.demo-eight {
+    background: url(../images/food.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+body.demo-nine {
+    background: url(../images/health.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+body.demo-ten {
+    background: url(../images/pexels-photo-8674.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+body.demo-eleven {
+    background: url(../images/pexels-photo-28807.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+body.demo-twelve {
+    background: url(../images/pexels-photo-239520.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+body.demo-thirteen{
+     background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+     -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; 
+    
+}
+body.demo-fourteen{
+    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+     -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; 
+    
+}
+body.demo-fifteen{
+    background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; 
+}
+body.demo-sixteen{
+     background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; 
+}
+body.demo-seventeen{
+         background-image: linear-gradient(to right, #c1c161 0%, #c1c161 0%, #d4d4b1 100%);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; 
+}
+
+
+/* Whole page wrap CSS */
+
+#home-wrap {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transition: all 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -moz-transition: all 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: all 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+/* Content Postion */
+
+#home-wrap .content {
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    padding: 0;
+    top: 50vh;
+    width: 100%;
+    padding: 0 5%;
+    0 -webkit-transition: all 0.3s cubic-bezier(0, 0, 0.58, 1);
+    -moz-transition: all 0.3s cubic-bezier(0, 0, .58, 1);
+    -ms-transition: all 0.3s cubic-bezier(0, 0, 0.58, 1);
+    -o-transition: all 0.3s cubic-bezier(0, 0, 0.58, 1);
+    transition: all 0.3s cubic-bezier(0, 0, 0.58, 1);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    opacity: 1;
+    visibility: visible;
+}
+/* Font Awsome icon color */
+
+.fa.fa-diamond {
+    color: #fff;
+}
+/* Subscribe Button Code */
+
+.subscribe-btn {
+    background: transparent;
+    font-weight: 600;
+    padding: 0.7em 2em;
+    color: #fff;
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    font-family: 'Open Sans', sans-serif;
+}
+.subscribe-btn:hover {
+    background: transparent;
+    color: #fff;
+    border-color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+/* Notify Button Code */
+
+.notify-btn {
+    background: #00BCD4;
+    font-weight: 600;
+    padding: 0.7em 2em;
+    color: #fff;
+    display: inline-block;
+    font-size: 14px;
+    border: 1px solid #00BCD4;
+    font-family: 'Open Sans', sans-serif;
+}
+.notify-btn:hover {
+    background: #fff;
+    color: #2B2D35;
+    border-color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+/* Comming Soon Title Animation Color */
+
+.awesome {
+    width: 100%;
+    text-align: center;
+    -webkit-animation: colorchange 20s infinite alternate;
+}
+@-webkit-keyframes colorchange {
+    0% {
+        color: #ffffff;
+    }
+    10% {
+        color: blue;
+    }
+    20% {
+        color: #CDCB00;
+    }
+30% {color:#fff; }
+
+40% {
+        color: blue;
+    }
+    50% {
+        color: #CDCB00;
+    }
+	
+ }
+    60% {
+        color: #fff;
+    }
+    70% {
+        color: blue
+    }
+80% {color:#CDCB00;; }
+
+100% {color:#fff;}
+   
+   
+   
+}
+/* Buble go up */
+
+.buble-up {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;
+}
+/* Animation color */
+
+.animation-bg {
+    display: block;
+    position: fixed;
+    opacity: 0.9;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background-repeat: repeat;
+    -webkit-background: linear-gradient(90deg, #FF1D23, #D40D12, #94090D, #5C0002, #450003);
+    -moz-background: linear-gradient(90deg, #FF1D23, #D40D12, #94090D, #5C0002, #450003);
+    -ms-background: linear-gradient(90deg, #FF1D23, #D40D12, #94090D, #5C0002, #450003);
+    -o-background: linear-gradient(90deg, #FF1D23, #D40D12, #94090D, #5C0002, #450003);
+    background: linear-gradient(90deg, #FF1D23, #D40D12, #94090D, #5C0002, #450003);
+    -webkit-background-size: 450% 1400%;
+    -moz-background-size: 450% 1400%;
+    -ms-background-size: 450% 1400%;
+    -o-background-size: 450% 1400%;
+    background-size: 450% 1400%;
+    -webkit-animation: gradient_bg 40s linear infinite;
+    -moz-animation: gradient_bg 40s linear infinite;
+    -ms-animation: gradient_bg 40s linear infinite;
+    -o-animation: gradient_bg 40s linear infinite;
+    animation: gradient_bg 40s linear infinite;
+}
+@-webkit-keyframes gradient_bg {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
+@-moz-keyframes gradient_bg {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
+@-ms-keyframes gradient_bg {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
+@-o-keyframes gradient_bg {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
+@keyframes gradient_bg {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
+/* The End All CSS */

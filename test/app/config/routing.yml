@@ -1,0 +1,40 @@
+esprit_api:
+    resource: "@EspritApiBundle/Resources/config/routing.yml"
+    prefix:   /api
+
+vente:
+    resource: "@VenteBundle/Resources/config/routing.yml"
+    prefix:   /Vente
+
+depot:
+    resource: '@DepotBundle/Controller/'
+    type: annotation
+
+employee:
+    resource: '@EmployeBundle/Controller/'
+    type: annotation
+
+achat:
+    resource: "@AchatBundle/Resources/config/routing.yml"
+    prefix:   /achat
+
+livraison:
+    resource: "@LivraisonBundle/Resources/config/routing.yml"
+    prefix:   /livraison
+
+vehicule:
+    resource: "@VehiculeBundle/Resources/config/routing.yml"
+    prefix:   /VehiculeBundle
+
+service_apres_vente:
+    resource: "@ServiceApresVenteBundle/Resources/config/routing.yml"
+    prefix:   /serviceApresVentes
+app:
+    resource: '@AppBundle/Resources/config/routing.yml'
+    prefix:   /
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+mgilet_notification:
+    resource: "@MgiletNotificationBundle/Controller/"
+    prefix: /notifications

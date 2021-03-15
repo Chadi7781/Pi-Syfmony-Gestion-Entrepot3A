@@ -1,0 +1,35 @@
+{%  extends 'frontend/base.html.twig' %}
+
+{% block content %}
+ <div class="main-form">
+  <h3 class="contactus-title">Ajouter Produit</h3>
+  <div class="row">
+   <form name="contactform" method="POST" action="contact-form-handler.php">
+    <div class="col-sm-6">
+     <input type="text" required name="libelle" placeholder="libelle">
+    </div>
+    <div class="col-sm-6 ">
+     <input type="email" required name="Poids" placeholder="Poids">
+    </div>
+    <div class="col-sm-6 ">
+     <input type="text" required name="Prix" placeholder="Prix">
+    </div>
+    <div class="col-sm-6 ">
+     <input type="text" required name="Quantité" placeholder="Quantité">
+    </div>
+    <div class="col-xs-12 ">
+     <input type="file" required name="image" placeholder="image">
+    </div>
+    <div class="col-xs-12 ">
+     <textarea required name="Desription" placeholder="Desription" rows="3" cols="30"></textarea>
+    </div>
+    <div class="col-xs-12  text-center">
+     <div class="commun-btn">
+      <button type="submit" name="Valider" class="btn">Submit</button>
+     </div>
+    </div>
+   </form>
+  </div>
+ </div>
+{% endblock %}
+

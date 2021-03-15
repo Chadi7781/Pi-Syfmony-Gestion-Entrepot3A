@@ -1,0 +1,46 @@
+
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+            height: 100%;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+<body>
+<div id="map"></div>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvDx4Danm0qYsQWYPVfY57Trqf_11l2G4&callback=initMap">
+</script>
+<script>
+
+    function initMap() {
+        var myLatTozeur = {lat: 33.91968    , lng: 8.13352};
+        var myLatMednin = {lat: 33.3489  , lng:  10.4948};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 4,
+            center: myLatTozeur
+        });
+
+
+        var marker = new google.maps.Marker({
+            position: myLatTozeur,
+            map: map,
+            title: 'Tozeur!'
+        });
+
+        var marker1 = new google.maps.Marker({
+            position: myLatMednin,
+            map: map,
+            title: 'Mednine!'
+        });
+    }
+
+
+</script>
+

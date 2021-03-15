@@ -1,0 +1,266 @@
+
+
+{% extends 'frontend/base.html.twig' %}
+{% block content %}
+
+        <link rel="stylesheet" type="text/css" href="{{ asset('style.css') }}" />
+
+
+{#    <a href="{{ path('add_feedback',{'id':idlivreur}) }}">Retour</a>#}
+{##}
+    <div class="body_wrapper">
+{#        <section class="product_details_area bg_color sec_pad">#}
+{#        <img class="breadcrumb_shap" src="img/breadcrumb/banner_bg.png" alt="">#}
+{#        <div class="container">#}
+{#            <div class="breadcrumb_content text-center">#}
+{#                <h1 class="f_p f_700 f_size_50 w_color l_height50 mb_20">Detaill {{ username }}</h1>#}
+{#                <p class="f_400 w_color f_size_16 l_height26">Why I say old chap that is spiffing off his nut arse pear shaped plastered<br> Jeffrey bodge barney some dodgy.!!</p>#}
+{#            </div>#}
+{#        </div>#}
+{#    </section>#}
+
+
+
+    <section class="breadcrumb_area"  style=" background-position:  center center; background-repeat: no-repeat; background-size: cover;">
+        <div class="container">
+            <div class="breadcrumb_content text-center">
+                <h1 class="f_p f_700 f_size_50 w_color l_height50 mb_20">Livreurs</h1>
+                <p class="f_400 w_color f_size_16 l_height26"><br>!</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="experts_team_area sec_pad">
+        <div class="container">
+            <div class="sec_title text-center mb_70">
+                <h2 class="f_p f_size_30 l_height30 f_700 t_color3 mb_20">Top 5 Livreurs :)</h2>
+                <p class="f_400 f_size_16">Votre confiance courage nous a avancer<br>Notez nous encore .!</p>
+            </div>
+            {% set i = 0 %}
+
+            <div class="row">
+                {% for e in evaluations %}
+                {% if e.livreur != null %}
+                <div class="col-lg-3 col-sm-6">
+                    <div class="ex_team_item">
+                        {% set bout = boutiques[i] %}
+
+                        <img src="{{ asset('uploads/'~bout.image) }}" alt="">
+                        <div class="team_content">
+                            <a href="#">
+                                <h3 class="f_p f_size_16 f_600 t_color3">{{ bout.username }}</h3>
+                            </a>
+
+
+                                    <div class="ratting">
+                                        {% if (e.note)!=0 %}
+                                            {% for i in 1..e.note %}
+
+                                                <i class="fa fa-star" style="color: yellow;"></i>
+                                            {% endfor %}
+                                        {% endif %}
+                                        {% if (5 - e.note != 0 ) %}
+                                            {% for j in 1..(5 - e.note) %}
+                                                <i class="fa fa-star empty"></i>
+
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+
+
+                        </div>
+
+                        <div class="hover_content">
+                            <div class="n_hover_content">
+
+                                <div class="br"></div>
+                                <a href="#">
+                                    <h3 class="f_p f_size_16 f_600 w_color">{{ bout.email }}</h3>
+                                </a>
+
+
+
+                                <h5>{{ e.note |round }} noteMoyenne</h5>
+                                <a href="{{ path('add_feedback',{'id':bout.idEmp}) }}" ><h5>donnez votre avis</h5></a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                    {% set i = i+1 %}
+
+                {% endif %}
+                {% endfor %}
+            </div>
+
+        </div>
+        <div class="container">
+            <div class="sec_title text-center mb_70">
+                <h2 class="f_p f_size_30 l_height30 f_700 t_color3 mb_20">Tous Livreurs :)</h2>
+                <p class="f_400 f_size_16">Votre confiance courage nous a avancer<br>Notez nous encore .!</p>
+        <button id="show-hidden-menu"
+             class="er_btn">Encore Livreurs </button>
+            </div>
+
+            <div class="hidden-menu" style="display: none;">
+
+
+                {% set i = 0 %}
+
+                <div class="row">
+                    {% for e in all %}
+                        {% if e.livreur != null %}
+                            <div class="col-lg-3 col-sm-6">
+                                <div class="ex_team_item">
+                                    {% set bout = livreurs[i] %}
+
+                                    <img src="{{ asset('uploads/'~bout.image) }}" alt="">
+                                    <div class="team_content">
+                                        <a href="#">
+                                            <h3 class="f_p f_size_16 f_600 t_color3">{{ bout.username }}</h3>
+                                        </a>
+
+
+                                        <div class="ratting">
+                                            {% if (e.note)!=0 %}
+                                                {% for i in 1..e.note %}
+
+                                                    <i class="fa fa-star" style="color: yellow;"></i>
+                                                {% endfor %}
+                                            {% endif %}
+                                            {% if (5 - e.note != 0 ) %}
+                                                {% for j in 1..(5 - e.note) %}
+                                                    <i class="fa fa-star empty"></i>
+
+                                                {% endfor %}
+                                            {% endif %}
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="hover_content">
+                                        <div class="n_hover_content">
+
+                                            <div class="br"></div>
+                                            <a href="#">
+                                                <h3 class="f_p f_size_16 f_600 w_color">{{ bout.email }}</h3>
+                                            </a>
+
+
+
+                                            <h5>{{ e.note |round }} noteMoyenne</h5>
+
+                                            <a href="{{ path('add_feedback',{'id':bout.idEmp}) }}" ><h5>donnez votre avis</h5></a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            {% set i = i+1 %}
+
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+
+            {#        <section class="experts_team_area sec_pad">#}
+            {#            <div class="container">#}
+            {#                <div class="sec_title text-center mb_70">#}
+            {#                    <h2 class="f_p f_size_30 l_height30 f_700 t_color3 mb_20">The Experts Team</h2>#}
+            {#                    <p class="f_400 f_size_16">Why I say old chap that is spiffing barney, nancy boy bleeder chimney<br> pot richard cheers the little rotter.!</p>#}
+            {#                </div>#}
+            {#                <div class="row">#}
+            {#                    {% set i = 0 %}#}
+
+            {#                    {% for e in livreur %}#}
+            {#                        {% if e.livreur.idEmp!= null %}#}
+
+            {#                        <div class="col-lg-3 col-sm-6">#}
+            {#                            <div class="ex_team_item">#}
+            {#                                <img src="{{ asset('uploads/'~top.image) }}" alt="">#}
+            {#                                <div class="team_content">#}
+            {#                                    <a href="#">#}
+            {#                                        <h3 class="f_p f_size_16 f_600 t_color3">{{ liv.username }}</h3>#}
+            {#                                    </a>#}
+
+
+
+            {#                                    {% set note=0 %}#}
+            {#                                    {% for rate in rate  %}#}
+            {#                                        {% set i = 1 %}#}
+            {#                                        {% if rate.livreur.idEmp == liv.idEmp   %}#}
+            {#                                            {% set note = (note+rate.value)/count %}#}
+            {#                                            <div class="ratting">#}
+            {#                                                {% for i in 1..note|round %}#}
+            {#                                                    <a href="#"><i class="fa fa-star"></i></a>#}
+            {#                                                {% endfor %}#}
+            {#                                                {% for j in 1..(5 - note |round) %}#}
+            {#                                                    <i class="fa fa-star empty"></i>#}
+            {#                                                {% endfor %}#}
+
+            {#                                                {% set i = i +1 %}#}
+            {#                                            </div>#}
+
+
+            {#                                        {% endif %}#}
+            {#                                    {% endfor %}#}
+            {#                                </div>#}
+
+            {#                                <div class="hover_content">#}
+            {#                                    <div class="n_hover_content">#}
+
+            {#                                        <div class="br"></div>#}
+            {#                                        <a href="#">#}
+            {#                                            <h3 class="f_p f_size_16 f_600 w_color">{{ liv.email }}</h3>#}
+            {#                                        </a>#}
+
+
+
+            {#                                        <h5>{{ note |round }} noteMoyenne</h5>#}
+
+            {#                                        <a href="{{ path('add_feedback',{'id':liv.idEmp}) }}" ><h5>donnez votre avis</h5></a>#}
+            {#                                    </div>#}
+
+            {#                                </div>#}
+
+            {#                            </div>#}
+            {#                        </div>#}
+            {#                        {% endif %}#}
+            {#                    {% endfor %}#}
+
+
+            {#                </div>#}
+            {#            </div>#}
+
+
+
+            {#        </section>#}
+
+
+        </div>
+
+        </div>
+
+
+         </section>
+
+    </div>
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#show-hidden-menu').click(function () {
+                $('.hidden-menu').slideToggle("slow");
+                // Alternative animation for example
+                // slideToggle("fast");
+            });
+        });
+
+
+    </script>
+
+
+{% endblock %}

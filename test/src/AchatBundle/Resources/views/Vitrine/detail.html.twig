@@ -1,0 +1,277 @@
+{% extends 'frontend/base.html.twig' %}
+
+{% block content %}
+<style>
+    .pr_details .pr_title {
+        color: #282835;
+    }
+
+    .pr_details .ratting {
+        float: right;
+        text-align: right;
+    }
+
+    .pr_details .ratting .star-rating {
+        color: #5e2ced;
+        line-height: 12px;
+    }
+
+    .pr_details .ratting .star-rating:before {
+        content: "\e60a\e60a\e60a\e60a";
+        font-family: 'themify';
+        font-size: 12px;
+    }
+
+    .pr_details .ratting .woocommerce-review-link {
+        font-size: 14px;
+        font-weight: 300;
+        color: #677294;
+    }
+
+    .pr_details .price {
+        font: 300 20px "Poppins", sans-serif;
+        color: #677294;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: end;
+        -ms-flex-pack: end;
+        justify-content: flex-end;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+        flex-direction: row-reverse;
+        padding-top: 8px;
+    }
+
+    .pr_details .price ins {
+        text-decoration: none;
+        font-weight: 600;
+        color: #282835;
+        padding-right: 18px;
+    }
+
+    .pr_details .stock {
+        font: 400 16px "Poppins", sans-serif;
+        color: #5e2ced;
+        vertical-align: middle;
+        padding-top: 20px;
+        display: inline-block;
+    }
+
+    .pr_details .stock:before {
+        content: "\e64c";
+        font-family: 'themify';
+        color: #5e2ced;
+        padding-right: 10px;
+    }
+
+    .pr_details p {
+        margin-bottom: 0px;
+        padding: 20px 0px 40px;
+    }
+
+    .pr_details .product-qty {
+        display: inline-block;
+        position: relative;
+    }
+
+    .pr_details .product-qty .manual-adjust {
+        width: 95px;
+        border: 1px solid #e7e7f6;
+        border-radius: 45px;
+        background: #fff;
+        text-align: center;
+        height: 50px;
+    }
+
+    .pr_details .product-qty .ar_top, .pr_details .product-qty .ar_down {
+        position: absolute;
+        background: #fff;
+        border: 0px;
+        font-size: 12px;
+        color: #677294;
+        right: 5px;
+        border-radius: 15px;
+        padding: 0px 15px 0px 0px;
+    }
+
+    .pr_details .product-qty .ar_top:hover, .pr_details .product-qty .ar_down:hover {
+        color: #5e2ced;
+    }
+
+    .pr_details .product-qty .ar_top {
+        top: 3px;
+    }
+
+    .pr_details .product-qty .ar_down {
+        bottom: 3px;
+    }
+
+    .pr_details .cart_button {
+        display: inline-block;
+    }
+
+    .pr_details .cart_button .cart_btn {
+        border-radius: 45px;
+        font: 400 15px/48px "Poppins", sans-serif;
+        color: #677294;
+        border: 1px solid #e7e7f6;
+        background: #f8f8fc;
+        min-width: 140px;
+        text-align: center;
+        display: inline-block;
+        margin: 0px 5px;
+    }
+
+    .pr_details .cart_button .wish_list {
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        color: #282835;
+        width: 50px;
+        border-radius: 50%;
+        display: inline-block;
+        border: 1px solid #e7e7f6;
+    }
+
+    .pr_details .cart_button .cart_btn, .pr_details .cart_button .wish_list {
+        -webkit-transition: all 0.2s linear;
+        -o-transition: all 0.2s linear;
+        transition: all 0.2s linear;
+    }
+
+    .pr_details .cart_button .cart_btn:hover, .pr_details .cart_button .wish_list:hover {
+        background: #5e2ced;
+        color: #fff;
+        border-color: #5e2ced;
+    }
+
+    .pr_details .product_meta {
+        margin-bottom: 0;
+    }
+
+    .pr_details .product_meta li {
+        font-family: "Poppins", sans-serif;
+        font-weight: 300;
+        color: #677294;
+        margin-bottom: 10px;
+    }
+
+    .pr_details .product_meta li a {
+        color: #677294;
+    }
+
+    .pr_details .product_meta li a:hover {
+        color: #5e2ced;
+    }
+
+    .pr_details .product_meta li span {
+        font-weight: 400;
+        color: #282835;
+        padding-right: 8px;
+    }
+
+    .pr_details .share-link label {
+        margin-bottom: 0px;
+        font: 400 15px "Poppins", sans-serif;
+        color: #282835;
+    }
+
+    .pr_details .share-link .social-icon {
+        margin-bottom: 0px;
+        display: inline-block;
+    }
+
+</style>
+
+    <div class="body_wrapper">
+        <div class="breadcrumb parallax" style=" background: linear-gradient(35deg, #1EAE98, #D8B5FF);">
+            <h1 style="color: #0b0b0b;
+        text-align:center;font-family:'Baskerville Old Face';font-weight:900;font-size:4em;color:#fff;text-shadow:0em 0.05em 0 rgba(0,0,0,0.25)}
+" class="control-label" ><a href="#" style="color: #fff;">Home - Achat</a>
+
+            </h1>
+            <ul>
+                {#            <li><a href="index.html">Home</a></li>#}
+                {#            <li><a href="contact.html">Contact Us</a></li>#}
+            </ul>
+        </div>
+        <section class="product_details_area bg_color sec_pad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <img src="{{ asset('uploadsProduit/produit_image/'~ photo) }}" alt="ee">
+
+                </div>
+                <form action="{{ path('cart_add',{'id':id}) }}" method="POST">
+
+                <div class="col-lg-6">
+                    <div class="pr_details">
+                        <a href="#" class="pr_title f_size_22 f_500 f_p">
+                            {{ libelle }}
+                        </a>
+                        <div class="ratting review">
+                            <div class="star-rating">
+                            </div>
+                            <a href="#reviews" class="woocommerce-review-link" rel="nofollow">
+{#                                 {{ note.getIdProduit() }}#}
+                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span>
+                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span>
+                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span>
+                                <span class="count">2</span> note
+
+                            </a>
+                        </div>
+                        <div class="price">
+                            <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">{{ prix }}</span>Dt </span>
+                        </div>
+                        <span class="stock">{{ etat }}</span>
+                        <p class="f_400 f_size_15">
+                        {{ description }}
+
+                        <form name="f" action="{{ path('cart_add',{'id':id}) }}" method="post">
+                        <div class="product-qty">
+                           Quantite:     <select name="quantite" >
+                                    {%  for i in 1..   quantite  %}
+                                        <option  value="{{ i }}">{{ i }}</option>
+                                    {% endfor %}
+                                </select>
+
+
+
+
+
+
+                        </div>
+                        <div class="cart_button">
+                            <button type="submit" class="cart_btn" data-toggle="tooltip" data-placement="top" title="Add to Wish List" ><i class="fa fa-heart-o"></i></button>
+                          <a href="{{ path('cart_add', {'id':id}) }}">
+                              <button type="submit" class="cart_btn" data-toggle="tooltip" data-placement="top" title="Ajouter au panier" >
+                                <i class="fa fa-shopping-cart"></i>
+
+                          </button>
+
+                          </a>
+
+                        </div>
+
+                        </form>
+
+
+                        <div class="pr_footer mt_40 mb-30">
+                            <ul class="product_meta list-unstyled">
+                                <li><span>Poid:</span>{{poids}}</li>
+                                <li><span>Quantite en stock:</span>{{quantite}}</li>
+                                <li><span>Catégorie:{{ cat.getNom() }}</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>                        </form>
+
+
+            </div>
+        </div>
+    </section>
+    </div>
+{% endblock %}

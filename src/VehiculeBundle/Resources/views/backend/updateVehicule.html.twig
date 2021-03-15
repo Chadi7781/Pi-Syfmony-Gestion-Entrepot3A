@@ -1,0 +1,95 @@
+{%  extends 'backend/base.html.twig' %}
+{% block content %}
+    <div class="content-page">
+    <!-- Start content -->
+    <div class="content">
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="p-20">
+
+                {{ form_start(f) }}
+                <div>
+
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Numéro d'immatriculation</label>
+                    <div class="col-10">
+                        {{ form_widget(f.matricule,{'attr':{'type':'text','class':'form-control','placeholder':'***TUN****'}}) }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-2 col-form-label" for="">Type</label>
+                    <div class="col-10">
+                        {{ form_widget(f.type,{'attr':{'class':'custom-select mt-3'}} )}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Puissance</label>
+                    <div class="col-10">
+                        {{ form_widget(f.puissance,{'attr':{'class':'custom-select mt-3'}} ) }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Marque</label>
+                    <div class="col-10">
+                        {# <input type="text" class="form-control" placeholder="placeholder">#}
+                        {{ form_widget(f.marque,{'attr':{'type':'text','class':'form-control','placeholder':'Marque de la vehicule'}} ) }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Kilometrage</label>
+                    <div class="col-10">
+                        {#   <input class="form-control" type="number"></input>#}
+                        {{ form_widget(f.kilometrage,{'attr':{'class':'form-control','placeholder':'Kilométrage parcouru'}} ) }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Nombre de Portes</label>
+                    <div class="col-10">
+                        {# <input type="text" class="form-control" > </input> #}
+                        {{ form_widget(f.nbplace,{'attr':{'class':'form-control','placeholder':'Nombre de Portes'}} )}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Tarif</label>
+                    <div class="col-md-10">
+                        {{ form_widget(f.prix,{'attr':{'class':'form-control','placeholder':'Tarifs de location'}}) }}DT/mois
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Photo</label>
+                    <div class="col-10">
+                        {{form_widget(f.file,{'attr':{'class':'form-control'}}) }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-10">
+                        {{form_widget(f.etat,{'attr':{'class':'form-control','placeholder':'disponible'}} )}}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Couleur</label>
+                    <div class="col-md-10">
+
+                        {{ form_widget(f.couleur,{'attr':{'class':'form-control','type':'color'}}) }}
+                    </div>
+                </div>
+                <div align="center">
+                    {{ form_widget(f.Ajouter,{'attr':{'class':'btn btn-block btn-sm btn-success waves-effect waves-light '}}) }}
+                    {{ form_end(f) }}
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    </div>
+    </div>
+    </div>
+    </div>
+{% endblock %}

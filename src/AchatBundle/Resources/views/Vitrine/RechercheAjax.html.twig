@@ -1,0 +1,188 @@
+
+{% extends 'frontend/base.html.twig' %}
+
+{% block content %}
+    <h3>Recherche d'une colocation</h3>
+
+    <form method="post">
+        <input id="prixx" type="text" name="prixx" placeholder="rechercher">
+    </form>
+
+    <div class="product-model">
+        <div class="container" id="cnt">
+            <ol class="breadcrumb">
+                <li><a href="index.html">Accueil</a></li>
+                <li class="active">Liste des Colocation</li>
+            </ol>
+
+            <h2>Liste des Colocation publiés</h2>
+            <div id="result"></div>
+            <div>
+                <div class="col-md-9 product-model-sec" id="init">
+
+                    {% for produi in colocations %}
+                        <div class="product-grid">
+                            <div class="more-product"><span> </span></div>
+                            <div class="product-img b-link-stripe b-animate-go  thickbox">
+                                <img src="{{ asset ('uploads/'~colocation.path) }}" class="img-responsive" alt="">
+                                <div class="b-wrapper">
+                                    <h4 class="b-animate b-from-left  b-delay03">
+                                        <button onclick="location.href='{{ path('show_colocation',{'id':colocation.id}) }}'"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>Voir le contenu</button>
+                                    </h4>
+                                </div>
+                            </div></a>
+                            <div class="product-info simpleCart_shelfItem">
+                                <div class="product-info-cust prt_name">
+                                    <span class="item_price">Prix: {{ colocation.prix }}</span>
+                                    <span class="item_price">Auteur: {{ colocation.idUser.username }}</span>
+                                    <div class="clearfix"> </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <!--script-->
+                <script>
+                    $(document).ready(function(){
+                        $(".tab1 .single-bottom").hide();
+                        $(".tab2 .single-bottom").hide();
+                        $(".tab3 .single-bottom").hide();
+                        $(".tab4 .single-bottom").hide();
+                        $(".tab5 .single-bottom").hide();
+
+                        $(".tab1 ul").click(function(){
+                            $(".tab1 .single-bottom").slideToggle(300);
+                            $(".tab2 .single-bottom").hide();
+                            $(".tab3 .single-bottom").hide();
+                            $(".tab4 .single-bottom").hide();
+                            $(".tab5 .single-bottom").hide();
+                        })
+                        $(".tab2 ul").click(function(){
+                            $(".tab2 .single-bottom").slideToggle(300);
+                            $(".tab1 .single-bottom").hide();
+                            $(".tab3 .single-bottom").hide();
+                            $(".tab4 .single-bottom").hide();
+                            $(".tab5 .single-bottom").hide();
+                        })
+                        $(".tab3 ul").click(function(){
+                            $(".tab3 .single-bottom").slideToggle(300);
+                            $(".tab4 .single-bottom").hide();
+                            $(".tab5 .single-bottom").hide();
+                            $(".tab2 .single-bottom").hide();
+                            $(".tab1 .single-bottom").hide();
+                        })
+                        $(".tab4 ul").click(function(){
+                            $(".tab4 .single-bottom").slideToggle(300);
+                            $(".tab5 .single-bottom").hide();
+                            $(".tab3 .single-bottom").hide();
+                            $(".tab2 .single-bottom").hide();
+                            $(".tab1 .single-bottom").hide();
+                        })
+                        $(".tab5 ul").click(function(){
+                            $(".tab5 .single-bottom").slideToggle(300);
+                            $(".tab4 .single-bottom").hide();
+                            $(".tab3 .single-bottom").hide();
+                            $(".tab2 .single-bottom").hide();
+                            $(".tab1 .single-bottom").hide();
+                        })
+                    });
+                </script>
+                <!-- script -->
+                </section>
+                <!---->
+                <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+                <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+                <script type='text/javascript'>//<![CDATA[
+                    $(window).load(function(){
+                        $( "#slider-range" ).slider({
+                            range: true,
+                            min: 0,
+                            max: 100000,
+                            values: [ 500, 100000 ],
+                            slide: function( event, ui ) {  $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+                            }
+                        });
+                        $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+
+                    });//]]>
+                </script>
+                <!---->
+
+
+            </div>
+        </div>
+    </div>
+
+    <style type="text/css">
+        #cnt {
+            display: block;
+            margin : auto;
+        }
+
+    </style>
+    <script>
+
+
+
+        $(document).ready(function () {
+
+            $("#prixx").keyup(function(){
+                console.log("ttt");
+
+                var filter = $("#prixx").val();
+                var data = {"prixx":filter};
+                $.ajax({
+                    type: "post",
+                    url: "{{ path('city_autocomplete') }}",
+                    data:data,
+                    success: function(data){
+                        $("#result").html('<div class="col-md-9 product-model-sec" id="xd">'+'</div>')
+                        $.each(data,function(k,v){
+                            $("#init").hide();
+                            $("#xd").append(
+                                '<div class="product-grid">'+
+                                '<div class="more-product">'+'</div>'+
+                                '<div class="product-img b-link-stripe b-animate-go  thickbox">'+
+                                '<div class="b-wrapper">'+
+                                '<h4 class="b-animate b-from-left  b-delay03">'+
+                                '</h4>'+
+                                '</div>'+
+                                '</div>'+'</a>'+
+                                '<div class="product-info simpleCart_shelfItem">'+
+                                '<div class="product-info-cust prt_name">'+
+                                '<span class="item_price">Prix: '+v.prix+'</span>'+
+                                // '<span class="item_price">Auteur: '+v.idUser.username+'</span>'+
+                                '<div class="clearfix">'+ '</div>'+
+                                '</div>'+
+                                '</div>'+
+                                '</div>'
+                            );
+                            if ($("#prixx").val()==''){
+
+                                $("#init").show();
+                                $("#result").empty();
+
+                            }
+
+                        })
+
+
+                    }
+
+
+
+                });
+
+            });
+
+
+        });
+
+
+
+
+    </script>
+{% endblock %}

@@ -1,0 +1,49 @@
+{%  extends 'frontend/base.html.twig' %}
+
+{% block content %}
+
+
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('style.css') }}" />
+
+    <section class="experts_team_area sec_pad">
+        <div class="container">
+            <div class="sec_title text-center mb_70">
+                <h2 class="f_p f_size_30 l_height30 f_700 t_color3 mb_20">Catégories des réclamations</h2>
+                <p class="f_400 f_size_16">Why I say old chap that is spiffing barney, nancy boy bleeder chimney<br> pot richard cheers the little rotter.!</p>
+            </div>
+            <div class="row">
+                {% for cat in categories %}
+                <div class="col-lg-3 col-sm-6">
+                    <div class="ex_team_item">
+                        <img src="{{ asset('uploads/catRecFeed_image/'~cat.image) }}" alt="">
+                        <div class="team_content">
+                            <a href="#">
+                                <h3 class="f_p f_size_16 f_600 t_color3">{{ cat.nom }}</h3>
+                            </a>
+                            <h5>web designer</h5>
+                        </div>
+                        <div class="hover_content">
+                            <div class="n_hover_content">
+                                <ul class="list-unstyled">
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                </ul>
+                                <div class="br"></div>
+
+
+                                  <a href="{{ path('add_reclamation',{'id_cat':cat.getIdCat(),'idp':idp,'idpc':idpc}) }}">  <button class="f_p f_size_16 f_600 w_color">Continuer</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

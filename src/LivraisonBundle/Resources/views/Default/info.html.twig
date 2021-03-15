@@ -1,0 +1,110 @@
+{%  extends 'frontend/base.html.twig' %}
+
+{% block content %}
+
+
+
+    <div class="zn-iosSl-item" ><img width="1600" height="200" src="{{ asset('../web/image/livraison.png') }}" class="zn-iosSl-img cover-fit-img zn-iosSl-img--center" alt="" sizes="(max-width: 1600px) 100vw, 1600px" />
+        <h2 style="margin-bottom: 100px"></h2>
+
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3 hidden-xs column-left" id="column-left">
+                <div class="Categories left-sidebar-widget">
+                    <div class="columnblock-title" style="color: #191970 ; font-size: 30px;">Livraison</div>
+                    <div class="category_block">
+                        <ul class="box-category">
+                            <li style="color: #0000 ; font-family:Arial Black, Gadget, sans-serif ;"><a href={{ path('livraison_afficher')}}>Mes livraisons</a></li>
+                            <li style="color: #0000 ; font-family:Arial Black, Gadget, sans-serif ;"><a href={{ path('livraison_add')}}>Nouvelle livraison</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div >
+                        <div class="col-sm-12 col-md-8">
+                            <fieldset id="account">
+                                <legend>Informations</legend>
+                            </fieldset>
+                                <p>
+                                    <label> Adresse d'Expediteur  :</label>
+                                    <label>  {{ livraison.adresseDepart }}</label>
+                                </p>
+
+                                <p>
+                                <label style="=color:red;"> Adresse Destinataire  :</label>
+
+                                 <label> {{ livraison.adresseArrive }}</label>
+
+                                </p>
+                            <p>
+                                <label style="=color:red;"> Point De Collecte  :</label>
+
+                                <label> {{ livraison.idMagasin.nom|default(' Vous avez Choisi la livraison a Domicile') }}</label>
+
+                            </p>
+
+                                    <label>Photo Du Produit :</label>
+                                <div>
+                                    <figure >
+                                        <img src="{{ asset('image/' ~ livraison.photoProduit) }}" style="width: 200px" alt="image description">
+                                    </figure>
+
+                                </div>
+
+                                <p>
+                                    <label> le Produit livrè est Fragile  :</label>
+
+                                    <label> {{ livraison.fragile }}</label>
+
+                                </p>
+                                <p>
+                                    <label> le Poids Du produit livrè  :</label>
+
+                                    <label> {{ livraison.poids }}</label>
+
+                                </p>
+                                <p>
+                                    <label> Cout De Livraison :</label>
+
+                                    <label> {{ livraison.prix }}</label>
+
+                                </p>
+                                <p>
+                                    <label> Date De Reception Du Colier :</label>
+
+                                    <label> {{ livraison.dateReception }}</label>
+
+                                </p>
+                                <p>
+                                    <label> Etat Du Traitement Du Demande De Livraison :</label>
+
+                                    <label> {{ livraison.etat}}</label>
+
+                                </p>
+
+
+                                <p>
+                                    <a href="{{ path('livraison_modification', {'idLivraison': livraison.idLivraison }) }}"> <button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light m-b-5" >Modifier</button></a>
+
+                                    <a href="{{ path('livraison_suppression', {'idLivraison': livraison.idLivraison }) }}"> <button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light m-b-5" >Supprimer</button> </a>
+                                    <a href="{{ path('livraison_pdf', {'idLivraison': livraison.idLivraison }) }}"> <button type="button" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5">Imprimer Facture</button> </a>
+                                </p>
+
+                                </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

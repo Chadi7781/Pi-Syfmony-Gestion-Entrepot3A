@@ -1,0 +1,72 @@
+ajouter:
+    path:     /ajouter/{id}
+    defaults: { _controller: VenteBundle:Produit:Ajouter }
+affiche:
+    path:     /afficher
+    defaults: { _controller: VenteBundle:Produit:afficher1 }
+affiche2:
+    path:     /afficher2
+    defaults: { _controller: VenteBundle:Produit:afficher2 }
+trie2:
+    path:     /sortByP
+    defaults: { _controller: VenteBundle:Produit:sortByP }
+trie12:
+    path:     /sortByP1
+    defaults: { _controller: VenteBundle:Produit:sortByPd }
+detail:
+    path:     /detail/{id}
+    defaults: { _controller: VenteBundle:Produit:detail1}
+mod:
+    path:     /modifier1/{id}
+    defaults: { _controller: VenteBundle:Produit:mod}
+affichercate:
+    path:     /afichercate
+    defaults: { _controller: VenteBundle:Categorie:afficher }
+supprimer:
+    path:     /supprimer/{id}
+    defaults: { _controller: VenteBundle:Produit:supprimer }
+ajoutercate:
+    path:     /ajouter
+    defaults: { _controller: VenteBundle:Categorie:ajouter }
+affichercateAdm:
+    path:     /afficherad
+    defaults: { _controller: VenteBundle:Categorie:affichercatAd }
+supprimercat:
+    path:     /supprimercat/{id}
+    defaults: { _controller: VenteBundle:Categorie:supprimercat }
+modifiercat:
+    path:     /modifier/{id}
+    defaults: { _controller: VenteBundle:Categorie:mod}
+ajax_search12:
+    path:     /rechercher
+    defaults: { _controller: VenteBundle:Produit:search}
+ajax_search1:
+    path:     /commm
+    defaults: { _controller: VenteBundle:Produit:newThreads}
+showByP:
+    path:     /showByP
+    defaults: { _controller: VenteBundle:Produit:showByP }
+all:
+    path:     /produit/all
+    defaults: { _controller: VenteBundle:Produit:all }
+all1:
+    path:     /produit/find/{id}
+    defaults: { _controller: VenteBundle:Produit:find }
+ajouter1:
+    path:     /produit/new
+    defaults: { _controller: VenteBundle:Produit:new }
+allcate:
+    path:     /categorie/all
+    defaults: { _controller: VenteBundle:Categorie:all }
+supprisionjson:
+    path:     /supprission/{id}
+    defaults: { _controller: VenteBundle:Produit:delete }
+modpro:
+    path:     /Produit/mod/{id}
+    defaults: { _controller: VenteBundle:Produit:EditProduit }
+nbrpro:
+    path:     /Produit/nbr
+    defaults: { _controller: VenteBundle:Produit:getNbr }
+nbrcat:
+    path:     /cate/nbrcat
+    defaults: { _controller: VenteBundle:Categorie:getNbrc }

@@ -1,0 +1,50 @@
+{%  extends 'backend/base.html.twig' %}
+
+{% block content %}
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="content-page">
+    <!-- Start content -->
+    <div class="content">
+    <div class="container-fluid">
+
+
+    <div class="row">
+        <div class="col-md-6">
+
+            <h3>Les employés par rapport a leurs adresse</h3>
+
+            {{ mukadi_chart(chart) }}
+
+        </div>
+
+        <div class="col-md-6">
+
+            <h3>Les employés par rapport a leurs missions</h3>
+
+            {{ mukadi_chart(chart_two) }}
+
+        </div>
+    </div>
+
+
+    <div class="col-md-6">
+
+        <h3>Les dépots disponibles par rapport au non disponibles</h3>
+
+        {{ mukadi_chart(chart_three) }}
+
+    </div>
+
+
+
+
+
+
+    {% block javascripts %}
+        <script src="{{ asset('mukadichartjs/jquery.js')}}"></script>
+        <script src="{{ asset('mukadichartjs/Chart.bundle.min.js') }}"></script>
+        <script src="{{ asset('mukadichartjs/mukadi.chart.min.js')}}"></script>
+    {% endblock %}
+{% endblock %}
